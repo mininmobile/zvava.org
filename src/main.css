@@ -58,6 +58,20 @@ a {
 	}
 }
 
+@keyframes slide-in-top {
+	0%, 50% {
+		top: -15vh;
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-bottom {
+	0%, 50% {
+		bottom: -15vh;
+		opacity: 0;
+	}
+}
+
 @keyframes bob {
 	from {
 		top: -1em;
@@ -73,44 +87,52 @@ a {
 .section.main + .section::before {
 	content: "";
 	width: 100%;
-	height: 3em;
+	height: 2em;
 	background: #9c27b0;
 	display: block;
 	position: absolute;
-	top: -1.5em;
-	transform: rotate(2deg);
+	-webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
+	        clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
 
 .section + .footer::before {
 	content: "";
 	width: 100%;
-	height: 3em;
+	height: 2em;
 	background: #34495e;
 	display: block;
 	position: absolute;
-	top: -1.5em;
-	left: 0;
-	transform: rotate(-2deg);
+	top: 0;
+	-webkit-clip-path: polygon(100% 0, 0 0, 0 95%);
+	        clip-path: polygon(100% 0, 0 0, 0 95%);
+}
+
+@media (min-width: 1500px) {
+	.section + .footer::before {
+		height: 3em;
+	}
+
+	.section.main + .section::before {
+		height: 3em;
+	}
 }
 
 /* decor */
 
-.block-container.left {
+.block-container {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	animation: bob 2s infinite alternate ease-in-out;
+}
+
+.block-container.left {
+	animation: bob 2.25s infinite alternate ease-in-out;
 }
 
 .block-container.right {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	animation: bob 2s infinite alternate-reverse ease-in-out;
+	animation: bob 1.75s infinite alternate-reverse ease-in-out;
 }
 
 .block {
@@ -135,6 +157,51 @@ a {
 	animation: slide-in-right 2s;
 }
 
+/* main info + arrow */
+
+.popup-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.section.main .popup-container.bottom {
+	animation: bob 1s infinite alternate ease-in-out;
+}
+
+.section.main .popup {
+	width: 100%;
+	position: absolute;
+	z-index: 99;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.section.main .popup.top {
+	top: 15vh;
+	animation: slide-in-top 4s;
+}
+
+.section.main .popup.bottom {
+	width: 1em;
+	height: 1em;
+	border: 0.25em solid transparent;
+	border-bottom: 0.25em solid #ddd;
+	border-right: 0.25em solid #ddd;
+	bottom: 15vh;
+	cursor: not-allowed;
+	animation: slide-in-bottom 4s;
+	transform: rotate(45deg);
+}
+
+.section.main .popup.bottom:hover::before {
+	opacity: 1;
+}
+
 /* sections */
 
 .section {
@@ -148,6 +215,7 @@ a {
 
 .section.main {
 	background: #9c27b0;
+	font-family: "Ubuntu Condensed", sans-serif;
 }
 
 .section.main .text {
@@ -161,7 +229,6 @@ a {
 	position: absolute;
 	z-index: 9;
 	font-size: 3em;
-	font-family: "Ubuntu Condensed", sans-serif;
 }
 
 .section.main .text :last-child {
