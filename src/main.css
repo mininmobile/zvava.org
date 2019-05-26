@@ -5,12 +5,6 @@
 
 @font-face {
 	font-family: Ubuntu;
-	src: url(./font/Ubuntu-Bold.ttf) format("truetype");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: Ubuntu;
 	src: url(./font/Ubuntu-Italic.ttf) format("truetype");
 	font-style: italic;
 }
@@ -40,8 +34,51 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-	color: white !important;
+	color: #ddd !important;
+	font-style: italic;
+}
+
+.footer a {
+	font-style: normal;
 	text-decoration: none;
+}
+
+table {
+	width: 75%;
+	margin: 3em auto;
+	border-collapse: collapse;
+}
+
+table th {
+	font-weight: normal;
+}
+
+table td {
+	text-align: center;
+}
+
+table td:nth-child(1), table td:nth-child(2) {
+	font-family: "Ubuntu Mono", monospace;
+}
+
+table th, td {
+	padding: 0.5em;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+	border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+table th:last-child, td:last-child {
+	border-right: none;
+}
+
+table tr:last-child td {
+	border-bottom: none;
+}
+
+@media (max-width: 750px) {
+	table {
+		width: 100%;
+	}
 }
 
 /* util */
@@ -84,24 +121,28 @@ a {
 
 /* dividers */
 
-.section.main + .section::before {
+.about::before,
+.projects::before,
+.footer::before {
 	content: "";
 	width: 100%;
 	height: 2em;
-	background: #9c27b0;
 	display: block;
 	position: absolute;
 	-webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
 	        clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
 
+.main + .about::before {
+	background: #9c27b0;
+}
+
+.about + .projects::before {
+	background: #009688;
+}
+
 .section + .footer::before {
-	content: "";
-	width: 100%;
-	height: 2em;
 	background: #34495e;
-	display: block;
-	position: absolute;
 	top: 0;
 	-webkit-clip-path: polygon(100% 0, 0 0, 0 95%);
 	        clip-path: polygon(100% 0, 0 0, 0 95%);
@@ -205,16 +246,23 @@ a {
 /* sections */
 
 .section {
-	height: 100vh;
-	background: #34495e;
 	display: flex;
 	justify-content: center;
 	position: relative;
-	overflow: hidden;
+}
+
+.section.about {
+	background: #009688;
+}
+
+.section.projects {
+	background: #34495e;
 }
 
 .section.main {
+	height: 100vh;
 	background: #9c27b0;
+	overflow: hidden;
 	font-family: "Ubuntu Condensed", sans-serif;
 }
 
@@ -239,8 +287,22 @@ a {
 .section .content {
 	width: 100%;
 	max-width: 1000px;
-	margin: 6em;
+	margin: 8em;
 	overflow: auto;
+}
+
+.section .content p:not(.note) {
+	text-indent: 2.5em;
+}
+
+.section .content .note {
+	color: #aaa;
+	font-size: 0.9em;
+}
+
+.section.projects h1 {
+	width: 100%;
+	text-align: center;
 }
 
 /* footer */
