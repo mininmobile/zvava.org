@@ -26,6 +26,7 @@ html, body {
 	background: #161621;
 	color: #ddd;
 	font-family: Ubuntu, sans-serif;
+	overflow-x: hidden;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -57,7 +58,7 @@ table td {
 	text-align: center;
 }
 
-table td:nth-child(1), table td:nth-child(2) {
+table.projects td:nth-child(2), table.projects td:nth-child(3) {
 	font-family: "Ubuntu Mono", monospace;
 }
 
@@ -122,6 +123,7 @@ table tr:last-child td {
 /* dividers */
 
 .about::before,
+.experience::before,
 .projects::before,
 .footer::before {
 	content: "";
@@ -137,8 +139,12 @@ table tr:last-child td {
 	background: #9c27b0;
 }
 
-.about + .projects::before {
+.about + .experience::before {
 	background: #009688;
+}
+
+.experience + .projects::before {
+	background: #c0392b;
 }
 
 .section + .footer::before {
@@ -150,7 +156,8 @@ table tr:last-child td {
 
 @media (min-width: 1500px) {
 	.main + .about::before,
-	.about + .projects::before,
+	.about + .experience::before,
+	.experience + .projects::before,
 	.section + .footer::before {
 		height: 3em;
 	}
@@ -300,6 +307,10 @@ table tr:last-child td {
 
 .section.about {
 	background: #009688;
+}
+
+.section.experience {
+	background: #c0392b;
 }
 
 .section.projects {
