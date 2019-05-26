@@ -241,6 +241,55 @@ table tr:last-child td {
 	opacity: 1;
 }
 
+/* overengineered about list */
+
+.technologies {
+	width: 100%;
+	margin: 1em 0;
+	display: flex;
+	justify-content: center;
+}
+
+.technologies div {
+	position: relative;
+}
+
+.technologies svg {
+	width: 3em;
+	height: 3em;
+	padding: 0 0.5em;
+	transition: opacity 0.2s;
+}
+
+.technologies:hover svg {
+	opacity: 0.5;
+}
+
+.technologies:hover div:hover svg {
+	opacity: 1;
+}
+
+.technologies div::before {
+	content: attr(title);
+	width: 6em;
+	padding: 0.5em;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	top: 7em;
+	left: -1.5em;
+	text-align: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s, top 0.3s;
+}
+
+.technologies div:hover::before {
+	top: 3.5em;
+	opacity: 1;
+}
+
 /* sections */
 
 .section {
@@ -286,7 +335,6 @@ table tr:last-child td {
 	width: 100%;
 	max-width: 1000px;
 	margin: 8em;
-	overflow: auto;
 }
 
 .section .content p:not(.note) {
@@ -306,7 +354,7 @@ table tr:last-child td {
 .section .content h6 {
 	width: 100%;
 	text-align: center;
-	opacity: 0.75;
+	opacity: 0.9;
 }
 
 .section .content h1 span,
