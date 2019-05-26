@@ -39,11 +39,47 @@ p, h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
 
+a {
+	color: white !important;
+	text-decoration: none;
+}
+
+/* dividers */
+
+.section.main + .section::before {
+	content: "";
+	width: 100%;
+	height: 3em;
+	background: #9c27b0;
+	display: block;
+	position: absolute;
+	top: -1.5em;
+	transform: rotate(2deg);
+}
+
+.section + .footer::before {
+	content: "";
+	width: 100%;
+	height: 3em;
+	background: #34495e;
+	display: block;
+	position: absolute;
+	top: -1.5em;
+	left: 0;
+	transform: rotate(-2deg);
+}
+
+/* sections */
+
 .section {
 	width: 100%;
 	height: 100vh;
 	position: relative;
 	background: #34495e;
+}
+
+.section.main {
+	background: #9c27b0;
 }
 
 .section .text {
@@ -54,15 +90,41 @@ p, h1, h2, h3, h4, h5, h6 {
 	align-items: center;
 	flex-direction: column;
 	font-size: 3em;
-	font-family: Ubuntu Condensed, sans-serif;
+	font-family: "Ubuntu Condensed", sans-serif;
 }
 
 .section .content {
 	padding: 6em;
 }
 
+/* footer */
+
 .footer {
-	padding: 4em;
+	padding: 4em 6em 3em;
 	background: #2c3e50;
 	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.footer .half.left {
+	flex: 1;
+}
+
+.footer .copyright {
+	font-family: "Ubuntu Condensed", sans-serif;
+	font-size: 1.5em;
+}
+
+.footer .half.right {
+	padding-left: 1em;
+	text-align: right;
+}
+
+.footer .category {
+	padding: 0.2em 0.3em 0.2em 1em;
+	margin-bottom: 0.2em;
+	color: #aaa;
+	font-size: 0.9em;
+	border-bottom: 1px solid #aaa;
 }
