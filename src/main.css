@@ -248,7 +248,56 @@ table tr:last-child td {
 	opacity: 1;
 }
 
-/* overengineered about list */
+/* about */
+
+.bio {
+	margin: 3em 0;
+	display: flex;
+}
+
+.bio .avatar {
+	width: 17.5em;
+	height: 17.5em;
+	display: flex;
+}
+
+.bio .avatar .left {
+	background: url(./img/llama.jpg) left / cover;
+	border-top-left-radius: 17.5em;
+	border-bottom-left-radius: 17.5em;
+	flex: 1;
+}
+
+.bio .avatar .right {
+	background: url(./img/zvava.jpg) right / cover;
+	border-top-right-radius: 17.5em;
+	border-bottom-right-radius: 17.5em;
+	flex: 1;
+}
+
+.bio .vertical-divider {
+	width: 1px;
+	margin: 1em 2em;
+	background: rgba(255, 255, 255, 0.5)
+}
+
+.bio .list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	font-size: 1.25em;
+}
+
+.bio .list.left {
+	flex: 1;
+	text-align: right;
+}
+
+.bio .list.right {
+	margin-left: 1em;
+	flex: 0.5;
+	font-family: "Ubuntu Condensed", sans-serif;
+}
 
 .technologies {
 	width: 100%;
