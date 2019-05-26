@@ -1,0 +1,68 @@
+@font-face {
+	font-family: Ubuntu;
+	src: url(./font/Ubuntu-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url(./font/Ubuntu-Bold.ttf) format("truetype");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url(./font/Ubuntu-Italic.ttf) format("truetype");
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Ubuntu Condensed";
+	src: url(./font/UbuntuCondensed-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Ubuntu Mono";
+	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
+}
+
+html, body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #161621;
+	color: #ddd;
+	font-family: Ubuntu, sans-serif;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: normal;
+}
+
+.section {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	background: #34495e;
+}
+
+.section .text {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-size: 3em;
+	font-family: Ubuntu Condensed, sans-serif;
+}
+
+.section .content {
+	padding: 6em;
+}
+
+.footer {
+	padding: 4em;
+	background: #2c3e50;
+	display: flex;
+}
