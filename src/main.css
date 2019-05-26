@@ -149,11 +149,9 @@ table tr:last-child td {
 }
 
 @media (min-width: 1500px) {
+	.main + .about::before,
+	.about + .projects::before,
 	.section + .footer::before {
-		height: 3em;
-	}
-
-	.section.main + .section::before {
 		height: 3em;
 	}
 }
@@ -300,9 +298,26 @@ table tr:last-child td {
 	font-size: 0.9em;
 }
 
-.section.projects h1 {
+.section .content h1,
+.section .content h2,
+.section .content h3,
+.section .content h4,
+.section .content h5,
+.section .content h6 {
 	width: 100%;
 	text-align: center;
+	opacity: 0.75;
+}
+
+.section .content h1 span,
+.section .content h2 span,
+.section .content h3 span,
+.section .content h4 span,
+.section .content h5 span,
+.section .content h6 span {
+	padding: 0.2em 0.3em;
+	margin-bottom: 0.2em;
+	color: white;
 }
 
 /* footer */
