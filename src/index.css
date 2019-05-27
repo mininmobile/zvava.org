@@ -63,6 +63,7 @@ body::before {
 	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>');
 	display: block;
 	position: absolute;
+	pointer-events: none;
 	top: calc(50% - 1.25em);
 	opacity: 0.1;
 	transform: rotate(45deg);
@@ -84,9 +85,17 @@ body::before {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	flex: 1;
 	font-family: "Ubuntu Condensed", sans-serif;
 	font-size: 5em;
+}
+
+.links .note {
+	font-family: "Ubuntu Mono", monospace;
+	font-size: 0.4em;
+	font-style: italic;
+	text-decoration: underline;
 }
 
 .links .inner {
@@ -94,11 +103,11 @@ body::before {
 	text-align: justify;
 	text-align-last: justify;
 	text-justify: distribute;
+	text-transform: uppercase;
 }
 
 .links .inner a {
 	display: inline;
-	text-transform: uppercase;
 }
 
 /* footer */
