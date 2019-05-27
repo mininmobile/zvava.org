@@ -26,6 +26,7 @@ html, body {
 	background: #161621;
 	color: #ddd;
 	font-family: Ubuntu, sans-serif;
+	font-size: 1em;
 	overflow-x: hidden;
 }
 
@@ -278,7 +279,13 @@ table tr:last-child td {
 .bio .divider {
 	width: 1px;
 	margin: 1em 2em;
-	background: rgba(255, 255, 255, 0.5)
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.bio .list-container {
+	display: flex;
+	flex: 1;
+	font-size: 0.9em;
 }
 
 .bio .list {
@@ -304,6 +311,7 @@ table tr:last-child td {
 	margin: 1em 0;
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .technologies div {
@@ -335,6 +343,7 @@ table tr:last-child td {
 	position: absolute;
 	top: 7em;
 	left: -1.5em;
+	z-index: 999;
 	text-align: center;
 	opacity: 0;
 	pointer-events: none;
@@ -465,4 +474,95 @@ table tr:last-child td {
 	color: #aaa;
 	font-size: 0.9em;
 	border-bottom: 1px solid #aaa;
+}
+
+/* responsive */
+
+@media (orientation: portrait) {
+	body {
+		font-size: 0.9em;
+	}
+
+	/* dividers */
+
+	.main + .about::before,
+	.about + .experience::before,
+	.experience + .projects::before,
+	.section + .footer::before {
+		height: 1em;
+	}
+
+	/* about */
+	
+	.bio {
+		align-items: center;
+		flex-direction: column;
+	}
+	
+	.bio .avatar {
+		width: 15em;
+		height: 15em;
+	}
+	
+	.bio .avatar .left {
+		border-top-left-radius: 15em;
+		border-bottom-left-radius: 15em;
+	}
+	
+	.bio .avatar .right {
+		border-top-right-radius: 15em;
+		border-bottom-right-radius: 15em;
+	}
+	
+	.bio .divider {
+		width: 60%;
+		height: 1px;
+		margin: 2em 0;
+	}
+
+	.bio .list-container {
+		width: 100%;
+	}
+
+	.bio .list.right {
+		flex: 0.5;
+	}
+
+	.technologies {
+		width: 75%;
+		margin: 1em auto;
+	}
+
+	/* sections */
+
+	.section .content {
+		margin: 8em 1em;
+	}
+
+	/* footer */
+
+	.footer-wrapper {
+		flex-direction: column;
+	}
+
+	.footer .half.right {
+		padding-left: 0;
+		margin: 1em;
+	}
+
+	.footer .half.right:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media (orientation: portrait) and (min-width: 650px) {
+	/* about */
+
+	.bio .list.right {
+		flex: 0.75;
+	}
+}
+
+@media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
+
 }
