@@ -132,10 +132,31 @@ a {
 
 /* written */
 
+.books {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
 .book {
 	width: 20vw;
-	height: 30vh;
-	background: #9b59b6;
+	margin: 2em;
+	padding-bottom: 1em;
+	background: #212126;
+	border-radius: 1em;
+}
+
+.book h1 {
+	padding: 1em;
+	background: #262631;
+	text-align: center;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+
+.book p {
+	margin: 1em;
 }
 
 /* sections */
@@ -206,4 +227,43 @@ a {
 	padding: 0.2em 0.3em;
 	margin-bottom: 0.2em;
 	color: white;
+}
+
+/* footer */
+
+.footer {
+	padding: 4em 6em 3em;
+	background: #212126;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.footer-wrapper {
+	width: 100%;
+	max-width: calc(1000px - 12em);
+	display: flex;
+	align-items: center;
+}
+
+.footer .half.left {
+	flex: 1;
+}
+
+.footer .copyright {
+	font-family: "Ubuntu Condensed", sans-serif;
+	font-size: 1.5em;
+}
+
+.footer .half.right {
+	padding-left: 1em;
+	text-align: right;
+}
+
+.footer .category {
+	padding: 0.2em 0.3em 0.2em 1em;
+	margin-bottom: 0.2em;
+	color: #aaa;
+	font-size: 0.9em;
+	border-bottom: 1px solid #aaa;
 }
