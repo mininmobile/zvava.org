@@ -24,10 +24,11 @@ html, body {
 	height: 100vh;
 	padding: 0;
 	margin: 0;
-	background-color: black;
+	background-color: #9c27b0;
 	color: #ddd;
 	font-family: Ubuntu, sans-serif;
 	font-size: 1em;
+	overflow: hidden;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -39,6 +40,33 @@ a {
 	color: #ddd;
 	display: block;
 	text-decoration: none;
+}
+
+/* util */
+
+@keyframes background-scroll {
+	from {
+		background-position: 50% 50%;
+	}
+
+	to {
+		background-position: 150% 150%;
+	}
+}
+
+/* background */
+
+body::before {
+	content: "";
+	width: 110%;
+	height: 2.5em;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>');
+	display: block;
+	position: absolute;
+	top: calc(50% - 1.25em);
+	opacity: 0.1;
+	transform: rotate(45deg);
+	animation: background-scroll 30s infinite linear;
 }
 
 /* navigation */
@@ -106,4 +134,45 @@ a {
 .footer .copyright {
 	font-family: "Ubuntu Condensed", sans-serif;
 	font-size: 1.5em;
+}
+
+/* repsonsive */
+
+@media (orientation: portrait) {
+	/* decor */
+
+	body::before {
+		width: 2.5em;
+		height: 110%;
+		top: 0;
+		left: calc(50% - 1.25em);
+		transform: rotate(-45deg);
+	}
+
+	/* navigation */
+
+	.links {
+		font-size: 10vw;
+		line-height: 15vw;
+	}
+
+	/* footer */
+
+	.footer {
+		flex-direction: column;
+	}
+
+	.footer .divider {
+		width: 80%;
+		height: 1px;
+	}
+}
+
+@media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
+	/* navigation */
+
+	.links {
+		font-size: 10vh;
+		line-height: 15vh;
+	}
 }
