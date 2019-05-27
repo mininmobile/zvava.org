@@ -40,7 +40,8 @@ a {
 	font-style: italic;
 }
 
-.footer a {
+.footer a,
+.main a {
 	font-style: normal;
 	text-decoration: none;
 }
@@ -395,7 +396,7 @@ table tr:last-child td {
 	font-size: 3em;
 }
 
-.section.main .text :last-child {
+.section.main .text > :last-child {
 	position: relative;
 	top: -0.3em;
 }
