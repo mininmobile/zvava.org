@@ -563,7 +563,3 @@ table tr:last-child td {
 		flex: 0.75;
 	}
 }
-
-@media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
-
-}

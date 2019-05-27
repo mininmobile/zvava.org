@@ -1,0 +1,209 @@
+@font-face {
+	font-family: Ubuntu;
+	src: url(./font/Ubuntu-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url(./font/Ubuntu-Italic.ttf) format("truetype");
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Ubuntu Condensed";
+	src: url(./font/UbuntuCondensed-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Ubuntu Mono";
+	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
+}
+
+html, body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #161621;
+	color: #ddd;
+	font-family: Ubuntu, sans-serif;
+	font-size: 1em;
+	overflow-x: hidden;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: normal;
+}
+
+a {
+	color: #ddd !important;
+	text-decoration: none;
+}
+
+.footer a,
+.main a {
+	font-style: normal;
+	text-decoration: none;
+}
+
+/* util */
+
+@keyframes slide-in-left {
+	from {
+		left: -47.5vw;
+	}
+}
+
+@keyframes slide-in-right {
+	from {
+		right: -27.5vw;
+	}
+}
+
+@keyframes bob {
+	from {
+		top: -1em;
+	}
+
+	to {
+		top: 1em;
+	}
+}
+
+/* dividers */
+
+.written::before,
+.footer::before {
+	content: "";
+	width: 100%;
+	height: 5em;
+	display: block;
+	position: absolute;
+}
+
+.main + .written::before {
+	background: linear-gradient(#212126, #161621);
+}
+
+.section + .footer::before {
+	background: linear-gradient(#161621, #212126);
+	top: 0;
+}
+
+/* decor */
+
+.block-container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.block-container.left {
+	animation: bob 2.25s infinite alternate ease-in-out;
+}
+
+.block-container.right {
+	animation: bob 1.75s infinite alternate-reverse ease-in-out;
+}
+
+.block {
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>') space;
+	position: absolute;
+	opacity: 0.2;
+}
+
+.block.left {
+	width: 47.5vw;
+	height: 35vh;
+	left: -20px;
+	top: 15vh;
+	animation: slide-in-left 2s;
+}
+
+.block.right {
+	width: 27.5vw;
+	height: 27vh;
+	right: -20px;
+	bottom: 15vh;
+	animation: slide-in-right 2s;
+}
+
+/* written */
+
+.book {
+	width: 20vw;
+	height: 30vh;
+	background: #9b59b6;
+}
+
+/* sections */
+
+.section {
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.section.main {
+	height: 100vh;
+	background: #212126;
+	overflow: hidden;
+	font-family: "Ubuntu Condensed", sans-serif;
+}
+
+.section.main .text {
+	width: 100%;
+	max-width: 1000px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	z-index: 9;
+	font-size: 3em;
+}
+
+.section.main .text > :last-child {
+	position: relative;
+	top: -0.3em;
+}
+
+.section .content {
+	width: 100%;
+	max-width: 1000px;
+	margin: 8em;
+}
+
+.section .content > p:not(.note) {
+	text-indent: 2.5em;
+}
+
+.section .content .note {
+	color: #aaa;
+	font-size: 0.9em;
+}
+
+.section .content > h1,
+.section .content > h2,
+.section .content > h3,
+.section .content > h4,
+.section .content > h5,
+.section .content > h6 {
+	width: 100%;
+	text-align: center;
+	opacity: 0.9;
+}
+
+.section .content > h1 span,
+.section .content > h2 span,
+.section .content > h3 span,
+.section .content > h4 span,
+.section .content > h5 span,
+.section .content > h6 span {
+	padding: 0.2em 0.3em;
+	margin-bottom: 0.2em;
+	color: white;
+}
