@@ -192,7 +192,7 @@ table tr:last-child td {
 .block.left {
 	width: 47.5vw;
 	height: 35vh;
-	left: -20px;
+	left: -1.25em;
 	top: 15vh;
 	animation: slide-in-left 2s;
 }
@@ -200,7 +200,7 @@ table tr:last-child td {
 .block.right {
 	width: 27.5vw;
 	height: 27vh;
-	right: -20px;
+	right: -1.25em;
 	bottom: 15vh;
 	animation: slide-in-right 2s;
 }

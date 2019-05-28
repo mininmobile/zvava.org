@@ -128,24 +128,24 @@ a {
 }
 
 .block {
-	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>') space;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 20 20" stroke="white" stroke-width="5"><polyline points="2,2 18,18"></polyline><polyline points="2,18 18,2"></polyline></svg>') space;
 	position: absolute;
 	opacity: 0.2;
 }
 
 .block.left {
-	width: 47.5vw;
-	height: 35vh;
-	left: -20px;
-	top: 15vh;
+	width: 45vw;
+	height: 80vh;
+	top: 10vh;
+	left: -2.5em;
 	animation: slide-in-left 2s;
 }
 
 .block.right {
-	width: 27.5vw;
-	height: 27vh;
-	right: -20px;
-	bottom: 15vh;
+	width: 30vw;
+	height: 40vh;
+	top: 30vh;
+	right: -2.5em;
 	animation: slide-in-right 2s;
 }
 
