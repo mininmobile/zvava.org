@@ -37,11 +37,16 @@ p, h1, h2, h3, h4, h5, h6 {
 
 a {
 	color: #ddd !important;
-	text-decoration: none;
+	font-style: italic;
 }
 
-.footer a,
 .main a {
+	font-family: "Ubuntu Mono", monospace;
+	font-size: 0.75em;
+}
+
+.books a,
+.footer a {
 	font-style: normal;
 	text-decoration: none;
 }
@@ -57,6 +62,20 @@ a {
 @keyframes slide-in-right {
 	from {
 		right: -27.5vw;
+	}
+}
+
+@keyframes slide-in-top {
+	0%, 50% {
+		top: -15vh;
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-bottom {
+	0%, 50% {
+		bottom: -15vh;
+		opacity: 0;
 	}
 }
 
@@ -87,7 +106,7 @@ a {
 
 .section + .footer::before {
 	background: linear-gradient(#161621, #212126);
-	top: 0;
+	top: -2.5em;
 }
 
 /* decor */
@@ -130,6 +149,51 @@ a {
 	animation: slide-in-right 2s;
 }
 
+/* main info + arrow */
+
+.popup-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.section.main .popup-container.bottom {
+	animation: bob 1s infinite alternate ease-in-out;
+}
+
+.section.main .popup {
+	width: 100%;
+	position: absolute;
+	z-index: 99;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.section.main .popup.top {
+	top: 15vh;
+	animation: slide-in-top 4s;
+}
+
+.section.main .popup.bottom {
+	width: 1em;
+	height: 1em;
+	border: 0.25em solid transparent;
+	border-bottom: 0.25em solid #ddd;
+	border-right: 0.25em solid #ddd;
+	bottom: 15vh;
+	cursor: not-allowed;
+	animation: slide-in-bottom 4s;
+	transform: rotate(45deg);
+}
+
+.section.main .popup.bottom:hover::before {
+	opacity: 1;
+}
+
 /* written */
 
 .books {
@@ -140,23 +204,33 @@ a {
 }
 
 .book {
-	width: 20vw;
+	width: 15em;
 	margin: 2em;
-	padding-bottom: 1em;
 	background: #212126;
 	border-radius: 1em;
+	overflow: hidden;
 }
 
 .book h1 {
 	padding: 1em;
 	background: #262631;
 	text-align: center;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
 }
 
 .book p {
 	margin: 1em;
+}
+
+.book[rating]::after {
+	content: "Rated " attr(rating);
+	padding: 0.5em;
+	margin-top: 1em;
+	display: block;
+	text-align: center;
+}
+
+.book[rating="Mature"]::after {
+	background: #e74c3c;
 }
 
 /* sections */
@@ -187,7 +261,7 @@ a {
 	font-size: 3em;
 }
 
-.section.main .text > :last-child {
+.section.main .text :last-child {
 	position: relative;
 	top: -0.3em;
 }
@@ -232,7 +306,7 @@ a {
 /* footer */
 
 .footer {
-	padding: 4em 6em 3em;
+	padding: 4em 6em 1.5em;
 	background: #212126;
 	display: flex;
 	justify-content: center;
