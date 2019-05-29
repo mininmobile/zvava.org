@@ -46,6 +46,7 @@ a {
 }
 
 .books a,
+.vids a,
 .footer a {
 	font-style: normal;
 	text-decoration: none;
@@ -113,7 +114,8 @@ a {
 	top: -2.5em;
 }
 
-.written::after {
+.written::after,
+.vids::after {
 	content: "";
 	width: 80%;
 	max-width: 1000px;
@@ -235,6 +237,47 @@ a {
 }
 
 .book[rating]::after {
+	content: "Rated " attr(rating);
+	padding: 0.5em;
+	margin-top: 1em;
+	display: block;
+	text-align: center;
+}
+
+/* stories */
+
+.videos {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.video {
+	width: 20em;
+	margin: 2em;
+	background: #212126;
+	border-radius: 1em;
+	overflow: hidden;
+}
+
+.video .thumbnail {
+	width: 100%;
+}
+
+.video h1 {
+	margin: 0.5em;
+}
+
+.video p {
+	margin: 1em;
+}
+
+.video .note {
+	margin: 1.1em;
+}
+
+.video[rating]::after {
 	content: "Rated " attr(rating);
 	padding: 0.5em;
 	margin-top: 1em;
