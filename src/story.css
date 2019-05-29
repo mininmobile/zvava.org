@@ -14,11 +14,6 @@
 	src: url(./font/UbuntuCondensed-Regular.ttf) format("truetype");
 }
 
-@font-face {
-	font-family: "Ubuntu Mono";
-	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
-}
-
 html, body {
 	width: 100%;
 	margin: 0;
@@ -46,6 +41,34 @@ a {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+}
+
+/* special pages */
+
+.page.cover {
+	justify-content: center;
+}
+
+.page.cover h1 {
+	margin: 0 1em;
+	font-family: "Ubuntu Condensed", sans-serif;
+	font-size: 5em;
+}
+
+.page.index .item {
+	width: 100%;
+	margin-bottom: 0.5em;
+	position: relative;
+	font-size: 1.25em;
+}
+
+.page.index .item::after {
+	content: "page " attr(page);
+	display: block;
+	position: absolute;
+	color: #aaa;
+	top: 0;
+	right: 0;
 }
 
 /* pages */
