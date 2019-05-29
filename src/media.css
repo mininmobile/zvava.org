@@ -54,6 +54,10 @@ a {
 
 /* util */
 
+.clickable {
+	cursor: pointer !important;
+}
+
 @keyframes slide-in-left {
 	from {
 		left: -47.5vw;
