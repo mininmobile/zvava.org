@@ -100,6 +100,10 @@ a {
 	position: absolute;
 }
 
+.written .content {
+	margin-top: 8em !important;
+}
+
 .main + .written::before {
 	background: linear-gradient(#212126, #161621);
 }
@@ -107,6 +111,15 @@ a {
 .section + .footer::before {
 	background: linear-gradient(#161621, #212126);
 	top: -2.5em;
+}
+
+.written::after {
+	content: "";
+	width: 80%;
+	max-width: 1000px;
+	height: 1px;
+	display: block;
+	background: rgba(255, 255, 255, 0.2);
 }
 
 /* decor */
@@ -229,10 +242,6 @@ a {
 	text-align: center;
 }
 
-.book[rating="Mature"]::after {
-	background: #e74c3c;
-}
-
 /* music */
 
 .songs {
@@ -308,15 +317,22 @@ a {
 	text-orientation: mixed;
 }
 
-.song[rating="Mature"]::after {
+/* ratings */
+
+[rating="Mature"]::after {
 	background: #e74c3c;
+}
+
+[rating="PG"]::after {
+	background: #262631;
 }
 
 /* sections */
 
 .section {
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	position: relative;
 }
 
@@ -348,7 +364,7 @@ a {
 .section .content {
 	width: 100%;
 	max-width: 1000px;
-	margin: 8em;
+	margin: 4em 8em;
 }
 
 .section .content > p:not(.note) {
