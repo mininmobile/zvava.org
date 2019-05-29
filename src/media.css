@@ -307,6 +307,12 @@ a {
 	height: 12.5em;
 }
 
+.song h1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .song .info {
 	margin: 3em;
 	display: flex;
@@ -478,4 +484,67 @@ a {
 	color: #aaa;
 	font-size: 0.9em;
 	border-bottom: 1px solid #aaa;
+}
+
+/* responsive */
+
+@media (orientation: portrait) {
+	body {
+		font-size: 0.9em;
+	}
+
+	/* music */
+
+	.songs {
+		align-items: center;
+	}
+
+	.song {
+		width: 17.5em;
+		flex-direction: column;
+	}
+
+	.song .cover {
+		width: 17.5em;
+		height: 17.5em;
+	}
+
+	.song h1 {
+		text-align: center;
+		white-space: normal;
+		overflow: unset;
+	}
+
+	.song .info {
+		margin: 1.5em;
+	}
+
+	.song .info .link .text {
+		font-size: 1.25em;
+	}
+
+	.song[rating]::after {
+		writing-mode: unset;
+	}
+
+	/* footer */
+
+	.footer-wrapper {
+		flex-direction: column;
+	}
+
+	.footer .half.right {
+		padding-left: 0;
+		margin: 1em;
+	}
+
+	.footer .half.right:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
+	.song h1 {
+		max-width: 270px;
+	}
 }
