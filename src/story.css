@@ -80,6 +80,7 @@ a {
 	margin: 5vh 0;
 	background: #212126;
 	border-radius: 1em;
+	position: relative;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -95,6 +96,20 @@ a {
 	font-size: 1.25em;
 	line-height: 1.25em;
 	text-align: justify;
+}
+
+.page::before {
+	content: attr(page);
+	display: block;
+	position: absolute;
+	color: #aaa;
+	bottom: 2em;
+	left: 2em;
+}
+
+.page:nth-child(odd)::before {
+	left: unset;
+	right: 2em;
 }
 
 /* footer */
