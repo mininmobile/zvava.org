@@ -53,8 +53,25 @@ h1::after {
 	flex: 1;
 	margin-left: 0.5em;
 	background-repeat: round;
-	background-size: stretch;
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" stroke="white" stroke-width=".1" viewBox="0 0 4 2"><line x1="0" y1="0" x2="2" y2="2"></line><line x1="2" y1="2" x2="4" y2="0"></line></svg>');
+	background-size: contain;
+	background-position: right;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.5em" stroke="white" stroke-width="1" viewBox="0 0 32 16"><line x1="0" y1="0" x2="16" y2="16"></line><line x1="16" y1="16" x2="32" y2="0"></line></svg>');
+}
+
+ul {
+	list-style: none;
+}
+
+ul li::before {
+	content: "- ";
+}
+
+ul li.divider {
+	margin-top: 1em;
+}
+
+ul li.divider::before {
+	content: "";
 }
 
 /* content */
