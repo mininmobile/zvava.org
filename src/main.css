@@ -4,12 +4,6 @@
 }
 
 @font-face {
-	font-family: Ubuntu;
-	src: url(./font/Ubuntu-Italic.ttf) format("truetype");
-	font-style: italic;
-}
-
-@font-face {
 	font-family: "Ubuntu Condensed";
 	src: url(./font/UbuntuCondensed-Regular.ttf) format("truetype");
 }
@@ -19,169 +13,78 @@
 	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
 }
 
-html, body {
-	width: 100vw;
-	height: 100vh;
-	padding: 0;
-	margin: 0;
-	background-color: #9c27b0;
-	color: #ddd;
-	font-family: Ubuntu, sans-serif;
-	font-size: 1em;
-	overflow: hidden;
+::selection {
+	background-color: #ddd;
+	color: #000;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+body {
+	padding: 0;
+	margin: 3rem;
+	background-color: #000;
+	color: #ddd;
+	font-family: "Ubuntu Mono", sans-serif;
+	font-size: 1.2em;
+}
+
+/* better defaults */
+
+h1 {
+	font-family: "Ubuntu Condensed", sans-serif;
+	text-transform: uppercase;
 	font-weight: normal;
+	display: flex;
+}
+
+p, h1 {
+	margin: 1rem 0;
 }
 
 a {
 	color: #ddd;
-	display: block;
-	text-decoration: none;
-}
-
-/* util */
-
-@keyframes background-scroll {
-	from {
-		background-position: 50% 50%;
-	}
-
-	to {
-		background-position: 150% 150%;
-	}
-}
-
-/* background */
-
-body::before {
-	content: "";
-	width: 110%;
-	height: 2.5em;
-	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>');
-	display: block;
-	position: absolute;
-	pointer-events: none;
-	top: calc(50% - 1.25em);
-	opacity: 0.1;
-	transform: rotate(45deg);
-	animation: background-scroll 30s infinite linear;
-}
-
-/* navigation */
-
-.content {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.links {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	flex: 1;
-	font-family: "Ubuntu Condensed", sans-serif;
-	font-size: 5em;
-}
-
-.links .note {
-	font-family: "Ubuntu Mono", monospace;
-	font-size: 0.4em;
-	font-style: italic;
+	font-weight: bold;
 	text-decoration: underline;
 }
 
-.links .inner {
-	display: inline-block;
-	text-align: justify;
-	text-align-last: justify;
-	text-justify: distribute;
-	text-transform: uppercase;
-}
+/* decoration */
 
-.links .inner a {
-	display: inline;
-}
-
-/* footer */
-
-.footer {
-	width: 50%;
-	height: 6em;
-	display: flex;
-	align-items: center;
-}
-
-.footer .left,
-.footer .right {
-	display: flex;
-	align-items: center;
+h1::after {
+	content: "";
 	flex: 1;
+	margin-left: 0.5em;
+	background-repeat: round;
+	background-size: stretch;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" stroke="white" stroke-width=".1" viewBox="0 0 4 2"><line x1="0" y1="0" x2="2" y2="2"></line><line x1="2" y1="2" x2="4" y2="0"></line></svg>');
 }
 
-.footer .left {
-	justify-content: flex-start;
+/* content */
+
+.content {
+	width: 40ch;
+	min-width: 40ch;
+	word-wrap: normal;
+	text-align: justify;
 }
 
-.footer .right {
-	justify-content: flex-end;
-}
-
-.footer .divider {
-	width: 1px;
-	height: 2em;
-	background: rgba(255, 255, 255, 0.2)
-}
-
-.footer .copyright {
-	font-family: "Ubuntu Condensed", sans-serif;
-	font-size: 1.5em;
+.content img {
+	width: 100%;
 }
 
 /* repsonsive */
 
 @media (orientation: portrait) {
-	/* decor */
-
-	body::before {
-		width: 2.5em;
-		height: 110%;
-		top: 0;
-		left: calc(50% - 1.25em);
-		transform: rotate(-45deg);
-	}
-
-	/* navigation */
-
-	.links {
-		font-size: 10vw;
-		line-height: 15vw;
-	}
-
-	/* footer */
-
-	.footer {
-		flex-direction: column;
-	}
-
-	.footer .divider {
-		width: 80%;
-		height: 1px;
+	.content {
+		width: 100%;
+		min-width: 0;
 	}
 }
 
 @media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
-	/* navigation */
+	.content {
+		width: 50%
+	}
 
-	.links {
-		font-size: 10vh;
-		line-height: 15vh;
+	.content img {
+		max-width: 40ch;
 	}
 }
