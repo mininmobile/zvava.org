@@ -138,6 +138,11 @@ ul li.divider::before {
 	width: 100%;
 }
 
+.content img.link {
+	width: 2em;
+	display: inline-block;
+}
+
 /* repsonsive */
 
 @media (orientation: portrait) {
