@@ -8,12 +8,15 @@ my portfolio website
 	/* REQUIRED */
 	"title": <string title, can be non-alphanumeric>,
 	"page": <string url, alphanumeric>,
-	"content": <string description or content>,
 
 	/* optional */
-	"type": <string type of content in ["link", "post", "song", "art", "project"]>,
+	"content": <string description or content>,
+	"type": <string type of content in ["link", "post", "song", "art", "project", "video"]>,
 	"date": <string of utc date>,
 	"url": <link to topic, contains http or https>,
-	"explicit": <boolean toggle of content warning>
+	"explicit": <boolean toggle of content warning>,
+
+	/* type: ["song", "video"] */
+	"length": <string of length>
 }
 ```

@@ -143,8 +143,19 @@ ul li.divider::before {
 }
 
 .content img.link  {
-	width: 2em;
+	width: 1.5em;
 	display: inline-block;
+}
+
+.preview li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.preview li a {
+	text-decoration: underline dotted;
+	font-style: normal;
 }
 
 /* repsonsive */
