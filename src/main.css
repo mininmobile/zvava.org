@@ -138,7 +138,11 @@ ul li.divider::before {
 	width: 100%;
 }
 
-.content .link img {
+.content p.links {
+	text-align: left;
+}
+
+.content img.link  {
 	width: 2em;
 	display: inline-block;
 }
