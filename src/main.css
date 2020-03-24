@@ -158,6 +158,8 @@ ul li.divider::before {
 	font-style: normal;
 }
 
+/* media */
+
 .sorts a {
 	text-decoration: none;
 	font-style: normal;
@@ -168,6 +170,16 @@ ul li.divider::before {
 .sorts a.selected, .sorts a:hover {
 	font-weight: bold;
 	opacity: 1;
+}
+
+.subtext {
+	opacity: .8;
+	font-family: Ubuntu, sans-serif;
+}
+
+.url {
+	font-size: 2rem;
+	font-family: Ubuntu, sans-serif;
 }
 
 /* repsonsive */

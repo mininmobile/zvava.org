@@ -10,7 +10,7 @@ my portfolio website
 	"page": <string url, alphanumeric>,
 
 	/* optional */
-	"image": <string or array of image urls>
+	"image": <string with image url>
 	"content": <string or array of description or content>,
 	"type": <string type of content in ["text", "song", "art", "project", "video"]>,
 	"date": <string of utc date>,
