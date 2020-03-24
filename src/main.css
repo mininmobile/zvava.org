@@ -158,6 +158,18 @@ ul li.divider::before {
 	font-style: normal;
 }
 
+.sorts a {
+	text-decoration: none;
+	font-style: normal;
+	opacity: .8;
+	cursor: pointer;
+}
+
+.sorts a.selected, .sorts a:hover {
+	font-weight: bold;
+	opacity: 1;
+}
+
 /* repsonsive */
 
 @media (orientation: portrait) {

@@ -10,8 +10,9 @@ my portfolio website
 	"page": <string url, alphanumeric>,
 
 	/* optional */
-	"content": <string description or content>,
-	"type": <string type of content in ["link", "post", "song", "art", "project", "video"]>,
+	"image": <string or array of image urls>
+	"content": <string or array of description or content>,
+	"type": <string type of content in ["text", "song", "art", "project", "video"]>,
 	"date": <string of utc date>,
 	"url": <link to topic, contains http or https>,
 	"explicit": <boolean toggle of content warning>,
