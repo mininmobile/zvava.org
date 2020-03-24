@@ -143,6 +143,9 @@ ul li.divider::before {
 
 .content img {
 	width: 100%;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
 }
 
 .content p.links {
