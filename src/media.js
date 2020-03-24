@@ -82,6 +82,8 @@ function drawPreviews(p, d, category = null) {
 
 			setTimeout(() => new Promise((resolve, error) => {
 				let item = `<li>
+					${!category ? `[${d[i].type[0]}]` : ""}
+					${d[i].explicit ? "[explicit]" : ""}
 					<a href="media.html?page=${d[i].page}">
 						${d[i].title}
 					</a>

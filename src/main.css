@@ -24,7 +24,7 @@ body {
 	background-color: #000;
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" fill="white" viewBox="0 0 64 64"><rect x="63" y="63" width="1" height="1"></rect></svg>');
 	color: #ddd;
-	font-family: "Ubuntu Mono", sans-serif;
+	font-family: "Ubuntu Mono", monospace;
 	font-size: 1.2rem;
 }
 
@@ -109,14 +109,21 @@ a.external::after {
 
 ul {
 	list-style: none;
+	padding-left: 4ch;
+}
+
+ul li {
+	position: relative;
 }
 
 ul li::before {
 	content: "- ";
+	position: absolute;
+	left: -2ch;
 }
 
 ul li.divider {
-	margin-top: 1em;
+	margin-top: 1ch;
 }
 
 ul li.divider::before {
@@ -170,6 +177,16 @@ ul li.divider::before {
 .sorts a.selected, .sorts a:hover {
 	font-weight: bold;
 	opacity: 1;
+}
+
+.media li {
+	color: #aaa;
+	text-align: left;
+}
+
+.media li a {
+	color: #ddd;
+	font-family: Ubuntu, sans-serif;
 }
 
 .subtext {
