@@ -1,5 +1,55 @@
 [
 	{
+		"title": "Ranch",
+		"page": "art-ranch",
+		"type": "art",
+		"date": "Sat, 21 Mar 2020 03:11:00 GMT",
+		"image": "media/art_ranch.jpg",
+		"url": "https://toot.cafe/@zvava/103858852106856874"
+	},
+	{
+		"title": "Forest",
+		"page": "art-ball",
+		"type": "art",
+		"date": "Fri, 17 Jan 2020 21:49:00 GMT",
+		"image": "media/art_ball.jpg",
+		"url": "https://toot.cafe/@zvava/103839622127164751"
+	},
+	{
+		"title": "Abandon",
+		"page": "art-abandon",
+		"type": "art",
+		"date": "Sat, 25 Jan 2020 23:40:00 GMT",
+		"image": "media/art_abandon.jpg",
+		"url": "https://toot.cafe/@zvava/103546592870465253"
+	},
+	{
+		"title": "Forest",
+		"page": "art-forest-old",
+		"content": ["on reflection, here is where is where i think i finally started to hone into my style. i was creating more 'elaborate' renders, i haven't discovered adaptive subdivision yet so that's why the ground almost looks a little too smooth or just like flat, yk.", "\"i discovered poliigon by the blender guru from his blender tutorials as he promoted the hell out of it, and it has quite a lot of free photo-real textures and i tried something out with it, probably am not making the best use of them but w/e. this was still fun to make.\""],
+		"type": "text",
+		"date": "Sat, 25 Jan 2020 02:19:00 GMT",
+		"image": "media/art_forestold.jpg",
+		"url": "https://toot.cafe/@zvava/103541557870041457"
+	},
+	{
+		"title": "Ball",
+		"page": "art-ball",
+		"type": "art",
+		"date": "Fri, 17 Jan 2020 21:49:00 GMT",
+		"image": "media/art_ball.jpg",
+		"url": "https://toot.cafe/@zvava/103500859326746646"
+	},
+	{
+		"title": "Poop Replacement Therapy",
+		"page": "poop-replacement-therapy-concept",
+		"content": ["i made this render in blender and added some cool dashed lines in paint.net afterwards. this and \"ball\" were the only two pieces i made in this style but i think they both turned out pretty well. this also began my journey of posting funky abstract pieces.", "this was also supposed to be album art but, lets be honest, i'll probably never finish the album", "\"making some experimental album called poop replacement therapy, probably will complete it more then half way through the year if i remember lol. i suck at long term projects especially when a lot of school work is in the way.\""],
+		"type": "text",
+		"date": "Tue, 14 Jan 2020 22:32:00 GMT",
+		"image": "media/poop_replacement_therapy.jpg",
+		"url": "https://toot.cafe/@zvava/103484039487756696"
+	},
+	{
 		"title": "Glitch Art 2",
 		"page": "glitch-art-2",
 		"type": "art",
