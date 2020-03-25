@@ -74,24 +74,38 @@ fetch(new Request("/src/data/media.json"))
 
 function drawPreviews(p, d, category = null) {
 	return new Promise((resolve, error) => {
-		p.innerHTML = "";
+		let list = "";
 
+		// loop over every blog post
 		for (let i = 0; i < d.length; i++) {
-			if (category && d[i].type != category)
-				continue;
+			// if sorting, do a check if post is of sorted type
+			if (category)
+				if (typeof(d[i].type) == "string" ?
+					d[i].type != category :
+					!d[i].type.includes(category)) continue;
 
-			setTimeout(() => new Promise((resolve, error) => {
-				let item = `<li>
-					${!category ? `[${d[i].type[0]}]` : ""}
-					${d[i].explicit ? "[explicit]" : ""}
-					<a href="media.html?page=${d[i].page}">
-						${d[i].title}
-					</a>
-				</li>`;
-			
-				p.innerHTML += item + "\n";
-				resolve(item);
-			}), 0);
+			let c = "";
+
+			if (category && typeof(d[i].type) != "string") {
+				c = d[i].type
+					.filter(x => x != category)
+					.map(x => x[0])
+					.join(", ");
+			} else if (!category) {
+				c = typeof(d[i].type) == "string" ?
+					d[i].type[0] :
+					d[i].type.map(x => x[0]).join(", ");
+			}
+
+			list += `<li>
+				${c ? `[${c}]` : ""}
+				${d[i].explicit ? "[explicit]" : ""}
+				<a href="media.html?page=${d[i].page}">
+					${d[i].title}
+				</a>
+			</li>\n`;
 		}
+
+		p.innerHTML = list;
 	});
 }

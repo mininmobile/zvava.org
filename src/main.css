@@ -158,12 +158,14 @@ ul li.divider::before {
 }
 
 .preview li {
+	color: #aaa;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
 .preview li a {
+	color: #ddd;
 	text-decoration: underline dotted;
 	font-style: normal;
 }

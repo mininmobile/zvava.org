@@ -7,6 +7,9 @@ fetch(new Request("/src/data/media.json"))
 
 		for (let i = 0; i < 3; i++) {
 			let item = `<li>
+				[${typeof(data[i].type) == "string" ?
+					data[i].type :
+					data[i].type.join(", ")}]
 				<a href="media.html?page=${data[i].page}">
 					${data[i].title}
 				</a>
