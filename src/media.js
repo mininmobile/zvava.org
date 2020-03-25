@@ -52,24 +52,19 @@ fetch(new Request("/src/data/media.json"))
 			let preview = document.getElementById("media");
 			drawPreviews(preview, data);
 
-			let sorts = [
-				document.getElementById("all"),
-				document.getElementById("text"),
-				document.getElementById("song"),
-				document.getElementById("art"),
-				document.getElementById("project"),
-				document.getElementById("video"),
-				document.getElementById("old"),
-			]
+			let sorts = document.getElementById("sorts");
+			for (let i = 0; i < sorts.children.length; i++) {
+				let sort = sorts.children[i];
 
-			sorts.forEach((sort, i) => {
 				sort.addEventListener("click", () => {
-					sorts.forEach(x => x.classList.remove("selected"));
+					for (let j = 0; j < sorts.children.length; j++)
+						sorts.children[j].classList.remove("selected");
+
 					sort.classList.add("selected");
 
-					drawPreviews(preview, data, i ? sort.id : null);
+					drawPreviews(preview, data, i ? sort.innerText : null);
 				});
-			});
+			}
 		}
 	}).catch(console.error);
 

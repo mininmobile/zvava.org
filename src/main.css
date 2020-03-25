@@ -179,6 +179,9 @@ ul li.divider::before {
 	cursor: pointer;
 }
 
+.sorts a::before { content: "<"; }
+.sorts a::after { content: ">"; }
+
 .sorts a.selected, .sorts a:hover {
 	font-weight: bold;
 	opacity: 1;
