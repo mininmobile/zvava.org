@@ -1,11 +1,11 @@
-let pmedia = document.getElementById("preview-media");
+let preview = document.getElementById("preview");
 
 fetch(new Request("/src/data/media.json"))
 	.then((result) => result.json())
 	.then((data) => {
-		pmedia.innerHTML = "";
+		preview.innerHTML = "";
 
-		for (let i = 0; i < 3; i++) {
+		for (let i = 0; i < 5; i++) {
 			let item = `<li>
 				[${typeof(data[i].type) == "string" ?
 					data[i].type :
@@ -15,6 +15,6 @@ fetch(new Request("/src/data/media.json"))
 				</a>
 			</li>`;
 
-			pmedia.innerHTML += item + "\n";
+			preview.innerHTML += item + "\n";
 		}
 	}).catch(console.error);
