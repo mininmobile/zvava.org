@@ -1,5 +1,14 @@
 [
 	{
+		"title": "How I learned 3D modelling",
+		"page": "how-i-learned-3d-modelling",
+		"content": ["i got into 3D modelling after watching <a class='external' href='https://www.youtube.com/watch?v=1qSTcxt2t74'>this</a> talk by Captain Disillusion, in it he mentions how the open source 3d modelling software blender has gotten a new update that completely revamped the user interface and to try it if you've tried it before but the ui was too complicated.", "so, i bit the bullet and started binging the donut tutorial series by the blender guru, and the result turned out way better then i had expected and it was way easier then i expected, too! since then i have logged a good 63 hours on blender on steam... highly recommended if you're into that kind of thing."],
+		"type": "text",
+		"date": "Wed, 25 Mar 2020 02:14:36 GMT",
+		"image": "src/img/media/how_3d.png",
+		"url": "https://www.youtube.com/playlist?list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U"
+	},
+	{
 		"title": "Ranch",
 		"page": "art-ranch",
 		"type": "art",
@@ -98,7 +107,7 @@
 		"title": "Alex Ferro - You (Itro Remix) (zvava Remix)",
 		"page": "you-remix",
 		"content": "a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.",
-		"type": "song",
+		"type": ["song", "old"],
 		"date": "Mon, 03 Oct 2016 00:00:00 GMT",
 		"url": "https://soundcloud.com/pasinazera/you-itro-remix-vapor-remix"
 	}
