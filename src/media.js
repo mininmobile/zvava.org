@@ -27,7 +27,7 @@ fetch(new Request("/src/data/media.json"))
 				let sub = `<p class="subtext">`;
 
 				if (_.explicit) sub += `[explicit] `;
-				if (_.type) sub += `[${_.type}] `;
+				if (_.type) sub += `[${typeof(_.type) == "string" ? _.type : _.type.join(", ")}] `;
 				if (_.date) sub += `${_.date}<br>`;
 				if (_.length) sub += `[length] ${_.length}<br>`
 
@@ -59,6 +59,7 @@ fetch(new Request("/src/data/media.json"))
 				document.getElementById("art"),
 				document.getElementById("project"),
 				document.getElementById("video"),
+				document.getElementById("old"),
 			]
 
 			sorts.forEach((sort, i) => {
