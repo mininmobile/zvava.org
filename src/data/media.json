@@ -1,0 +1,155 @@
+[
+	{
+		"title": "Website Redesign",
+		"page": "website-redesign2020",
+		"content": [
+			"i have decided to rewrite my website after i felt like it was a bit too bloated (even though it was actually quite lightweight) and i thought it looked a little outdated already and i also wanted to add a blog to it as well.",
+			"the new look of the website is supposed to look cool, detailed, and hack-ery, all while remaining lightweight and small and i feel like in that aspect i've achieved my goal. and it requires much less code to make responsive and work well on mobile this time around (the unminified css is now 4kb compared to 9.1kb originally!!)",
+			"my blog is actually (as of writing) a single json file that is parsed by the user and boom is displayed as either a list of all of the posts or as a post depending on if the ?page get parameter is passed to media.html, i feel like this is alright for now cause i want it to be fun to update my blog and not a chore to compile static pages - which i am debating on doing if i can automate it well enough with my limited skillset :p"],
+		"type": "text",
+		"date": "Fri, 27 Mar 2020 01:55:15 GMT",
+		"image": "src/img/media/redesign.png"
+	},
+	{
+		"title": "Rewriting groinfrick",
+		"page": "rewriting-groinfrick",
+		"content": [
+			"groinfrick was a project i started back in december of 2017, and i had either finished it then or on the june of 2018. either way back then i was much less experienced in javascript and i would say i had a much worse coding style but honestly it wasn't that bad (for my standards at least, lol)",
+			"the intention of the project was (originally) to write an extended version of <a class='external' href='https://esolangs.org/wiki/Brainfuck'>brainfuck</a>, i didn't think it was that important to be backwards compatable or something so i wrote the original eight commands in a way that breaks compatability - i also didn't fully grasp ascii at that time and i wrote my own \"type systen\" for groinfrick (needless to say this also broke backwards compatability)",
+			"i decided to rewrite groinfrick on the march of 2020 with my better understanding of javascripts and other fundamental concepts. firstly, i rewrote the specs to implement the core brainfuck components first and add a set of extended components (that matched my old specification) after. once i finally got the brainfuck compatability to work it was a cakewalk to add the remaining extended functions, some of which exist for debugging and i have already added during the first phase...",
+			"honestly, im not that good of a brainfuck programmer so i struggled to write any examples by myself for groinfrick, and really i can't see that much of a use for the extra loops and return functions i added but hey - it's all about the journey, not the destination, and boy am i proud of this project."],
+		"type": ["project", "text"],
+		"date": "Wed, 25 Mar 2020 02:42:37 GMT'",
+		"image": "src/img/media/groinfrick.png",
+		"url": "https://github.com/mininmobile/groinfrick"
+	},
+	{
+		"title": "How I learned 3D modelling",
+		"page": "how-i-learned-3d-modelling",
+		"content": [
+			"i got into 3D modelling after watching <a class='external' href='https://www.youtube.com/watch?v=1qSTcxt2t74'>this</a> talk by Captain Disillusion, in it he mentions how the open source 3d modelling software blender has gotten a new update that completely revamped the user interface and to try it if you've tried it before but the ui was too complicated.",
+			"so, i bit the bullet and started binging the donut tutorial series by the blender guru, and the result turned out way better then i had expected and it was way easier then i expected, too! since then i have logged a good 63 hours on blender on steam... highly recommended if you're into that kind of thing."],
+		"type": "text",
+		"date": "Wed, 25 Mar 2020 02:14:36 GMT",
+		"image": "src/img/media/how_3d.png",
+		"url": "https://www.youtube.com/playlist?list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U"
+	},
+	{
+		"title": "Ranch",
+		"page": "art-ranch",
+		"type": "art",
+		"date": "Sat, 21 Mar 2020 03:11:00 GMT",
+		"image": "media/art_ranch.jpg",
+		"url": "https://toot.cafe/@zvava/103858852106856874"
+	},
+	{
+		"title": "odko",
+		"page": "odko",
+		"type": "project",
+		"date": "Sun, 26 Jan 2020 12:18:09 GMT",
+		"image": "src/img/media/odko.png",
+		"url": "https://github.com/mininmobile/odko"
+	},
+	{
+		"title": "Forest",
+		"page": "art-ball",
+		"type": "art",
+		"date": "Fri, 17 Jan 2020 21:49:00 GMT",
+		"image": "media/art_ball.jpg",
+		"url": "https://toot.cafe/@zvava/103839622127164751"
+	},
+	{
+		"title": "Abandon",
+		"page": "art-abandon",
+		"type": "art",
+		"date": "Sat, 25 Jan 2020 23:40:00 GMT",
+		"image": "media/art_abandon.jpg",
+		"url": "https://toot.cafe/@zvava/103546592870465253"
+	},
+	{
+		"title": "Forest",
+		"page": "art-forest-old",
+		"content": [
+			"on reflection, here is where is where i think i finally started to hone into my style. i was creating more 'elaborate' renders, i haven't discovered adaptive subdivision yet so that's why the ground almost looks a little too smooth or just like flat, yk.",
+			"\"i discovered poliigon by the blender guru from his blender tutorials as he promoted the hell out of it, and it has quite a lot of free photo-real textures and i tried something out with it, probably am not making the best use of them but w/e. this was still fun to make.\""],
+		"type": ["art", "text"],
+		"date": "Sat, 25 Jan 2020 02:19:00 GMT",
+		"image": "media/art_forestold.jpg",
+		"url": "https://toot.cafe/@zvava/103541557870041457"
+	},
+	{
+		"title": "Ball",
+		"page": "art-ball",
+		"type": "art",
+		"date": "Fri, 17 Jan 2020 21:49:00 GMT",
+		"image": "media/art_ball.jpg",
+		"url": "https://toot.cafe/@zvava/103500859326746646"
+	},
+	{
+		"title": "Poop Replacement Therapy",
+		"page": "poop-replacement-therapy-concept",
+		"content": [
+			"i made this render in blender and added some cool dashed lines in paint.net afterwards. this and \"ball\" were the only two pieces i made in this style but i think they both turned out pretty well. this also began my journey of posting funky abstract pieces.",
+			"this was also supposed to be album art but, lets be honest, i'll probably never finish the album",
+			"\"making some experimental album called poop replacement therapy, probably will complete it more then half way through the year if i remember lol. i suck at long term projects especially when a lot of school work is in the way.\""],
+		"type": ["art", "text"],
+		"date": "Tue, 14 Jan 2020 22:32:00 GMT",
+		"image": "media/poop_replacement_therapy.jpg",
+		"url": "https://toot.cafe/@zvava/103484039487756696"
+	},
+	{
+		"title": "Glitch Art 2",
+		"page": "glitch-art-2",
+		"type": "art",
+		"date": "Sun, 08 Sep 2019 15:58:00 GMT",
+		"image": "media/glitch_art_2.jpg",
+		"url": "https://twitter.com/pasinazera/status/1171140014518001664"
+	},
+	{
+		"title": "Glitch Art 1",
+		"page": "glitch-art-1",
+		"type": "art",
+		"date": "Sun, 08 Sep 2019 15:58:00 GMT",
+		"image": "media/glitch_art_1.jpg",
+		"url": "https://twitter.com/pasinazera/status/1170713098786922497"
+	},
+	{
+		"title": "Glitch Art 0",
+		"page": "glitch-art-0",
+		"content": "back in september of 2019 i made a few pieces of glitch art with a few apps i found while just browsing on the play store, here is the first in the series of three that i squirt out.",
+		"type": "art",
+		"date": "Sun, 08 Sep 2019 00:32:00 GMT",
+		"image": "media/glitch_art_0.jpg",
+		"url": "https://twitter.com/pasinazera/status/1170480049071562752"
+	},
+	{
+		"title": "no suck",
+		"page": "no-suck",
+		"type": "video",
+		"date": "Wed, 29 May 2019 00:00:00 GMT",
+		"url": "https://www.youtube.com/watch?v=CNkx3oz7_9g",
+		"length": "00:09"
+	},
+	{
+		"title": "zvava - I'm not racist but",
+		"page": "im-not-racist-but",
+		"content": [
+			"imma just put it out there and say that i like dark humor, i don't condone killing babies and stuff but if you phrase it in the right way i'll laugh.",
+			"i made this partial cover of a song that i thought was a funny. i don't think it's funny because of its content but rather intelligently crafted, quoting the opening lyric, 'my dick is shaped like a rectangular prism, you know i love molesting kids with autism' - who rhymes prism with autism? god i love this song,,"],
+		"type": "song",
+		"date": "Sun, 10 Mar 2019 00:00:00 GMT",
+		"image": "src/img/media/im_not_racist_but.png",
+		"url": "https://soundcloud.com/pasinazera/im-not-racist-but",
+		"length": "01:36",
+		"explicit": true
+	},
+	{
+		"title": "Alex Ferro - You (Itro Remix) (zvava Remix)",
+		"page": "you-remix",
+		"content": "a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.",
+		"type": ["song", "old"],
+		"date": "Mon, 03 Oct 2016 00:00:00 GMT",
+		"url": "https://soundcloud.com/pasinazera/you-itro-remix-vapor-remix",
+		"length": "02:50"
+	}
+]

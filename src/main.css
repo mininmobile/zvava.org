@@ -4,12 +4,6 @@
 }
 
 @font-face {
-	font-family: Ubuntu;
-	src: url(./font/Ubuntu-Italic.ttf) format("truetype");
-	font-style: italic;
-}
-
-@font-face {
 	font-family: "Ubuntu Condensed";
 	src: url(./font/UbuntuCondensed-Regular.ttf) format("truetype");
 }
@@ -19,169 +13,215 @@
 	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
 }
 
-html, body {
-	width: 100vw;
-	height: 100vh;
-	padding: 0;
-	margin: 0;
-	background-color: #9c27b0;
-	color: #ddd;
-	font-family: Ubuntu, sans-serif;
-	font-size: 1em;
-	overflow: hidden;
+::selection {
+	background-color: #ddd;
+	color: #000;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+body {
+	padding: 0;
+	margin: 3rem;
+	background-color: #000;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" fill="white" viewBox="0 0 64 64"><rect x="63" y="63" width="1" height="1"></rect></svg>');
+	color: #ddd;
+	font-family: "Ubuntu Mono", monospace;
+	font-size: 1.2rem;
+}
+
+/* better defaults */
+
+h1 {
+	font-family: "Ubuntu Condensed", sans-serif;
+	text-transform: uppercase;
 	font-weight: normal;
+	display: flex;
+}
+
+p, h1 {
+	margin: 1rem 0;
 }
 
 a {
 	color: #ddd;
-	display: block;
-	text-decoration: none;
-}
-
-/* util */
-
-@keyframes background-scroll {
-	from {
-		background-position: 50% 50%;
-	}
-
-	to {
-		background-position: 150% 150%;
-	}
-}
-
-/* background */
-
-body::before {
-	content: "";
-	width: 110%;
-	height: 2.5em;
-	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" fill="white"><circle cx="10" cy="10" r="10"></circle></svg>');
-	display: block;
-	position: absolute;
-	pointer-events: none;
-	top: calc(50% - 1.25em);
-	opacity: 0.1;
-	transform: rotate(45deg);
-	animation: background-scroll 30s infinite linear;
-}
-
-/* navigation */
-
-.content {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.links {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	flex: 1;
-	font-family: "Ubuntu Condensed", sans-serif;
-	font-size: 5em;
-}
-
-.links .note {
-	font-family: "Ubuntu Mono", monospace;
-	font-size: 0.4em;
 	font-style: italic;
 	text-decoration: underline;
 }
 
-.links .inner {
-	display: inline-block;
-	text-align: justify;
-	text-align-last: justify;
-	text-justify: distribute;
+/* tables */
+
+table {
+	background: black;
+	border-collapse: collapse;
+	font-family: Ubuntu, sans-serif;
+	font-size: 1rem;
+}
+
+table th {
+	padding: .5em;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	font-family: "Ubuntu Condensed", sans-serif;
+	font-size: 1.2rem;
+	font-weight: normal;
 	text-transform: uppercase;
 }
 
-.links .inner a {
-	display: inline;
+table td {
+	padding: .5em;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	text-align: center;
 }
 
-/* footer */
-
-.footer {
-	width: 50%;
-	height: 6em;
-	display: flex;
-	align-items: center;
+table th:last-child, table td:last-child {
+	border-right: none;
 }
 
-.footer .left,
-.footer .right {
-	display: flex;
-	align-items: center;
+table tr:last-child td {
+	border-bottom: none;
+}
+
+/* decoration */
+
+h1::after {
+	content: "";
 	flex: 1;
+	margin-left: 0.5em;
+	background-repeat: round;
+	background-size: contain;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="2em" stroke="white" stroke-width="1" viewBox="0 0 32 16"><line x1="0" y1="0" x2="16" y2="16"></line><line x1="16" y1="16" x2="32" y2="0"></line></svg>');
 }
 
-.footer .left {
-	justify-content: flex-start;
+a.external {
+	text-decoration: none;
 }
 
-.footer .right {
-	justify-content: flex-end;
+a.external::after {
+	content: "";
+	display: inline-block;
+	margin-left: 0.25em;
+	width: .5em;
+	height: .5em;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>');
 }
 
-.footer .divider {
-	width: 1px;
-	height: 2em;
-	background: rgba(255, 255, 255, 0.2)
+ul {
+	list-style: none;
+	padding-left: 4ch;
 }
 
-.footer .copyright {
-	font-family: "Ubuntu Condensed", sans-serif;
-	font-size: 1.5em;
+ul li {
+	position: relative;
+}
+
+ul li::before {
+	content: "- ";
+	position: absolute;
+	left: -2ch;
+}
+
+ul li.divider {
+	margin-top: 1ch;
+}
+
+ul li.divider::before {
+	content: "";
+}
+
+/* content */
+
+.content {
+	background: black;
+	margin: 3rem 0;
+	width: 40ch;
+	min-width: 40ch;
+	word-wrap: normal;
+	text-align: justify;
+}
+
+.content img {
+	width: 100%;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+.content p.links {
+	text-align: left;
+}
+
+.content img.link  {
+	width: 1.5em;
+	display: inline-block;
+}
+
+.preview li {
+	color: #aaa;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.preview li a {
+	color: #ddd;
+	text-decoration: underline dotted;
+	font-style: normal;
+}
+
+/* media */
+
+.sorts a {
+	text-decoration: none;
+	font-style: normal;
+	opacity: .8;
+	cursor: pointer;
+}
+
+.sorts a::before { content: "<"; }
+.sorts a::after { content: ">"; }
+
+.sorts a.selected, .sorts a:hover {
+	font-weight: bold;
+	opacity: 1;
+}
+
+.media li {
+	color: #aaa;
+	text-align: left;
+}
+
+.media li a {
+	color: #ddd;
+	font-family: Ubuntu, sans-serif;
+}
+
+.subtext {
+	opacity: .8;
+	font-family: Ubuntu, sans-serif;
+}
+
+.url {
+	font-size: 2rem;
+	font-family: Ubuntu, sans-serif;
 }
 
 /* repsonsive */
 
 @media (orientation: portrait) {
-	/* decor */
-
-	body::before {
-		width: 2.5em;
-		height: 110%;
-		top: 0;
-		left: calc(50% - 1.25em);
-		transform: rotate(-45deg);
-	}
-
-	/* navigation */
-
-	.links {
-		font-size: 10vw;
-		line-height: 15vw;
-	}
-
-	/* footer */
-
-	.footer {
-		flex-direction: column;
-	}
-
-	.footer .divider {
-		width: 80%;
-		height: 1px;
+	.content {
+		width: 100%;
+		min-width: 0;
 	}
 }
 
 @media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
-	/* navigation */
+	.content {
+		width: 50%
+	}
 
-	.links {
-		font-size: 10vh;
-		line-height: 15vh;
+	.content img {
+		max-width: 40ch;
 	}
 }
