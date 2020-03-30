@@ -144,6 +144,13 @@
 		"explicit": true
 	},
 	{
+		"title": "minin --> zvava",
+		"page": "minin-zvava",
+		"content": "zvava, my current alias, is actually a rot13 of my previous alias minin. i came up with minin when i was 7 years old and coming up with a name for my minecraft youtube channel, so what'd be better name for a minecraft youtuber then the word mining but without the g? (pronounced like minin') inbetween zvava and minin was 'minin gamer' which actually came first but i knocked off the gamer some time later.",
+		"type": "old",
+		"date": "Mon, 30 Mar 2020 01:56:44 GMT"
+	},
+	{
 		"title": "Alex Ferro - You (Itro Remix) (zvava Remix)",
 		"page": "you-remix",
 		"content": "a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.",
@@ -158,7 +165,7 @@
 		"content": [
 			"Minin Productions was the name of a 'company' that i had founded in 2015 (maybe 2014 but i don't have any archives) to list all or most of my projects under which i didn't feel like associating with myself personally for some reason.",
 			"it was renamed from \"Minin Inc.\" sometime around 2016 or 2017 as i had several \"brands\" like Minin Arts and MininMusic for my creative outlets and i wanted to unify them all since they were seperate for no good reason."],
-		"type": ["text", "old"],
+		"type": "old",
 		"date": "Mon, 30 Mar 2020 02:50:28 GMT"
 	}
 ]
