@@ -74,6 +74,9 @@ function drawPreviews(p, d, category = null) {
 
 		// loop over every blog post
 		for (let i = 0; i < d.length; i++) {
+			// 18+ check
+			if (localStorage.explicit != "true" && d[i].explicit)
+				continue;
 			// if sorting, do a check if post is of sorted type
 			if (category)
 				if (typeof(d[i].type) == "string" ?
