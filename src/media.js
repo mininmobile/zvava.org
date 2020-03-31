@@ -12,6 +12,9 @@ fetch(new Request("/src/data/media.json"))
 			let c = "";
 			let _ = data.filter(x => x.page == page)[0];
 
+			if (_ == undefined)
+				location = "404.html";
+
 			// add navigation
 			c = `<p>go <a href="/">home</a>...</p>
 			<p>go <a href="media.html">back</a>...</p>`;

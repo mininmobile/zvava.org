@@ -173,6 +173,17 @@
 		"url": "https://mega.nz/#F!9A9nlDIZ!-7Lv5yel_fOgO_sil2dX8g"
 	},
 	{
+		"title": "murpe Update System",
+		"page": "murpe-update-old",
+		"content": [
+			"murpe is update system i had devised in march of 2017 to use in minin production applications, from the archives i have i can only recall <a href='media.html?page=minin-hub-old'>minin hub</a> and <a href='media.html?page=zebra-pad-old'>zebra pad</a> utilizing murpe but i may be wrong.",
+			"i forgot what it stood for soon after i named it but i can only assume it stands for Minin Update Release Platform Environment or something like that. it was hosted on a shady free hosting website",
+			"the way it works is there would be php files with the names of the applications, eg. 'zebrapad.php', and then an application would pass a <a class='external' href='https://en.wikipedia.org/wiki/Query_string'>GET parameter</a> to the php file with the version, eg. '?ver=1.2'. then the page would report if you have the latest version of the program or not, and redirect to the download page for the program."
+		],
+		"type": "old",
+		"date": "Mon, 30 Mar 2020 23:54:34 GMT"
+	},
+	{
 		"title": "Minin Productions",
 		"page": "minin-productions-old",
 		"content": [
