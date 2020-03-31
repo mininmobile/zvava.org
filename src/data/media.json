@@ -154,7 +154,7 @@
 		"title": "Xonade",
 		"page": "xonade-terminal",
 		"content": [
-			"xonade was another batch terminal project i made back in 2016 or 2017, the newest old date i have for it is october of 2018 when i pushed it to github for a rewrite in powershell. it was supposed to be a self replicating batch os with the ability to load plugins, essentially giving it unlimited expandability.",
+			"xonade was another <a href='media.html?page=batch'>batch</a> terminal project i made back in 2016 or 2017, the newest old date i have for it is october of 2018 when i pushed it to github for a rewrite in powershell. it was supposed to be a self replicating batch os with the ability to load plugins, essentially giving it unlimited expandability.",
 			"there were only three plugins i wrote for it, firsly an example plugin that was just hello world, an account manager like in <a href='media.html?page=batch-system-administrator-old'>B.S.A.</a>, i assume this was supposed to be an api that could be used by other plugins/apps but im not quite sure. lastly i wrote a basic credit card management system that would allow the user to create and manage virtual credit cards in, for example, a classroom economy.",
 			"the 2018 rewrite was made after i discovered powershell and wanted to rewrite xonade in it cause i thought it would be a simple project - of course i had to make a custom \"x\" scripting language for it which is why i gave up on it."
 		],
@@ -248,13 +248,27 @@
 		"title": "Eterm",
 		"page": "eterm-old",
 		"content": [
-			"eterm was a \"custom terminal\" i wrote in batch, according to the last modified date it was created in the april of 2015. i think the purpose of these batch terminal projects was to abstract the commands of the default windows terminal (cmd.exe) but i think it ends up being more use to use this over learning cmd. (as im pretty sure it was built to make you look like a cool hacker and not to actually function well)",
+			"eterm was a \"custom terminal\" i wrote in <a href='media.html?page=batch'>batch</a>, according to the last modified date it was created in the april of 2015. i think the purpose of these batch terminal projects was to abstract the commands of the default windows terminal (cmd.exe) but i think it ends up being more use to use this over learning cmd. (as im pretty sure it was built to make you look like a cool hacker and not to actually function well)",
 			"the only notable part of this terminal that i think was pretty interesting was the \"path system\", in the code, the 'help/paths/...' command tells you the available paths and you would be able to use commands along the lines of 'gt/main/...' to go to the paths - there is only one path implemented and that's the start of the program but i still think the idea had merit."
 		],
 		"type": "old",
 		"date": "Mon, 06 Apr 2015 15:01:20 GMT",
 		"image": "src/img/media/terminal.png",
 		"url": "https://gist.github.com/mininmobile/2f7c9a8d9278826352b1d86a21add68d"
+	},
+	{
+		"title": "Desktop Replacer",
+		"page": "deskreplacer-old",
+		"content": [
+			"deskreplacer/desktop replacer was a utility i made with <a href='media.html?page=pika-software-builder'>pika software builder</a> with the purpose of replacing the default windows desktop with an idiot proof and simplified version.",
+			"the only archived version, 1.5, features a link to a google chrome shortcut and a link to a bundled version of <a href='media.html?page=fxweb-old'>fxweb</a> 2.2 on the desktop under the text \"welcome\". in the top right corner was a close button and in the bottom right was a theme selector button which let you choose a different wallpaper",
+			"i remember that in earlier versions i instead bundled fxweb minimal which is still in the folder instead of full 2.2, the minimal version of fxweb was actually created specifically for deskreplacer",
+			"screenshots included in download link"
+		],
+		"type": "old",
+		"date": "Sat, 25 Apr 2015 20:16:12 GMT",
+		"image": "src/img/media/desktopreplacer.png",
+		"url": "https://mega.nz/#F!1RcwzIBK!VU1q_72fS4EhbgKC411gsw"
 	},
 	{
 		"title": "Pika Software Builder",
@@ -267,5 +281,17 @@
 		"date": "Tue, 31 Mar 2020 01:53:33 GMT",
 		"image": "src/img/media/pikasoftwarebuilder.png",
 		"url": "https://web.archive.org/web/20130523135808/http://www.pikaonline.com/psb"
+	},
+	{
+		"title": "Batch",
+		"page": "batch",
+		"content": [
+			"batch (.bat or .cmd) files are lists of ms dos commands with added branching via if, for, and goto statements. it is <a class='external' href='https://stackoverflow.com/questions/11126539/is-batch-turing-complete'>turing complete</a> so i will refer to it as a programming language",
+			"batch was my second programming language to <a href='media.html?page=scratch'>scratch</a> and it thought me a lot about more conventional (non-gui) programming in my earlier years, sometimes i still write projects in it for the hell of it cause it's actually quite fun to write in."
+		],
+		"type": "info",
+		"date": "",
+		"image": "src/img/media/windowsterminal.png",
+		"url": "https://en.wikipedia.org/wiki/Batch_file"
 	}
 ]
