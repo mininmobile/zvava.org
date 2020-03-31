@@ -170,6 +170,7 @@
 		],
 		"type": "old",
 		"date": "Mon, 13 Mar 2017 18:46:19 GMT",
+		"image": "src/img/media/zebrapad.png",
 		"url": "https://mega.nz/#F!9A9nlDIZ!-7Lv5yel_fOgO_sil2dX8g"
 	},
 	{
@@ -214,6 +215,7 @@
 		],
 		"type": "old",
 		"date": "Tue, 15 Dec 2015 22:53:34 GMT",
+		"image": "src/img/media/quickpad.png",
 		"url": "https://mega.nz/#F!hUVUWYSK!znM0R0FBViVvvCTCNgtAwQ"
 	},
 	{
@@ -249,6 +251,7 @@
 		],
 		"type": "info",
 		"date": "Tue, 31 Mar 2020 01:53:33 GMT",
+		"image": "src/img/media/pikasoftwarebuilder.png",
 		"url": "http://www.pikaonline.com/"
 	}
 ]
