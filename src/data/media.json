@@ -147,17 +147,21 @@
 		"title": "minin --> zvava",
 		"page": "minin-zvava",
 		"content": "zvava, my current alias, is actually a rot13 of my previous alias minin. i came up with minin when i was 7 years old and coming up with a name for my minecraft youtube channel, so what'd be better name for a minecraft youtuber then the word mining but without the g? (pronounced like minin') inbetween zvava and minin was 'minin gamer' which actually came first but i knocked off the gamer some time later.",
-		"type": "old",
+		"type": ["text", "old"],
 		"date": "Mon, 30 Mar 2020 01:56:44 GMT"
 	},
 	{
-		"title": "Alex Ferro - You (Itro Remix) (zvava Remix)",
-		"page": "you-remix",
-		"content": "a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.",
-		"type": ["song", "old"],
-		"date": "Mon, 03 Oct 2016 00:00:00 GMT",
-		"url": "https://soundcloud.com/pasinazera/you-itro-remix-vapor-remix",
-		"length": "02:50"
+		"title": "Xonade",
+		"page": "xonade-terminal",
+		"content": [
+			"xonade was another batch terminal project i made back in 2016 or 2017, the newest old date i have for it is october of 2018 when i pushed it to github for a rewrite in powershell. it was supposed to be a self replicating batch os with the ability to load plugins, essentially giving it unlimited expandability.",
+			"there were only three plugins i wrote for it, firsly an example plugin that was just hello world, an account manager like in <a href='media.html?page=batch-system-administrator-old'>B.S.A.</a>, i assume this was supposed to be an api that could be used by other plugins/apps but im not quite sure. lastly i wrote a basic credit card management system that would allow the user to create and manage virtual credit cards in, for example, a classroom economy.",
+			"the 2018 rewrite was made after i discovered powershell and wanted to rewrite xonade in it cause i thought it would be a simple project - of course i had to make a custom \"x\" scripting language for it which is why i gave up on it."
+		],
+		"type": "project",
+		"date": "Mon, 16 Oct 2018 00:00:00 GMT",
+		"image": "src/img/media/terminal.png",
+		"url": "https://github.com/mininmobile/xonade"
 	},
 	{
 		"title": "Zebra Pad",
@@ -186,6 +190,15 @@
 		"url": "https://mega.nz/#F!tc0FFRSD!Vmz-070pPfQ4wNGbfXUPsg"
 	},
 	{
+		"title": "Alex Ferro - You (Itro Remix) (zvava Remix)",
+		"page": "you-remix",
+		"content": "a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.",
+		"type": ["song", "old"],
+		"date": "Mon, 03 Oct 2016 00:00:00 GMT",
+		"url": "https://soundcloud.com/pasinazera/you-itro-remix-vapor-remix",
+		"length": "02:50"
+	},
+	{
 		"title": "murpe Update System",
 		"page": "murpe-update-old",
 		"content": [
@@ -202,7 +215,7 @@
 		"content": [
 			"Minin Productions was the name of a 'company' that i had founded in 2015 (maybe 2014 but i don't have any archives) to list all or most of my projects under which i didn't feel like associating with myself personally for some reason.",
 			"it was renamed from \"Minin Inc.\" sometime around 2016 or 2017 as i had several \"brands\" like Minin Arts and MininMusic for my creative outlets and i wanted to unify them all since they were seperate for no good reason."],
-		"type": "old",
+		"type": ["text", "old"],
 		"date": "Mon, 30 Mar 2020 02:50:28 GMT"
 	},
 	{
@@ -240,6 +253,7 @@
 		],
 		"type": "old",
 		"date": "Mon, 06 Apr 2015 15:01:20 GMT",
+		"image": "src/img/media/terminal.png",
 		"url": "https://gist.github.com/mininmobile/2f7c9a8d9278826352b1d86a21add68d"
 	},
 	{
@@ -247,11 +261,11 @@
 		"page": "pika-software-builder",
 		"content": [
 			"pika software builder is a WYSIWYG editor for building windows applications. it was very easy to use and also heavily pirated which led to young me, not knowing any better, using it to create several apps probably illegally but learning much in the process - so thank you pika for existing i guess :P",
-			"i assume pika went bankrupt as the website is offline and the fact that there was rampant piracy, so to satiate your interest i have an archive.org link here anyway; (TODO: add archive.org link as it is down for maintenance as of writing)"
+			"i assume pika went bankrupt as the website is offline and the fact that there was rampant piracy, so to satiate your interest i have an archive.org link here anyway;"
 		],
 		"type": "info",
 		"date": "Tue, 31 Mar 2020 01:53:33 GMT",
 		"image": "src/img/media/pikasoftwarebuilder.png",
-		"url": "http://www.pikaonline.com/"
+		"url": "https://web.archive.org/web/20130523135808/http://www.pikaonline.com/psb"
 	}
 ]
