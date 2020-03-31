@@ -173,6 +173,18 @@
 		"url": "https://mega.nz/#F!9A9nlDIZ!-7Lv5yel_fOgO_sil2dX8g"
 	},
 	{
+		"title": "Minin Hub",
+		"page": "minin-hub-old",
+		"content": [
+			"minin hub was a web browser except it is only able to access the minin productions homepage. (now defunct) it was my first application to use <a href='media.html?page=murpe-update-old'>murpe</a> for updates",
+			"back in the good old days of having my head far up my own ass i thought that people would download a program made specifically to view my website - not even offline or anything. but i mean i never tried to catch traction for any of my things i just did it for fun and i guess that's what everything should be about, right?",
+			"screenshot included in download link"
+		],
+		"type": "old",
+		"date": "Sat, 11 Mar 2017 20:39:43 GMT",
+		"url": "https://mega.nz/#F!tc0FFRSD!Vmz-070pPfQ4wNGbfXUPsg"
+	},
+	{
 		"title": "murpe Update System",
 		"page": "murpe-update-old",
 		"content": [
@@ -181,7 +193,7 @@
 			"the way it works is there would be php files with the names of the applications, eg. 'zebrapad.php', and then an application would pass a <a class='external' href='https://en.wikipedia.org/wiki/Query_string'>GET parameter</a> to the php file with the version, eg. '?ver=1.2'. then the page would report if you have the latest version of the program or not, and redirect to the download page for the program."
 		],
 		"type": "old",
-		"date": "Mon, 30 Mar 2020 23:54:34 GMT"
+		"date": "Tue, 31 Mar 2020 00:54:34 GMT"
 	},
 	{
 		"title": "Minin Productions",
@@ -218,8 +230,12 @@
 	{
 		"title": "Pika Software Builder",
 		"page": "pika-software-builder",
-		"content": "TODO: what it is and what i used it for/how i used it",
+		"content": [
+			"pika software builder is a WYSIWYG editor for building windows applications. it was very easy to use and also heavily pirated which led to young me, not knowing any better, using it to create several apps probably illegally but learning much in the process - so thank you pika for existing i guess :P",
+			"i assume pika went bankrupt as the website is offline and the fact that there was rampant piracy, so to satiate your interest i have an archive.org link here anyway; (TODO: add archive.org link as it is down for maintenance as of writing)"
+		],
 		"type": "old",
-		"date": ""
+		"date": "Tue, 31 Mar 2020 01:53:33 GMT",
+		"url": "http://www.pikaonline.com/"
 	}
 ]
