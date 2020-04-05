@@ -214,6 +214,11 @@ ul li.divider::before {
 		width: 100%;
 		min-width: 0;
 	}
+
+	.content img {
+		width: 100% !important;
+		max-width: 40ch;
+	}
 }
 
 @media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {

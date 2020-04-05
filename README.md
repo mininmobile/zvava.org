@@ -19,5 +19,10 @@ my portfolio website
 
 	/* type: ["song", "video"] */
 	"length": <string of length>
+
+	/* has url */
+	"rawurl": <boolean toggle of displaying raw url>
+	/* has "image" */
+	"imagew": <string of width like "320px">
 }
 ```
