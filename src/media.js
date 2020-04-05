@@ -48,7 +48,7 @@ fetch(new Request("/src/data/media.json"))
 			}
 
 			// add link
-			if (_.url) c += `<p class="url"><a class="external" href="${_.url}">${_.url.split("/")[2]}</a></p>`
+			if (_.url) c += `<p class="url"><a class="external" href="${_.url}">${_.rawurl ? _.url : _.url.split("/")[2]}</a></p>`
 
 			content.innerHTML = c;
 		} else {
