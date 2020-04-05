@@ -20,7 +20,14 @@ fetch(new Request("/src/data/media.json"))
 			<p>go <a href="media.html">back</a>...</p>`;
 
 			// add media image
-			if (_.image) c += `<img src="${_.image}">`;
+			if (_.image) {
+				c += `<img `
+
+				if (_.imagew)
+					c += `style="width: ${_.imagew};" `;
+
+				c += `src="${_.image}">`;
+			}
 
 			// add title
 			c += `<h1>${_.title}</h1>`;
