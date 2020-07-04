@@ -31,6 +31,8 @@ fetch(new Request("/src/data/media.json"))
 
 			// add title
 			c += `<h1>${_.title}</h1>`;
+			// set page title
+			document.title = `media/${_.page} @ zvava.org`;
 
 			// add subtitle
 			{
