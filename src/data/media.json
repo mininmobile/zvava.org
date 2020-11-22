@@ -33,7 +33,7 @@
 			"<h1>teardown: mobo</h1><img src='media/dashcam/teardown-mobo.png'>",
 			"- <a href='media/dashcam/hq-mobo-back.jpg' target='_blank'>hq circuit board back image</a><br>- <a href='media/dashcam/hq-mobo-front.jpg' target='_blank'>hq circuit board front image</a>",
 			"there are only two screws holding the 'mother board' in place. after those are unscrewed, i disconnect the other ribbon which goes to the camera and make sure it is separated from the sticky foam in the back, then i unstick the foam from the bottom of the case and lift the circuit board out. you could also separate the battery or the speaker cables from the foam too.",
-			
+
 			"<h1>teardown: camera</h1>(this picture will also be referenced in the next teardown section)",
 			"<img src='media/dashcam/teardown-camera.png'>",
 			"to remove the camera from the case, ill have to unscrew the screw A (which is slightly longer then all of the other screws) which will then allow me to lift the camera out of the case by the corners of the aluminum backplate. it is slightly hard to read on the image but the markings on the ribbon cable of the camera read \"YXK-T445 03\" with some kind of symbol underneath (it resembled an infinity sign in a box)",
@@ -202,19 +202,6 @@
 		"date": "Wed, 29 May 2019 00:00:00 GMT",
 		"url": "https://www.youtube.com/watch?v=CNkx3oz7_9g",
 		"length": "00:09"
-	},
-	{
-		"title": "zvava - I'm not racist but",
-		"page": "im-not-racist-but",
-		"content": [
-			"imma just put it out there and say that i like dark humor, i don't condone killing babies and stuff but if you phrase it in the right way i'll laugh.",
-			"i made this partial cover of a song that i thought was a funny. i don't think it's funny because of its content but rather intelligently crafted, quoting the opening lyric, 'my dick is shaped like a rectangular prism, you know i love molesting kids with autism' - who rhymes prism with autism? god i love this song,,"],
-		"type": "song",
-		"date": "Sun, 10 Mar 2019 00:00:00 GMT",
-		"image": "src/img/media/im_not_racist_but.png",
-		"url": "https://soundcloud.com/pasinazera/im-not-racist-but",
-		"length": "01:36",
-		"explicit": true
 	},
 	{
 		"title": "minin --> zvava",
