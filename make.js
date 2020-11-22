@@ -30,7 +30,20 @@ function run() {
 			if (err)
 				return console.error(err);
 
-			// shit
+			let metadata = {};
+
+			{ // extract meta
+				let mend = data.indexOf("\n\n#");
+				let meta = data.substring(0, mend)
+					.split("\n")
+					.map(x => x.split(" | "));
+
+				meta.forEach(property => {
+					metadata[property[0]] = property[1];
+				});
+			}
+
+			console.log(metadata);
 		}));
 	});
 }
