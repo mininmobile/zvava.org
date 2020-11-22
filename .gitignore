@@ -1,2 +1,4 @@
 # ignore rendered output
 out/media/*.html
+out/index.html
+out/media.html
