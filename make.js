@@ -31,6 +31,7 @@ function run() {
 				return console.error(err);
 
 			let metadata = {};
+			let text;
 
 			{ // extract meta
 				let mend = data.indexOf("\n\n#");
@@ -38,12 +39,16 @@ function run() {
 					.split("\n")
 					.map(x => x.split(" | "));
 
-				meta.forEach(property => {
-					metadata[property[0]] = property[1];
-				});
+				meta.forEach(property => metadata[property[0]] = property[1]);
 			}
 
-			console.log(metadata);
+			{ // extract title/text
+				let start = data.indexOf("\n\n#") + 4;
+				let end = data.indexOf("\n", start);
+
+				metadata.title = data.substring(start, end);
+				text = data.substring(end + 2, data.length - 2).split("\n\n");
+			}
 		}));
 	});
 }
