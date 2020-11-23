@@ -61,7 +61,7 @@ function fetchArticles() {
 				let end = data.indexOf("\n", start);
 
 				metadata.title = data.substring(start, end);
-				metadata.content = data.substring(end + 2, data.length - 2).split("\n\n");
+				metadata.content = data.substring(end + 2, data.length - 1).split("\n\n");
 			}
 
 			articles[a] = metadata;
@@ -173,7 +173,7 @@ function test(expression, article) {
 				let d = new Date(article.date);
 				let month = d.getUTCMonth() + 1;
 					month = month.toString().length == 2 ? month : "0" + month;
-				let day = d.getUTCMonth() + 1;
+				let day = d.getUTCDate();
 					day = day.toString().length == 2 ? day : "0" + day;
 				result += "<span class=\"date\">";
 				result +=	d.getUTCFullYear() + "/" + month + "/" + day;
@@ -213,7 +213,7 @@ function test(expression, article) {
 				let d = new Date(article.date);
 				let month = d.getUTCMonth() + 1;
 					month = month.toString().length == 2 ? month : "0" + month;
-				let day = d.getUTCMonth() + 1;
+					let day = d.getUTCDate();
 					day = day.toString().length == 2 ? day : "0" + day;
 				result += "<span class=\"date\">";
 				result +=	d.getUTCFullYear() + "/" + month + "/" + day;

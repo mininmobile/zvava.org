@@ -141,7 +141,7 @@ ul li .date {
 /* content */
 
 .content {
-	margin: 3rem 0;
+	margin: 3rem auto;
 	width: 50ch;
 	min-width: 80ch;
 	word-wrap: normal;
