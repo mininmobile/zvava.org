@@ -1,4 +1,4 @@
-type | text,old
+type | text, old
 date | Mon, 30 Mar 2020 01:56:44 GMT
 
 # minin --> zvava

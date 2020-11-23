@@ -1,4 +1,4 @@
-type | art,text
+type | art, text
 date | Tue, 14 Jan 2020 22:32:00 GMT
 image | media/poop_replacement_therapy.jpg
 url | https://toot.cafe/@zvava/103484039487756696
@@ -10,4 +10,3 @@ i made this render in blender and added some cool dashed lines in paint.net afte
 this was also supposed to be album art but, lets be honest, i'll probably never finish the album
 
 "making some experimental album called poop replacement therapy, probably will complete it more then half way through the year if i remember lol. i suck at long term projects especially when a lot of school work is in the way."
-

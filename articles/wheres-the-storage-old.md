@@ -1,4 +1,4 @@
-type | project,old
+type | project, old
 date | Mon, 24 Apr 2017 18:25:54 GMT
 url | https://mega.nz/#F!1F1yRIQD!fosK8sVxMKpz6R8RwJxE3Q
 
@@ -11,4 +11,3 @@ after the tutorial i added a ui which could scan and list locations on your comp
 i think this idea could have gone places, and i was indeed working on a whole revamp but soon after i forgot about the project, email me if you would like me to publish the source code anywhere if you're curious
 
 screenshot included in the download link
-

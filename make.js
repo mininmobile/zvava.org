@@ -17,7 +17,8 @@ fs.readdir("src", (error, temps) => {
 		if (err)
 			throw console.error(err);
 
-		templates[a.substring(9, a.length - 5)] = data;
+		templates[a] = data;
+		//templates[a.substring(9, a.length - 5)] = data;
 
 		// make sure you have all the templates collected before proceeding
 		x++;
@@ -82,7 +83,7 @@ function generateArticles(articles) {
 		let a = articles[article];
 			a.page = article;
 
-		let result = testTemplate(templates.article, a);
+		let result = testTemplate(templates["template_article.html"], a);
 		console.log(result)
 	});
 }
@@ -103,8 +104,12 @@ function testTemplate(_page, article) {
 			let q = e.substring(4, qEnd); // q(uestion)
 			let r = e.substring(qEnd + 1, e.length - 1); // r(esult)
 
-			if (test(q, article) != "") {
-				result = r; // todo: do some parsing
+			if (test(q, article)) {
+				if (r[0] == "[") {
+					result = testTemplate(templates[r.substring(1, r.length - 1)], article);
+				} else {
+					result = r;
+				}
 			}
 		} else {
 			result = test(e, article);
@@ -123,7 +128,7 @@ function test(expression, article) {
 		expression.substring(1, expression.length - 1) : expression;
 
 	switch (e) {
-		case "ARTICLE.URL.RAW": return article.rawurl;
+		case "ARTICLE.URL.DOMAIN": return article.rawurl ? article.url : article.url.split("/")[2];
 		case "ARTICLE.PARAGRAPHS": return "<p>" + article.content[0] + "</p>";
 
 		default: {
