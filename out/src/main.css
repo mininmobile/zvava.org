@@ -142,15 +142,14 @@ ul li .date {
 
 .content {
 	margin: 3rem auto;
-	width: 50ch;
-	min-width: 80ch;
+	max-width: 80ch;
 	word-wrap: normal;
 	text-align: justify;
 }
 
 .content img {
 	width: 100%;
-	max-width: 50%;
+	max-width: 40ch;
 	margin: auto 0;
 	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: crisp-edges;
@@ -223,20 +222,26 @@ ul li .date {
 }
 
 @media (orientation: portrait) {
+	body {
+		margin: 2rem;
+		font-size: 1.1rem;
+	}
+
 	.content {
 		width: 100%;
 		min-width: 0;
 	}
 
 	.content img:not(.link) {
-		width: 100% !important;
 		max-width: 50ch;
 	}
 }
 
 @media (pointer: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
 	.content {
-		width: 50%
+		max-width: unset;
+		min-width: unset;
+		line-height: 1.2rem;
 	}
 
 	.content img {
