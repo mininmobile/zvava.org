@@ -161,7 +161,7 @@ function test(expression, article) {
 				// open
 				result += "<li>";
 
-				// add first type longform
+				// add first type in long-form
 				result += "[" + article.type.split(", ")[0] + "] ";
 
 				// add link

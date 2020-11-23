@@ -216,7 +216,11 @@ ul li .date {
 	font-family: Ubuntu, sans-serif;
 }
 
-/* repsonsive */
+/* responsive */
+
+.hidden {
+	display: none;
+}
 
 @media (orientation: portrait) {
 	.content {
