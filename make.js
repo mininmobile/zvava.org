@@ -1,5 +1,6 @@
 const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 const fs = require("fs");
+const { loadavg } = require("os");
 
 /**
  * @type {Object.<string, string>}
@@ -8,6 +9,7 @@ let templates = {};
 
 // read all of the templates
 fs.readdir("src", (error, temps) => {
+	console.log("\x1b[90m-->\x1b[0m gathering templates...");
 	if (error)
 		return console.error(error);
 
@@ -29,6 +31,8 @@ fs.readdir("src", (error, temps) => {
 
 // read and parse all of the articles
 function fetchArticles() {
+	console.log("\x1b[90m-->\x1b[0m parsing articles...");
+
 	fs.readdir("articles", (error, _articles) => {
 		if (error)
 			return console.error(error);
@@ -44,7 +48,7 @@ function fetchArticles() {
 			if (err)
 				return console.error(err);
 
-			let metadata = {};
+			let metadata = { page: a };
 
 			{ // extract meta
 				let mend = data.indexOf("\n\n#");
@@ -67,8 +71,10 @@ function fetchArticles() {
 
 			// make sure you have all the articles collected before proceeding
 			x++
-			if (x == _articles.length)
+			if (x == _articles.length) {
 				generateArticles(articles);
+				generatePreviews(articles);
+			}
 		}));
 	});
 }
@@ -81,11 +87,16 @@ function generateArticles(articles) {
 
 	Object.keys(articles).forEach((article) => {
 		let a = articles[article];
-			a.page = article;
-
 		let result = testTemplate(templates["template_article.html"], a);
-		console.log(result)
+
+		fs.writeFile("out/media/" + article + ".html", result, () =>
+			console.log(`\x1b[32m-->\x1b[0m created ${article}.html`));
 	});
+}
+
+// generate preview on index.html and generate media.html listing
+function generatePreviews(articles) {
+	// stuff... things...
 }
 
 // parse and return a finished page
