@@ -2,8 +2,14 @@
 	"dimmer.enabled": true,
 	"cSpell.ignoreWords": [
 		"esult",
+		"hlgd",
 		"mininp",
 		"rawurl",
 		"uestion"
+	],
+	"cSpell.words": [
+		"deskreplacer",
+		"fxweb",
+		"miningamer"
 	]
 }
