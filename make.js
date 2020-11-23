@@ -1,7 +1,4 @@
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 const fs = require("fs");
-const { loadavg } = require("os");
-
 /**
  * @type {Object.<string, string>}
  */
@@ -9,7 +6,7 @@ let templates = {};
 
 // read all of the templates
 fs.readdir("src", (error, temps) => {
-	console.log("\x1b[90m-->\x1b[0m gathering templates...");
+	console.log("\x1b[90m->\x1b[0m gathering templates...");
 	if (error)
 		return console.error(error);
 
@@ -31,7 +28,7 @@ fs.readdir("src", (error, temps) => {
 
 // read and parse all of the articles
 function fetchArticles() {
-	console.log("\x1b[90m-->\x1b[0m parsing articles...");
+	console.log("\x1b[90m->\x1b[0m parsing articles...");
 
 	fs.readdir("articles", (error, _articles) => {
 		if (error)
@@ -81,10 +78,6 @@ function fetchArticles() {
 
 // convert the articles into html
 function generateArticles(articles) {
-	/**
-	 * @type {Array.<RegExpExecArray>}
-	 */
-
 	Object.keys(articles).forEach((article) => {
 		let a = articles[article];
 		let result = testTemplate(templates["template_article.html"], a);
@@ -96,7 +89,19 @@ function generateArticles(articles) {
 
 // generate preview on index.html and generate media.html listing
 function generatePreviews(articles) {
-	// stuff... things...
+	{ // generate index.html
+		let result = testTemplate(templates["template_index.html"], articles);
+
+		fs.writeFile("out/index.html", result, () =>
+			console.log("\x1b[32m-->\x1b[0m generated index.html"));
+	}
+
+	{ // generate media.html
+		let result = testTemplate(templates["template_media.html"], articles);
+
+		fs.writeFile("out/media.html", result, () =>
+			console.log("\x1b[32m-->\x1b[0m generated media.html"));
+	}
 }
 
 // parse and return a finished page
@@ -141,6 +146,42 @@ function test(expression, article) {
 	switch (e) {
 		case "ARTICLE.URL.DOMAIN": return article.rawurl ? article.url : article.url.split("/")[2];
 		case "ARTICLE.PARAGRAPHS": return article.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
+
+		case "ARTICLES.LATEST": {
+			// sort articles by dates and get 3 latest ones
+			return "<li>despacito</li>\n".repeat(3);
+		} break;
+
+		case "ARTICLES.ALL": {
+			// generate a list of all articles
+			let articles = article; // for my own sanity
+			let result = "";
+
+			Object.keys(articles).forEach(a => {
+				let article = articles[a];
+
+				// open
+				result += "<li>- ";
+
+				// add types
+				result += "[";
+				result += article.type
+					.split(", ")
+					.map(x => x[0])
+					.join(", ");
+				result += "] ";
+
+				// add link
+				result += "<a href=\"media/" + article.page + ".html\">"
+				result += article.title
+				result += "</a>"
+
+				// close
+				result += "</li>\n"
+			});
+
+			return result;
+		}
 
 		default: {
 			return eval(e.toLowerCase());

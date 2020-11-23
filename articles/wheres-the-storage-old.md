@@ -4,7 +4,7 @@ url | https://mega.nz/#F!1F1yRIQD!fosK8sVxMKpz6R8RwJxE3Q
 
 # Where's The Storage?
 
-where's the storage (better written as wts, a play on wtf) started off as a <a class='external' href='https://www.youtube.com/watch?v=NO_gqbE3e54'>hard drive activity light</a> but i had expanded it into a ccleaner clone. it was written in C#.net winforms and utilized <a href='media.html?page=murpe-update-old'>murpe</a> for updates
+where's the storage (better written as wts, a play on wtf) started off as a <a class='external' href='https://www.youtube.com/watch?v=NO_gqbE3e54'>hard drive activity light</a> but i had expanded it into a ccleaner clone. it was written in C#.net winforms and utilized <a href="/media/murpe-update-old.html">murpe</a> for updates
 
 after the tutorial i added a ui which could scan and list locations on your computer which contain junk data and could also run a batch file which cleared out junk data in those locations.
 
