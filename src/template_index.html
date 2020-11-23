@@ -6,16 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="icon" href="src/img/dither.png" type="image/png">
 	<link rel="stylesheet" href="src/main.css">
-	<script src="src/fetch.umd.js"></script>
-	<!-- media.js placed at end of document so it runs once dom is ready -->
 	<title>zvava.org</title>
 </head>
 <body>
 	<div class="content">
 		<p class="links">
-			<a href="https://webring.xxiivv.com/#random" target='_blank'><img class="link" src="src/img/icons/webring.svg"></a>
-			<a href="https://toot.cafe/@zvava" rel="me" target='_blank'><img class="link" src="src/img/icons/mastodon.svg"></a>
-			<a href="https://github.com/mininmobile" rel="me" target='_blank'><img class="link" src="src/img/icons/github.svg"></a>
+			<a href="https://webring.xxiivv.com/#random" target="_blank"><img class="link" src="src/img/icons/webring.svg"></a>
+			<a href="https://toot.cafe/@zvava" rel="me" target="_blank"><img class="link" src="src/img/icons/mastodon.svg"></a>
+			<a href="https://github.com/mininmobile" rel="me" target="_blank"><img class="link" src="src/img/icons/github.svg"></a>
 		</p>
 
 		<img src="src/img/dither.png">
@@ -34,7 +32,7 @@
 			<li>
 				<a href="media.html">media/blog</a>
 				<ul id="preview" class="preview">
-					<li>loading preview...</li>
+					{ARTICLES.LATEST}
 				</ul>
 			</li>
 			<li><a href="portfolio.html">portfolio</a></li>
@@ -55,8 +53,5 @@
 			<li><a class="external" href="https://instagram.com/pasinazera">instagram</a></li>
 		</ul>
 	</div>
-
-	<!-- js placed at end of document so it runs once dom is ready -->
-	<script src="src/preview.js"></script>
 </body>
 </html>

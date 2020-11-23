@@ -15,7 +15,6 @@ my portfolio website
 	"type": <string type of content in ["text", "song", "art", "project", "video"]>,
 	"date": <string of utc date>,
 	"url": <link to topic, contains http or https>,
-	"explicit": <boolean toggle of content warning>,
 
 	/* type: ["song", "video"] */
 	"length": <string of length>
