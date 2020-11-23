@@ -14,7 +14,7 @@
 		<p>go <a href="/media.html">back</a>...</p>
 		{IF(ARTICLE.IMAGE)[template_image.html]}
 		<h1>{ARTICLE.TITLE}</h1>
-		<p>[{ARTICLE.TYPES}] {ARTICLE.DATE}{IF(ARTICLE.LENGTH)[template_length.html]}</p>
+		<p>[{ARTICLE.TYPES}] {ARTICLE.DATE}{IF(ARTICLE.LENGTH)[template_length.html]}{IF(ARTICLE.LENGTH)THIS ARTICLE HAS LENGTH}</p>
 		{ARTICLE.PARAGRAPHS}
 		{IF(ARTICLE.URL)[template_url.html]}
 	</div>
