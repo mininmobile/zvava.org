@@ -41,6 +41,10 @@ p, h1 {
 	margin: 1rem 0;
 }
 
+p, h1, ul {
+	background: black;
+}
+
 a {
 	color: #ddd;
 	font-style: italic;
@@ -130,19 +134,24 @@ ul li.divider::before {
 	content: "";
 }
 
+ul li .date {
+	float: right;
+}
+
 /* content */
 
 .content {
-	background: black;
 	margin: 3rem 0;
-	width: 40ch;
-	min-width: 40ch;
+	width: 50ch;
+	min-width: 80ch;
 	word-wrap: normal;
 	text-align: justify;
 }
 
 .content img {
 	width: 100%;
+	max-width: 50%;
+	margin: auto 0;
 	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;

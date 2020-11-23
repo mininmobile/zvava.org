@@ -159,7 +159,7 @@ function test(expression, article) {
 				let article = articles[a];
 
 				// open
-				result += "<li>- ";
+				result += "<li>";
 
 				// add first type longform
 				result += "[" + article.type.split(", ")[0] + "] ";
@@ -194,7 +194,7 @@ function test(expression, article) {
 				let article = articles[a];
 
 				// open
-				result += "<li>- ";
+				result += "<li>";
 
 				// add types
 				result += "[";
