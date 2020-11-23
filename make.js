@@ -69,6 +69,10 @@ function fetchArticles() {
 			// make sure you have all the articles collected before proceeding
 			x++
 			if (x == _articles.length) {
+				// sort by date
+				articles = Object.fromEntries(Object.entries(articles).sort(([,a],[,b]) => new Date(b.date) - new Date(a.date)));
+
+				// generate
 				generateArticles(articles);
 				generatePreviews(articles);
 			}
@@ -147,13 +151,42 @@ function test(expression, article) {
 		case "ARTICLE.URL.DOMAIN": return article.rawurl ? article.url : article.url.split("/")[2];
 		case "ARTICLE.PARAGRAPHS": return article.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
 
-		case "ARTICLES.LATEST": {
-			// sort articles by dates and get 3 latest ones
-			return "<li>despacito</li>\n".repeat(3);
+		case "ARTICLES.LATEST": { // generate a listing of the first 5 articles
+			let articles = article; // for my own sanity
+			let result = "";
+
+			Object.keys(articles).slice(0, 5).forEach(a => {
+				let article = articles[a];
+
+				// open
+				result += "<li>- ";
+
+				// add first type longform
+				result += "[" + article.type.split(", ")[0] + "] ";
+
+				// add link
+				result += "<a href=\"media/" + article.page + ".html\">";
+				result += article.title;
+				result += "</a> ";
+
+				// add date
+				let d = new Date(article.date);
+				let month = d.getUTCMonth() + 1;
+					month = month.toString().length == 2 ? month : "0" + month;
+				let day = d.getUTCMonth() + 1;
+					day = day.toString().length == 2 ? day : "0" + day;
+				result += "<span class=\"date\">";
+				result +=	d.getUTCFullYear() + "/" + month + "/" + day;
+				result += "</span>";
+
+				// close
+				result += "</li>\n";
+			});
+
+			return result;
 		} break;
 
-		case "ARTICLES.ALL": {
-			// generate a list of all articles
+		case "ARTICLES.ALL": { // generate a list of all articles
 			let articles = article; // for my own sanity
 			let result = "";
 
@@ -172,12 +205,22 @@ function test(expression, article) {
 				result += "] ";
 
 				// add link
-				result += "<a href=\"media/" + article.page + ".html\">"
-				result += article.title
-				result += "</a>"
+				result += "<a href=\"media/" + article.page + ".html\">";
+				result += article.title;
+				result += "</a> ";
+
+				// add date
+				let d = new Date(article.date);
+				let month = d.getUTCMonth() + 1;
+					month = month.toString().length == 2 ? month : "0" + month;
+				let day = d.getUTCMonth() + 1;
+					day = day.toString().length == 2 ? day : "0" + day;
+				result += "<span class=\"date\">";
+				result +=	d.getUTCFullYear() + "/" + month + "/" + day;
+				result += "</span>";
 
 				// close
-				result += "</li>\n"
+				result += "</li>\n";
 			});
 
 			return result;
