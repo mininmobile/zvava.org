@@ -129,7 +129,7 @@ function test(expression, article) {
 
 	switch (e) {
 		case "ARTICLE.URL.DOMAIN": return article.rawurl ? article.url : article.url.split("/")[2];
-		case "ARTICLE.PARAGRAPHS": return "<p>" + article.content[0] + "</p>";
+		case "ARTICLE.PARAGRAPHS": return article.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
 
 		default: {
 			return eval(e.toLowerCase());
