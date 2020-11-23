@@ -1,3 +1,6 @@
+if (location.href.includes("?page="))
+	location.href = location.href.replace(/\.html\?page=(.+)/, "/$1.html");
+
 addEventListener("load", () => {
 	let sorts = document.getElementById("sorts");
 	let media = document.getElementById("media");
