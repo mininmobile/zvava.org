@@ -4,4 +4,3 @@ image | media/art_abandon.jpg
 url | https://toot.cafe/@zvava/103546592870465253
 
 # Abandon
-

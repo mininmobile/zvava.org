@@ -4,4 +4,3 @@ image | media/art_ranch.jpg
 url | https://toot.cafe/@zvava/103858852106856874
 
 # Ranch
-

@@ -4,4 +4,3 @@ image | media/art_ball.jpg
 url | https://toot.cafe/@zvava/103500859326746646
 
 # Ball
-
