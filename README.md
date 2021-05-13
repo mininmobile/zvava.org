@@ -2,10 +2,17 @@
 my personal website for my portfolio and blog
 
 ## compilation
-run this command to build the website's pages, a whole bunch of html files should be dumped into `out/` and `out/media/` respectively
+run this command to build the website's pages, a whole bunch of html files should be dumped into `out/` and `out/media/`. deleted files aren't cleared (although they should be, i won't implement it)
 
 ```shell
 $ node make
+```
+
+then i run this command to publish the site, it's mostly for conciseness since it just runs scp and automatically plugs my username and password into it via an .env file, it uses the node-ssh and dotenv libraries so make sure to have it installed in the repo directory
+
+```shell
+$ npm i dotenv node-ssh
+$ node publish
 ```
 
 ## templating language

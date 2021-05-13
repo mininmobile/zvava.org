@@ -2,3 +2,7 @@
 out/media/*.html
 out/index.html
 out/media.html
+
+# ignore public script stuff
+node_modules/
+.env
