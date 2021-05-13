@@ -50,7 +50,6 @@ a {
 	font-style: italic;
 	text-decoration: underline;
 }
-
 /* tables */
 
 table {
@@ -139,6 +138,17 @@ ul li .date {
 	float: right;
 }
 
+/* webcircle */
+
+#webcircle {
+	float: right;
+	position: relative;
+	top: -2.5rem;
+	height: 1.5rem;
+	width: 50%;
+	min-width: 300px;
+}
+
 /* content */
 
 .content {
@@ -164,6 +174,9 @@ ul li .date {
 .content img.link  {
 	width: 1.5em;
 	display: inline-block;
+	position: relative;
+	z-index: 9;
+	background-color: #000;
 }
 
 .preview li {

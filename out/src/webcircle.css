@@ -1,0 +1,48 @@
+body {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	margin: 0;
+	background: black;
+	font-family: "Ubuntu Mono", monospace;
+	text-transform: lowercase;
+	overflow: hidden;
+}
+
+a {
+	font-size: 1.2rem;
+	color: white;
+	font-style: normal;
+	text-decoration: none;
+	white-space: pre;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:hover::before, a:hover::after {
+	text-decoration: none;
+}
+
+#prev {
+	order: 0;
+}
+
+#prev::after  {
+	content: " «";
+}
+
+#all {
+	order: 1;
+	margin: 0 2ch;
+}
+
+#next::before  {
+	content: "» ";
+}
+
+#next {
+	order: 2;
+}
