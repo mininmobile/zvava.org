@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Ubuntu Mono";
+	src: url(./font/UbuntuMono-Regular.ttf) format("truetype");
+}
+
 body {
 	display: flex;
 	justify-content: flex-end;
