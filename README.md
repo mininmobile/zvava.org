@@ -8,7 +8,7 @@ run this command to build the website's pages, a whole bunch of html files shoul
 $ node make
 ```
 
-then i run this command to publish the site, it's mostly for conciseness since it just runs scp and automatically plugs my username and password into it via an .env file, it uses the node-ssh and dotenv libraries so make sure to have it installed in the repo directory
+then i run this command to publish the site, it's mostly for conciseness since it just runs scp and automatically plugs my username and password into it via an .env file, it uses the dotenv and node-ssh libraries so make sure to have them installed into the repo directory
 
 ```shell
 $ npm i dotenv node-ssh
