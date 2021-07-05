@@ -1,5 +1,6 @@
 # ignore rendered output
 out/media/*.html
+!out/media/index.html
 out/index.html
 out/media.html
 out/notes/*.html

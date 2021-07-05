@@ -250,8 +250,17 @@ function test(expression, article, note) {
 		expression.substring(1, expression.length - 1) : expression;
 
 	switch (e) {
-		case "ARTICLE.URL.DOMAIN": return article.rawurl ? article.url : article.url.split("/")[2];
+		case "ARTICLE.URL.DOMAIN": {
+			if (article.url.startsWith("/")) {
+				return article.url;
+			} else {
+				let path = article.url.split("/");
+				return path[2];
+			}
+		} break;
+		case "ARTICLE.URL.EXTERNAL": return !article.url.startsWith("/");
 		case "ARTICLE.PARAGRAPHS": return article.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
+		case "NOTE.PARAGRAPHS": return note.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
 
 		case "ARTICLES.LATEST": { // generate a listing of the first 5 articles
 			let articles = article; // for my own sanity
