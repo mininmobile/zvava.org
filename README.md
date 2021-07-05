@@ -19,11 +19,11 @@ $ node publish
 i use a custom templating language that slightly resembles php. it finds `{expressions}`, executes them, and then substitutes them to generate the final page. these are mostly plain js except for a few caveats.
 
 - sometimes there are "custom tokens" (ie. `ARTICLE.URL.DOMAIN`) just to make the template look cleaner
-- sometimes there are "if statements" (ie. `IF(CONDITION)RESULT`) which substitutes the expression with result if condition is true
+- sometimes there are "if statements" (ie. `IF(CONDITION)RESULT`) which substitutes the expression with result only if condition is true
 - sometimes there are "includes" (ie. `[template_image.html]`) which substitutes the expression with another template, which is parsed before substitution
 
-## markdown language
-i use a bastardization of markdown to write/store the articles (inside the actual content part of the article, no parsing is done, all links are written the same as in html at the moment)
+## "markdown" language
+i use a bastardization of markdown to write/store the notes and articles (inside the actual content part of the article/note, no parsing is done, all links are written the same as in html at the moment)
 
 properties (timestamp, image, link, etc.) are stores in a table at the top, separating the key and value with a pipe and spaces, and separating each property with a newline, like this:
 
@@ -41,3 +41,6 @@ next comes the title of the page, which is parsed from the `\n\n# ` at the end o
 ```
 
 then the content is parsed by taking the `\n\n\n` at the end of the title and splitting everything since then by `\n\n` (excluding the trailing `\n` at the end of the file)
+
+## notes vs templates
+notes are more like wikipages then blog articles, though they are generated using a pretty similar system in the backend. the key difference is that the 'back' button is not present, and the date field is now split into the `created` and `modified` field. if the `modified` field is not set it assumes the value of the `created` field.

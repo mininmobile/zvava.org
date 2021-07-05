@@ -6,17 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="icon" href="../src/img/dither.png" type="image/png">
 	<link rel="stylesheet" href="../src/main.css">
-	<title>media/{ARTICLE.PAGE} @ zvava.org</title>
+	<title>notes/{NOTE.PAGE} @ zvava.org</title>
 </head>
 <body>
 	<div class="content">
 		<p>go <a href="/">home</a>...</p>
-		<p>go <a href="/media.html">back</a>...</p>
-		{IF(ARTICLE.IMAGE)[template_article_image.html]}
-		<h1>{ARTICLE.TITLE}</h1>
-		<p>[{ARTICLE.TYPE}] {ARTICLE.DATE}{IF(ARTICLE.LENGTH)[template_length.html]}</p>
-		{ARTICLE.PARAGRAPHS}
-		{IF(ARTICLE.URL)[template_url.html]}
+		{IF(NOTE.IMAGE)[template_note_image.html]}
+		<h1>{NOTE.TITLE}</h1>
+		<p>[CREATED] {NOTE.CREATED}<br>
+		[MODIFIED] {NOTE.MODIFIED}<br></p>
+		{NOTE.PARAGRAPHS}
 	</div>
 </body>
 </html>

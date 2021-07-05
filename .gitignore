@@ -2,6 +2,7 @@
 out/media/*.html
 out/index.html
 out/media.html
+out/notes/*.html
 
 # ignore public script stuff
 node_modules/

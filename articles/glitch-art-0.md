@@ -1,6 +1,6 @@
 type | art
 date | Sun, 08 Sep 2019 00:32:00 GMT
-image | media/glitch_art_0.jpg
+image | media/art/glitch_0.jpg
 url | https://twitter.com/pasinazera/status/1170480049071562752
 
 # Glitch Art 0

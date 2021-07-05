@@ -1,6 +1,6 @@
 type | art, text
 date | Sat, 25 Jan 2020 02:19:00 GMT
-image | media/art_forestold.jpg
+image | media/art/forestold.jpg
 url | https://toot.cafe/@zvava/103541557870041457
 
 # Forest

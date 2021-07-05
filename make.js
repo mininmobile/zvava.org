@@ -3,6 +3,18 @@ const fs = require("fs");
  * @type {Object.<string, string>}
  */
 let templates = {};
+let articles = {};
+let notes = {};
+
+// asyncronous execution structure
+// inside the functions the code is written to by synchronous
+//
+// this function
+//   -> fetchArticles
+//   -> fetchNotes
+//   -> generateArticles
+//   -> generateNotes
+//   -> generatePreviews
 
 // read all of the templates
 fs.readdir("src", (error, temps) => {
@@ -33,8 +45,6 @@ function fetchArticles() {
 	fs.readdir("articles", (error, _articles) => {
 		if (error)
 			return console.error(error);
-
-		let articles = {};
 
 		let x = 0;
 
@@ -71,37 +81,129 @@ function fetchArticles() {
 			if (x == _articles.length) {
 				// sort by date
 				articles = Object.fromEntries(Object.entries(articles).sort(([,a],[,b]) => new Date(b.date) - new Date(a.date)));
-
 				// generate
-				generateArticles(articles);
-				generatePreviews(articles);
+				fetchNotes();
+			}
+		}));
+	});
+}
+
+// read and parse all of the notes
+function fetchNotes() {
+	console.log("\x1b[90m->\x1b[0m parsing notes...");
+
+	fs.readdir("notes", (error, _notes) => {
+		if (error)
+			return console.error(error);
+
+		let x = 0;
+
+		_notes
+			.map(a => a.substring(0, a.length - 3)) // remove .md
+			.forEach(a => fs.readFile("notes/" + a + ".md", "utf8", (err, data) =>
+		{
+			if (err)
+				return console.error(err);
+
+			let metadata = { page: a };
+
+			{ // extract meta
+				let mend = data.indexOf("\n\n#");
+				let meta = data.substring(0, mend)
+					.split("\n")
+					.map(x => x.split(" | "));
+
+				meta.forEach(property =>
+					metadata[property[0]] = property[1]);
+			}
+
+			{ // extract title/text
+				let start = data.indexOf("\n\n#") + 4;
+				let end = data.indexOf("\n", start);
+
+				metadata.title = data.substring(start, end);
+				metadata.content = data.substring(end + 2, data.length - 1).split("\n\n");
+			}
+
+			// extract dates
+			if (metadata.modified == undefined)
+				metadata.modified = metadata.created;
+
+			notes[a] = metadata;
+
+			// make sure you have all the notes collected before proceeding
+			x++
+			if (x == _notes.length) {
+				// sort by modified
+				notes = Object.fromEntries(Object.entries(notes).sort(([,a],[,b]) => new Date(b.modified) - new Date(a.modified)));
+				// generate
+				generateArticles();
 			}
 		}));
 	});
 }
 
 // convert the articles into html
-function generateArticles(articles) {
-	Object.keys(articles).forEach((article) => {
+function generateArticles() {
+	console.log("\x1b[90m->\x1b[0m generating articles...");
+
+	let _articles = Object.keys(articles)
+	_articles.forEach((article, i) => {
 		let a = articles[article];
 		let result = testTemplate(templates["template_article.html"], a);
 
 		fs.writeFile("out/media/" + article + ".html", result, () =>
-			console.log(`\x1b[32m-->\x1b[0m created ${article}.html`));
+			checkProgress(i));
 	});
+
+	function checkProgress(i) {
+		// update terminal readout
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m created article ${i + 1}/${_articles.length}`);
+		// if all articles have been generated
+		if (i == _articles.length - 1) {
+			process.stdout.write("\n");
+			generateNotes();
+		}
+	}
+}
+
+// convert the notes into html
+function generateNotes() {
+	console.log("\x1b[90m->\x1b[0m generating notes...");
+
+	let _notes = Object.keys(notes)
+	_notes.forEach((note, i) => {
+		let a = notes[note];
+		let result = testTemplate(templates["template_note.html"], undefined, a);
+
+		fs.writeFile("out/notes/" + note + ".html", result, () =>
+			checkProgress(i));
+	});
+
+	function checkProgress(i) {
+		// update terminal readout
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m created note ${i + 1}/${_notes.length}`);
+		// if all notes have been generated
+		if (i == _notes.length - 1) {
+			process.stdout.write("\n");
+			generatePreviews();
+		}
+	}
 }
 
 // generate preview on index.html and generate media.html listing
-function generatePreviews(articles) {
+function generatePreviews() {
+	console.log("\x1b[90m->\x1b[0m generating previews...");
+
 	{ // generate index.html
-		let result = testTemplate(templates["template_index.html"], articles);
+		let result = testTemplate(templates["template_index.html"], articles, notes);
 
 		fs.writeFile("out/index.html", result, () =>
 			console.log("\x1b[32m-->\x1b[0m generated index.html"));
 	}
 
 	{ // generate media.html
-		let result = testTemplate(templates["template_media.html"], articles);
+		let result = testTemplate(templates["template_media.html"], articles, notes);
 
 		fs.writeFile("out/media.html", result, () =>
 			console.log("\x1b[32m-->\x1b[0m generated media.html"));
@@ -110,7 +212,7 @@ function generatePreviews(articles) {
 
 // parse and return a finished page
 // it expects to be given an article as the context
-function testTemplate(_page, article) {
+function testTemplate(_page, article, note) {
 	let expressions = [..._page.matchAll(/\{.+?}/g)];
 	let page = _page;
 
@@ -124,15 +226,15 @@ function testTemplate(_page, article) {
 			let q = e.substring(4, qEnd); // q(uestion)
 			let r = e.substring(qEnd + 1, e.length - 1); // r(esult)
 
-			if (test(q, article)) {
+			if (test(q, article, note)) {
 				if (r[0] == "[") {
-					result = testTemplate(templates[r.substring(1, r.length - 1)], article);
+					result = testTemplate(templates[r.substring(1, r.length - 1)], article, note);
 				} else {
 					result = r;
 				}
 			}
 		} else {
-			result = test(e, article);
+			result = test(e, article, note);
 		}
 
 		page = page.replace(e, result || "");
@@ -143,7 +245,7 @@ function testTemplate(_page, article) {
 
 // parse and return result of [custom templating language]
 // it expects to be given an article as the context
-function test(expression, article) {
+function test(expression, article, note) {
 	let e = expression[0] == "{" ?
 		expression.substring(1, expression.length - 1) : expression;
 
@@ -171,6 +273,38 @@ function test(expression, article) {
 
 				// add date
 				let d = new Date(article.date);
+				let month = d.getUTCMonth() + 1;
+					month = month.toString().length == 2 ? month : "0" + month;
+				let day = d.getUTCDate();
+					day = day.toString().length == 2 ? day : "0" + day;
+				result += "<span class=\"date\">";
+				result +=	d.getUTCFullYear() + "/" + month + "/" + day;
+				result += "</span>";
+
+				// close
+				result += "</li>\n";
+			});
+
+			return result;
+		} break;
+
+		case "NOTES.LATEST": { // generate a listing of the 5 last updated notes
+			let notes = note; // for my own sanity
+			let result = "";
+
+			Object.keys(notes).slice(0, 5).forEach(a => {
+				let note = notes[a];
+
+				// open
+				result += "<li>";
+
+				// add link
+				result += "<a href=\"notes/" + note.page + ".html\">";
+				result += note.page  == "index" ? "index" : note.title;
+				result += "</a> ";
+
+				// add date
+				let d = new Date(note.modified);
 				let month = d.getUTCMonth() + 1;
 					month = month.toString().length == 2 ? month : "0" + month;
 				let day = d.getUTCDate();
@@ -227,7 +361,13 @@ function test(expression, article) {
 		}
 
 		default: {
-			return eval(e.toLowerCase());
+			try {
+				return eval(e.toLowerCase());
+			} catch (error) {
+				console.log(`\x1b[91m->\x1b[0m error whilst executing [\x1b[91m${e}\x1b[0m]`);
+				console.error(error);
+				return error.toString();
+			}
 		}
 	}
 }
