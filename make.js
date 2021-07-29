@@ -248,10 +248,11 @@ function testTemplate(_page, article, note) {
 function parseParagraphs(paragraphs) {
 	return paragraphs.map((paragraph) => {
 		let p = ""; // content of paragraph
-		let _p = ""; // content of paragraph after adding title to p
+		let _p = paragraph; // content of paragraph after adding title to p
 		// check for header
-		if (paragraph.indexOf("\n") && paragraph.charAt(0) == "#") {
-			let title = paragraph.substring(paragraph.indexOf(" "), paragraph.indexOf("\n"));
+		if (paragraph.charAt(0) == "#") {
+			let end = paragraph.indexOf("\n"); if (end == -1) end = undefined;
+			let title = paragraph.substring(paragraph.indexOf(" ") + 1, end);
 			// check for other tag sizes
 			let tag = "h1";
 			if (paragraph.charAt(1) == "#") {
@@ -261,7 +262,7 @@ function parseParagraphs(paragraphs) {
 			}
 			// add to paragraph
 			p += `<${tag}>${title}</${tag}>`;
-			_p = paragraph.substring(paragraph.indexOf("\n"));
+			_p = end > 0 ? paragraph.substring(end + 1) : "";
 		}
 		// if not just header, add content to paragraph
 		if (_p.length > 0)

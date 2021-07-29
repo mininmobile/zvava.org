@@ -13,7 +13,7 @@ i can't decide between purple and green, they both have a lot of good shades and
 my favorite number is 9 because it is the biggest. a close second is 3 as 9 wouldn't exist without it.
 
 ## animal
-primates, testudines, and serpentes are cool, in that order. my favorite bird would have to be the <a clas="external" href="https://en.wikipedia.org/wiki/Cedar_waxwing">cedar waxwing</a>.
+primates, testudines, and serpentes are cool, in that order. my favorite bird would have to be the <a class="external" href="https://en.wikipedia.org/wiki/Cedar_waxwing">cedar waxwing</a>.
 
 # thinking sand
 
