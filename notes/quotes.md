@@ -35,7 +35,7 @@ it will be just fine if we're close dear"<br>
 - corbis (ice boy)
 
 "all good things come to an end, that's the way it's always been<br>
-it might seem that fair to you but it's the start of something new"<br>
+it might not seem that fair to you but it's the start of something new"<br>
 - tree (sacred elements)
 
 "fame in a world like this is worthless"<br>
@@ -48,8 +48,11 @@ it might seem that fair to you but it's the start of something new"<br>
 happiness borrowed from the future but now the future here"<br>
 - zukonius (5CR47CH R4P II)
 
+"you're too young to be leaving and you and man up above ain't even"<br>
+- ryan caraveo (wallowing)
+
 "there's no love without sex, there's no drugs without death /<br>
-/ there's stil love without sex, there's still drugs without death"<br>
+/ there's still love without sex, there's still drugs without death"<br>
 - zukonius (Prominent Polarities)
 
 "... i'm gonna live my life as a bitch,<br>
