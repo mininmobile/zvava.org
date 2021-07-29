@@ -1,5 +1,5 @@
-created | Mon, 28 Jul 2021 20:54:15 GMT
-modified | Mon, 28 Jul 2021 20:54:15 GMT
+created | Wed, 28 Jul 2021 20:54:15 GMT
+modified | Wed, 29 Jul 2021 20:54:15 GMT
 image | src/img/media/favorites.png
 
 # Favorites
