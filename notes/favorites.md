@@ -1,5 +1,5 @@
 created | Wed, 28 Jul 2021 20:54:15 GMT
-modified | Wed, 29 Jul 2021 20:54:15 GMT
+modified | Thu, 29 Jul 2021 06:26:17 GMT
 image | src/img/media/favorites.png
 
 # Favorites
@@ -58,6 +58,7 @@ hyperpop, aka. #country. #country is an inside joke between me and my friend, wh
 <li><a class="external" href="https://soundcloud.com/zukosworld">zukonius</a>, the artist formerly known as prince zuko</li>
 <li><a class="external" href="https://www.youtube.com/watch?v=TWtND7FE7dg&list=PLOCKP-Kun4ZkfVAsGWS0zNK6nVpPSIWRq">jc foster</a> who also made music as the <a class="external" href="https://soundcloud.com/executivetireswingclub/tracks">executive tire swing club</a></li>
 <li><a class="external" href="https://soundcloud.com/finnxmusic/tracks">finn</a></li>
+<li><a class="external" href="https://www.youtube.com/channel/UCafxR2HWJRmMfSdyZXvZMTw">look mum no computer</a></li>
 </ul>
 
 ## albums
@@ -73,6 +74,7 @@ a list of my favorite albums followed by my favorite song off the album
 <ul>
 <li>ryan caraveo - <a class="external" href="https://www.youtube.com/watch?v=1OSVjAD0nIU">outro</a></li>
 <li>zukonius - <a class="external" href="https://soundcloud.com/zukosworld/cl34n-5l473?in=zukosworld/sets/1g174l-mpr35510n5">CL34N 5L473</a></li>
+<li>jc foster - <a class="external" href="https://soundcloud.com/executivetireswingclub/kyle">KYLE</a></li>
 </ul>
 
 ## lyrics
