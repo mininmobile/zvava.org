@@ -7,5 +7,6 @@ image | src/img/media/wikinotes.png
 welcome to the 'wiki'! here you can find some notes that fit the wiki format better then the alternative blog format. here are some links you can follow:
 
 <ul>
-<li><i>it's quiet over here...for now</i></li>
+<li><a href="favorites.html">my favorite things</a></li>
+<li><a href="quotes.html">quotes</a></li>
 </ul>

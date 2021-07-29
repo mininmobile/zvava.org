@@ -243,6 +243,34 @@ function testTemplate(_page, article, note) {
 	return page;
 }
 
+// add support for stuff like headers etc. not requiring me to write in ugly html
+/** @param {Array.<String>} paragraphs */
+function parseParagraphs(paragraphs) {
+	return paragraphs.map((paragraph) => {
+		let p = ""; // content of paragraph
+		let _p = ""; // content of paragraph after adding title to p
+		// check for header
+		if (paragraph.indexOf("\n") && paragraph.charAt(0) == "#") {
+			let title = paragraph.substring(paragraph.indexOf(" "), paragraph.indexOf("\n"));
+			// check for other tag sizes
+			let tag = "h1";
+			if (paragraph.charAt(1) == "#") {
+				tag = "h2";
+				if (paragraph.charAt(2) == "#")
+					tag = "h3";
+			}
+			// add to paragraph
+			p += `<${tag}>${title}</${tag}>`;
+			_p = paragraph.substring(paragraph.indexOf("\n"));
+		}
+		// if not just header, add content to paragraph
+		if (_p.length > 0)
+			p += "<p>" + _p + "</p>";
+
+		return p;
+	}).join("\n\t\t");
+}
+
 // parse and return result of [custom templating language]
 // it expects to be given an article as the context
 function test(expression, article, note) {
@@ -259,8 +287,8 @@ function test(expression, article, note) {
 			}
 		} break;
 		case "ARTICLE.URL.EXTERNAL": return !article.url.startsWith("/");
-		case "ARTICLE.PARAGRAPHS": return article.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
-		case "NOTE.PARAGRAPHS": return note.content.map(p => "<p>" + p + "</p>").join("\n\t\t");
+		case "ARTICLE.PARAGRAPHS": return parseParagraphs(article.content);
+		case "NOTE.PARAGRAPHS": return parseParagraphs(note.content);
 
 		case "ARTICLES.LATEST": { // generate a listing of the first 5 articles
 			let articles = article; // for my own sanity
