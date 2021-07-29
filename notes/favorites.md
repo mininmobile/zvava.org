@@ -1,5 +1,5 @@
 created | Wed, 28 Jul 2021 20:54:15 GMT
-modified | Thu, 29 Jul 2021 06:26:17 GMT
+modified | Thu, 29 Jul 2021 06:29:04 GMT
 image | src/img/media/favorites.png
 
 # Favorites
@@ -75,6 +75,7 @@ a list of my favorite albums followed by my favorite song off the album
 <li>ryan caraveo - <a class="external" href="https://www.youtube.com/watch?v=1OSVjAD0nIU">outro</a></li>
 <li>zukonius - <a class="external" href="https://soundcloud.com/zukosworld/cl34n-5l473?in=zukosworld/sets/1g174l-mpr35510n5">CL34N 5L473</a></li>
 <li>jc foster - <a class="external" href="https://soundcloud.com/executivetireswingclub/kyle">KYLE</a></li>
+<li>artur - <a class="external" href="https://www.youtube.com/watch?v=QbLKD7u1B0U">sweet memory</a> (<a class="external" href="https://soundcloud.com/deltaday/arthur-sweet-memory-deltaday-flip">deltaday flip</a>)</li>
 </ul>
 
 ## lyrics
