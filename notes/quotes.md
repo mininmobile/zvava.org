@@ -1,5 +1,5 @@
 created | Thu, 29 Jul 2021 05:08:50 GMT
-modified | Thu, 29 Jul 2021 06:36:04 GMT
+modified | Fri, 30 Jul 2021 01:32:37 GMT
 image | src/img/media/quotes.png
 
 # Quotes
@@ -14,6 +14,9 @@ some of these are lyrics from songs, some are not, these are quotes i fuck with.
 
 "a name is a name"<br>
 - unknown(?)
+
+"what if i made a mistake just to see if you cared, cause i care"<br>
+- your favorite color (their way)
 
 "how could it be? i'm just playing out my part in this hypocrisy"<br>
 - look mum no computer (shock horror)
