@@ -51,7 +51,7 @@ on windows i use musicbee, i haven't been able to find one that suits my needs o
 i try to buy from bandcamp as much as possible, but for discovering new music/general listening i tend to use soundcloud.
 
 ## genre
-hyperpop, aka. #country. #country is an inside joke between me and my friend, where i linked them a soundcloud hyperpop song that i though was good and they pointed out how it was tagged under "#Country"
+i listen to pretty much every genre, but my overall favorite would have to be hyperpop, aka. #country. #country is an inside joke between me and my friend, where i linked them a soundcloud hyperpop song that i though was good and they pointed out how it was tagged under "#Country"
 
 ## artist
 <ul>
@@ -59,6 +59,11 @@ hyperpop, aka. #country. #country is an inside joke between me and my friend, wh
 <li><a class="external" href="https://www.youtube.com/watch?v=TWtND7FE7dg&list=PLOCKP-Kun4ZkfVAsGWS0zNK6nVpPSIWRq">jc foster</a> who also made music as the <a class="external" href="https://soundcloud.com/executivetireswingclub/tracks">executive tire swing club</a></li>
 <li><a class="external" href="https://soundcloud.com/finnxmusic/tracks">finn</a></li>
 <li><a class="external" href="https://www.youtube.com/channel/UCafxR2HWJRmMfSdyZXvZMTw">look mum no computer</a></li>
+<li><a class="external" href="https://www.youtube.com/c/Guardinmusic">guardin</a></li>
+<li><a class="external" href="https://soundcloud.com/atlas">atlas</a></li>
+<li>ryan caraveo</li>
+<li>cam meekins</li>
+<li>moby</li>
 </ul>
 
 ## albums
@@ -68,6 +73,7 @@ a list of my favorite albums followed by my favorite song off the album
 <li>zukonius - <a class="external" href="https://soundcloud.com/zukosworld/sets/zukos-world">zuko's world</a> (happy potions)</li>
 <li>tree - <a class="external" href="https://www.youtube.com/watch?v=m5pmEI5FsEU">splitting branches</a> (sacred elements)</li>
 <li>finn - <a class="external" href="https://finnxmusic.bandcamp.com/album/beyond-return">beyond return</a> (still winter)</li>
+<li>alexei shishkin - <a class="external" href="https://alexeishishkin.bandcamp.com/album/the-dog-tape-2">the dog tape</a> (courts)</li>
 </ul>
 
 ## songs
@@ -76,6 +82,7 @@ a list of my favorite albums followed by my favorite song off the album
 <li>zukonius - <a class="external" href="https://soundcloud.com/zukosworld/cl34n-5l473?in=zukosworld/sets/1g174l-mpr35510n5">CL34N 5L473</a></li>
 <li>jc foster - <a class="external" href="https://soundcloud.com/executivetireswingclub/kyle">KYLE</a></li>
 <li>artur - <a class="external" href="https://www.youtube.com/watch?v=QbLKD7u1B0U">sweet memory</a> (<a class="external" href="https://soundcloud.com/deltaday/arthur-sweet-memory-deltaday-flip">deltaday flip</a>)</li>
+<li>herp albert - <a class="external" href="https://www.youtube.com/watch?v=l6U1JB7z-I8">ladyfingers</a></li>
 </ul>
 
 ## lyrics
