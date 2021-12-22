@@ -1,9 +1,9 @@
 type | text
 date | Wed, 22 Dec 2021 02:09:00 GMT
 
-# My Stance on Originality
+# Originality
 
-the following is a response to this prompt from <a href="https://merveilles.town/@dualhammers">@dualhammers</a>;
+the following is a response to this prompt from <a href="https://merveilles.town/@dualhammers">@dualhammers@merveilles.town</a>;
 
 <blockquote>When do you feel you've moved from emulating someone else to creating something for yourself?</blockquote>
 
