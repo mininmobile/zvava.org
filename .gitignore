@@ -4,6 +4,7 @@ out/media/*.html
 out/index.html
 out/media.html
 out/notes/*.html
+out/feed.ass
 
 # ignore publish script stuff
 node_modules/

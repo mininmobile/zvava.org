@@ -187,6 +187,7 @@ function generateNotes() {
 		if (i == _notes.length - 1) {
 			process.stdout.write("\n");
 			generatePreviews();
+			generateASS();
 		}
 	}
 }
@@ -208,6 +209,20 @@ function generatePreviews() {
 		fs.writeFile("out/media.html", result, () =>
 			console.log("\x1b[32m-->\x1b[0m generated media.html"));
 	}
+}
+
+function generateASS() {
+	console.log("\x1b[90m->\x1b[0m generating feed.ass...");
+
+	let assEntries = Object.keys(articles).map((_a, i) => {
+		let a = articles[_a]; let date = new Date(a.date);
+		let month = (date.getUTCMonth() + 1).toString(); month = month.length == 1 ? month = "0" + month : month;
+		let day = date.getUTCDate().toString(); day = day.length == 1 ? day = "0" + day : day;
+		return `${date.getUTCFullYear()}-${month}-${day}	https://zvava.org/media/${a.page}.html	${a.title}`;
+	});
+
+	fs.writeFile("out/feed.ass", assEntries.join("\n"), () =>
+		console.log("\x1b[32m-->\x1b[0m generated feed.ass"));
 }
 
 // parse and return a finished page
