@@ -1,7 +1,7 @@
 type | text
 date | Wed, 22 Dec 2021 02:23:00 GMT
 
-# Neuron Simulation Theory (draft -1)
+# Neuron Simulation Theory
 
 i have had this thought floating around my head for a bit but i have never gotten to writing it out, so i will try to write out a basic premise about what i can best, most simplistically describe as "neuron simulation theory". the premise is thus;
 

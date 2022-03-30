@@ -50,10 +50,11 @@ function fetchArticles() {
 
 		_articles
 			.map(a => a.substring(0, a.length - 3)) // remove .md
-			.forEach(a => fs.readFile("articles/" + a + ".md", "utf8", (err, data) =>
+			.forEach(a => fs.readFile("articles/" + a + ".md", "utf8", (err, _data) =>
 		{
 			if (err)
 				return console.error(err);
+			let data = _data.replace(/\r\n/gm, "\n");
 
 			let metadata = { page: a };
 
