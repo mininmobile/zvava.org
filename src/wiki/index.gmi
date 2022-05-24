@@ -1,0 +1,11 @@
+# notes
+=> /images/t/wikinotes.png thumbnail
+```
+created  2021/07/05
+modified 2021/07/29
+```
+
+welcome to the "wiki"! here you can find some notes that fit the wiki format better then the alternative blog format. here are some links you can follow:
+
+=> /wiki/favorites.xyz my favorite things
+=> /wiki/quotes.xyz quotes

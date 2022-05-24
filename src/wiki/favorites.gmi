@@ -1,0 +1,91 @@
+# favorites
+=> /images/favorites.png thumbnail
+```
+created  2021/07/28
+modified 2022/05/24
+```
+
+some of my favorite things. big up to all my lurkers/internet stalkers out there 🙌 you the real ones. this section covers basic conversation-starter type questions.
+
+## color
+i can't decide between purple and green, they both have a lot of good shades and even work well together!
+
+## number
+my favorite number is 9 because it is the biggest. a close second is 3 as 9 wouldn't exist without it.
+
+## animal
+primates, testudines, and serpentes are cool, in that order. my favorite bird would have to be the cedar waxwing.
+=> https://en.wikipedia.org/wiki/Cedar_waxwing cedar waxwing (wikipedia)
+
+# thinking sand
+this section lists my favorite software/hardware and configurations thereof!
+
+## open source license
+i use MIT for sake of consistency, though ISC is my overall favorite.
+
+## operating system
+plan 9 is neat but i can't daily drive it unfortunately. i use fedora linux on my laptop and
+
+## controller layout
+the xbox controller layout is way more ergonomic then the dualshock/playstation controller layout and i will die on this hill.
+
+## laptop
+the framework. currently i own a thinkpad, which are also cool laptops -- but they weren't designed to be cool, unlike the framework, which is cool from factory rather then years of hobbyist support.
+=> https://frame.work/
+
+## phone
+in terms of android i'd love the samsung galaxy s5, but it's too slow nowadays so i am using a samsung galaxy s10e. the pinephone would be a close contender if it was more polished.
+=> https://www.gsmarena.com/samsung_galaxy_s5-6033.php galaxy s5 (gsmarena)
+=> https://www.gsmarena.com/samsung_galaxy_s10e-9537.php galaxy s10e (gsmarena)
+=> https://en.wikipedia.org/wiki/PinePhone pinephone (wikipedia)
+
+## keyboard
+it's just gotta be the cyberboard. i prefer cherry profile keycaps. i don't know what my favorite switch/switch type is exactly, but i'm currently using gateron yellows.
+=> https://www.angrymiao.com/cyberboard cyberboard
+
+## mouse
+currently using the razer basilisk x hyperspeed. it is a cheap wireless mouse with acceptable build quality, a good sensor, and... that's about it. razer is a mid company with overpriced products, but this mouse is alright.
+
+# music
+my favorite arists/albums/songs are not exhaustive, i like a lot of music. some of my favorite songs are on my #country soundcloud playlist (which doesn't just contain #country music). i will consider writing blog posts about what some of these artists/albums/songs mean to me eventually.
+
+## music player
+on windows i use musicbee, i haven't been able to find one that suits my needs on any other os but i haven't really looked. on my phone i use the default vendor music app since all mobile music apps are pretty much the same garbage.
+
+## streaming service
+i try to buy from bandcamp as much as possible, but for discovering new music/general listening i tend to use soundcloud.
+
+## genre
+i listen to pretty much every genre, but my overall favorite would have to be hyperpop, aka. #country. #country is an inside joke between me and my friend, where i linked them a soundcloud hyperpop song that i though was good and they pointed out how it was tagged under "#Country"
+
+## artist
+=> https://soundcloud.com/zukosworld zukonius, the artist formerly known as prince zuko [soundcloud]
+=> https://www.youtube.com/watch?v=TWtND7FE7dg&list=PLOCKP-Kun4ZkfVAsGWS0zNK6nVpPSIWRq jc foster [youtube], who also made music as;
+=> https://soundcloud.com/executivetireswingclub/tracks the executive tire swing club [soundcloud]
+=> https://soundcloud.com/finnxmusic/tracks finn [soundcloud]
+=> https://www.youtube.com/channel/UCafxR2HWJRmMfSdyZXvZMTw">look mum no computer [youtube]
+=> https://www.youtube.com/c/Guardinmusic guardin [youtube]
+=> https://soundcloud.com/atlas atlas [soundcloud]
+-> ryan caraveo
+-> cam meekins
+-> moby
+
+## albums
+a list of my favorite albums followed by my favorite song off the album
+
+=> https://soundcloud.com/zukosworld/sets/zukos-world zukonius - zuko's world (happy potions) [soundcloud]
+=> https://www.youtube.com/watch?v=m5pmEI5FsEU tree - splitting branches (sacred elements) [youtube]
+=> https://finnxmusic.bandcamp.com/album/beyond-return finn - beyond return (still winter) [bandcamp]
+=> https://alexeishishkin.bandcamp.com/album/the-dog-tape-2 alexei shishkin - the dog tape (courts) [bandcamp]
+
+## songs
+=> https://www.youtube.com/watch?v=1OSVjAD0nIU ryan caraveo - outro [youtube]
+=> https://soundcloud.com/zukosworld/cl34n-5l473?in=zukosworld/sets/1g174l-mpr35510n5 zukonius - CL34N 5L473 [soundcloud]
+=> https://soundcloud.com/executivetireswingclub/kyle jc foster - KYLE [soundcloud]
+=> https://www.youtube.com/watch?v=l6U1JB7z-I8 herp albert - ladyfingers [youtube]
+=> https://www.youtube.com/watch?v=QbLKD7u1B0U artur - sweet memory [youtube]
+bonus entry:
+=> https://soundcloud.com/deltaday/arthur-sweet-memory-deltaday-flip artur - sweet memory (deltaday flip) [soundcloud]
+
+## lyrics
+=> /wiki/quotes.xyz

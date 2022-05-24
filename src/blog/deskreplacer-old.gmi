@@ -1,0 +1,19 @@
+# desktop replacer
+=> /images/t/desktopreplacer.png thumbnail
+```
+2015/04/25 software, text
+```
+
+deskreplacer/desktop replacer was a utility i made with pika software builder[1] with the purpose of replacing the default windows desktop with an idiot proof and simplified version.
+
+the only archived version, 1.5, features a link to a google chrome shortcut and a link to a bundled version of fxweb[2] 2.2 on the desktop under the text "welcome". in the top right corner was a close button and in the bottom right was a theme selector button which let you choose a different wallpaper
+
+i remember that in earlier versions i instead bundled fxweb minimal which is still in the folder instead of full 2.2, the minimal version of fxweb was actually created specifically for deskreplacer
+
+screenshots included in download link
+
+=> https://mega.nz/#F!1RcwzIBK!VU1q_72fS4EhbgKC411gsw download
+
+## cites
+=> /blog/pika-software-builder.xyz 1. pika software builder
+=> /blog/fxweb-old.xyz 2. fxweb

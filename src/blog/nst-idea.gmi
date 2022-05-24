@@ -1,0 +1,14 @@
+# neuron simulation theory
+```
+2021/12/22 text
+```
+
+i have had this thought floating around my head for a bit but i have never gotten to writing it out, so i will try to write out a basic premise about what i can best, most simplistically describe as "neuron simulation theory". the premise is thus;
+
+if you gave a simulation the exact starting parameters of the big bang, you would assume it simulates everything up to present day humanity and beyond? if you did this and you got to humanity behaving exactly how it does now, it would mean you can read every thought any human ever had as you would have to simulate every neuron firing.
+
+this is paradoxical as if humanity ever got to the point where it could derive the "starting conditions of the universe" the simulation would eventually simulate itself. potentially this could be kin to the halting problem somehow?
+
+this would also have ties to chaos theory and such i presume
+
+is this even an original thought? does any of this make sense to anyone or even seem significant?

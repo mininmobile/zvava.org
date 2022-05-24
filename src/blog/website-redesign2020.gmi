@@ -1,0 +1,11 @@
+# website redesign
+=> /images/t/redesign.png thumbnail
+```
+2020/03/27 text
+```
+
+i have decided to rewrite my website after i felt like it was a bit too bloated (even though it was actually quite lightweight) and i thought it looked a little outdated already and i also wanted to add a blog to it as well.
+
+the new look of the website is supposed to look cool, detailed, and hack-ery, all while remaining lightweight and small and i feel like in that aspect i've achieved my goal. and it requires much less code to make responsive and work well on mobile this time around (the unminified css is now 4kb compared to 9.1kb originally!!)
+
+my blog is actually (as of writing) a single json file that is parsed by the user and boom is displayed as either a list of all of the posts or as a post depending on if the ?page get parameter is passed to media.html, i feel like this is alright for now cause i want it to be fun to update my blog and not a chore to compile static pages - which i am debating on doing if i can automate it well enough with my limited skillset :p

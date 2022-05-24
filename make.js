@@ -1,3 +1,5 @@
+// TODO: most things
+
 const fs = require("fs");
 /**
  * @type {Object.<string, string>}

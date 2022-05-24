@@ -1,0 +1,16 @@
+# scratch
+```
+2020/04/06 info
+```
+
+scratch is a functional, visual programming language that uses blocks to build projects, it is targetting primarily towards children.
+
+scratch was the first programming language i have ever learned. i started when i was signed up to the coderdojo[1] in athlone and since then i've become a complete nerd. thanks mom.
+
+really though, it has thought me the fundamentals on programming and from there on i learned batch[2] which thought me even more. somewhere inbetween there i learned html and css and thus javascript (plus some others) which brings me to where i am today!
+
+=> https://scratch.mit.edu
+
+## cites
+=> https://coderdojo.com/ 1. coderdojo
+=> /blog/batch.xyz 2. batch
