@@ -1,0 +1,17 @@
+# murpe update system
+```
+created  2020/03/31
+category software, info
+```
+
+murpe is an update system i had devised in march of 2017 to use in minin productions applications, from the archives i only have evidence of minin hub[1], zebra pad[2], and wts[3] utilizing murpe but there may be more.
+
+i forgot what it stood for soon after i named it but i can only assume it stands for Minin Update Release Platform Environment or something like that. it was hosted on a shady free hosting website
+
+the way it works is there would be php files with the names of the applications, eg. 'zebrapad.php', and then an application would pass a GET parameter[4] to the php file with the version, eg. '?ver=1.2'. then the page would report if you have the latest version of the program or not, and redirect to the download page for the program.
+
+## cites
+=> /wiki/minin-hub-old.xyz 1. minin hub
+=> /wiki/zebra-pad-old.xyz 2. zebra pad
+=> /wiki/wheres-the-storage-old.xyz 3. wts
+=> https://en.wikipedia.org/wiki/Query_string 4. GET parameter

@@ -1,0 +1,6 @@
+# glitch art no. 1
+=> /images/a/glitch_1.jpg image
+```
+created  2019/09/08
+category art
+```

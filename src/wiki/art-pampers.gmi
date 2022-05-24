@@ -1,0 +1,8 @@
+# pampers
+=> /images/a/pampers.jpg image
+```
+created  2021/03/10
+category art
+```
+
+=> https://toot.cafe/@zvava/105867060021895816

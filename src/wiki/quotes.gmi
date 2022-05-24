@@ -1,8 +1,9 @@
 # quotes
-=> /images/quotes.png thumbnail
+=> /images/t/quotes.png thumbnail
 ```
 created  2021/07/29
 modified 2022/05/24
+category text
 ```
 
 some of these are lyrics from songs, some are not, these are quotes i fuck with. these are ordered based mostly on length, the fun ones though float to the top before you get more serious however.

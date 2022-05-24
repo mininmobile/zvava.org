@@ -1,7 +1,0 @@
-# odko
-=> /images/t/odko.png thumbnail
-```
-2020/01/26 software
-```
-
-=> https://github.com/mininmobile/odko

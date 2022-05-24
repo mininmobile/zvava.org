@@ -1,0 +1,12 @@
+# pika software builder
+=> /images/t/pikasoftwarebuilder.png thumbnail
+```
+created  2020/03/31
+category info
+```
+
+pika software builder was a WYSIWYG editor for building windows applications. it was very easy to use and also heavily pirated which led to young me, not knowing any better, using it to create several apps probably illegally but learning much in the process - so thank you pika for existing i guess :P
+
+i assume pika went under as the website is offline and, as mentioned, the fact that there was rampant piracy.
+
+=> https://web.archive.org/web/20130523135808/http://www.pikaonline.com/psb http://www.pikaonline.com/psb (archive)
