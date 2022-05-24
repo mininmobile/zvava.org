@@ -27,9 +27,10 @@ fs.stat("out", (err, stats) => {
 		fs.mkdirSync("out/www/wiki");
 	}
 
-	console.log("\x1b[90m->\x1b[0m updating images...");
+	console.log("\x1b[90m->\x1b[0m updating resources...");
 	fs.cpSync("src/images/", "out/gemini/images/", { recursive: true });
 	fs.cpSync("src/images/", "out/www/images/", { recursive: true });
+	fs.cpSync("src/zvava.css", "out/www/zvava.css");
 
 	fetchTemplates();
 })
@@ -150,6 +151,11 @@ function generateGemini() {
 function generateHTML(files) {
 	console.log("\x1b[90m->\x1b[0m generating html site...");
 
+	// alternate gemini links to https on index
+	files["index"] = files["index"]
+		.replace("=> https://zvava.org/ view html version", "=> gemini://zvava.org/ view gemini version")
+		.replace("=> gemini://git.zvava.org git.zvava.org", "=> https://git.zvava.org git.zvava.org");
+
 	// write altered files
 	let _files = Object.keys(files);
 	_files.forEach((f, i) => {
@@ -170,7 +176,7 @@ function generateHTML(files) {
 
 			// parse remaining content
 			output += x.split(/\n/).map((l, i, a) => {
-					 // escape html tag opening brackets
+					// escape html tag opening brackets
 				l = l.replace(/</g, "&lt;")
 					// convert headers
 					.replace(/^### +(.*)$/, "<h3>$1</h3>")

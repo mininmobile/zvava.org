@@ -1,6 +1,6 @@
 # zvava.org
 => /images/sophia.png
-hey! my name is sophia (she/her) and i also go by zvava or névtelen online. you are currently looking at my online garden, where i keep a collection of thoughts and projects. it is available via both html and gemtext.
+hey! i'm sophia (she/her) and i also go by zvava or névtelen online. you are currently looking at my online garden, where i keep a collection of thoughts and projects. it is available via both html and gemtext.
 
 # navigation
 => https://zvava.org/ view html version

@@ -2,6 +2,6 @@
 
 # wiki
 => /images/t/wiki.png thumbnail
-a collection of notes and writings i have made over the years.
+a collection of thoughts and projects i have made over the years.
 
 {wiki_all}
