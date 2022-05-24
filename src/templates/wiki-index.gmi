@@ -1,0 +1,9 @@
+=> / go home...
+=> /blog/ go to blog...
+
+# wiki
+=> /images/t/wikinotes.png thumbnail
+
+a collection of writings which i update somewhat regularily, once i am finished with something here it gets moved to the blog.
+
+{wiki_list}

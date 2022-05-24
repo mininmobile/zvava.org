@@ -1,0 +1,9 @@
+=> / go home...
+=> /wiki/ go to wiki...
+
+# blog
+=> /images/t/blog.png thumbnail
+
+a collection of writings i have made over the years, if you want to look at something which is currently in progress i suggest checking out the wiki instead.
+
+{blog_list}
