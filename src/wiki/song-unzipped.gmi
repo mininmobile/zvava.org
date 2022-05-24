@@ -1,5 +1,5 @@
 # unzipped
-=> /images/m/song_unzipped.jpg cover
+=> /images/m/unzipped.jpg cover
 ```
 created  2021/11/29
 category music

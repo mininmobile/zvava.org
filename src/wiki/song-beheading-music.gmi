@@ -1,5 +1,5 @@
 # beheading music
-=> /images/m/song_beheading_music.jpg cover
+=> /images/m/beheading_music.jpg cover
 ```
 created  2022/02/12
 category music

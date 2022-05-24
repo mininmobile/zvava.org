@@ -138,8 +138,88 @@ function generateGemini() {
 
 	function checkProgress(i) {
 		// update terminal readout
-		process.stdout.write(`\r\x1b[32m-->\x1b[0m written page ${i + 1}/${_files.length}`);
-		// if all articles have been generated
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m writing gemini page ${i + 1}/${_files.length}`);
+		// if all pages have been written
+		if (i == _files.length - 1) {
+			process.stdout.write("\n");
+			generateHTML(files);
+		}
+	}
+}
+
+function generateHTML(files) {
+	console.log("\x1b[90m->\x1b[0m generating html site...");
+
+	// write altered files
+	let _files = Object.keys(files);
+	_files.forEach((f, i) => {
+		// set title
+		let title = `/${f} @ zvava.org`;
+		if (f == "index") title = "zvava.org";
+		else if (f == "wiki/index") title = "/wiki/ @ zvava.org";
+		// fill out head template
+		let output = templates["head.html"].replace("{title}", title);
+
+		// split into variable for optimized access to .length
+		// also replace ambiguous links here bc where else?
+		let _c = files[f].replace(/\.xyz/g, ".html").split("```");
+		_c.forEach((x, i) => {
+			// if file contains a code block and you are currently in one
+			if (_c.length > 1 && i % 2 !== 0)
+				return output += x + "</pre>\n";
+
+			// parse remaining content
+			output += x.split(/\n/).map((l, i, a) => {
+					 // escape html tag opening brackets
+				l = l.replace(/</g, "&lt;")
+					// convert headers
+					.replace(/^### +(.*)$/, "<h3>$1</h3>")
+					.replace(/^## +(.*)$/, "<h2>$1</h2>")
+					.replace(/^# +(.*)$/, "<h1>$1</h1>")
+					// convert images
+					.replace(/^=> +([a-z0-9\-_\/:\.@]+)\.(png|jpg)$/i, '<img src="$1.$2">')
+					.replace(/^=> +([a-z0-9\-_\/:\.@]+)\.(png|jpg) +(.*)$/i, '<img src="$1.$2" alt="$3">')
+					// convert links
+					.replace(/^=> +([a-z0-9\-_\/:\.@]+)$/i, '<a href="$1">$1</a>')
+					.replace(/^=> +([a-z0-9\-_\/:\.@]+) +(.*)$/i, '<a href="$1">$2</a>')
+					// convert block quotes
+					.replace(/^> *(.*)$/, "<blockquote>$1</blockquote>")
+
+				// will this line be considered for its spacing?
+				if (!l.startsWith("<h") && !l.startsWith("<b") && l.length > 0) {
+					// fetch previous/next lines (default to empty string if not able to acquire)
+					let previousLine = (a[i - 1] || "");
+					let nextLine = (a[i + 1] || "");
+					// check if previous/next line is empty or contains a heading or blockquote
+					let pLineEmpty = previousLine.length == 0 || previousLine.startsWith("#") || previousLine.startsWith(">");
+					let nLineEmpty = nextLine.length == 0 || nextLine.startsWith("#") || nextLine.startsWith(">");
+
+					if (pLineEmpty && nLineEmpty)
+						l = "<p>" + l + "</p>";
+					else if (pLineEmpty && !nLineEmpty)
+						l = "<p>" + l + "<br>";
+					else if (!pLineEmpty && nLineEmpty)
+						l = l + "</p>";
+					else if (!pLineEmpty && !nLineEmpty)
+						l += "<br>";
+				}
+
+				return l;
+			}).filter(x => x.length > 0).join("\n") + "\n";
+
+			// if file contains a code block and you aren't at the end of file
+			if (_c.length > 1 && i != _c.length - 1)
+				output += "<pre>";
+		});
+
+		fs.writeFile("out/www/" + f + ".html", output + "</body>\n</html>\n", () =>
+			checkProgress(i));
+	});
+
+	function checkProgress(i) {
+		// update terminal readout
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m writing html page ${i + 1}/${_files.length}`);
+		// if all pages have been written
 		if (i == _files.length - 1) {
 			process.stdout.write("\n");
 			generateASS();

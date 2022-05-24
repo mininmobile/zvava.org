@@ -1,0 +1,45 @@
+# test
+=> /images/t/wiki.png thumbnail
+```
+created  2022/06/09
+category text
+```
+
+this is a test of <html> parsing with all gemtext features!!
+this should be a new line
+this should be the last line
+
+this should be a new paragraph
+
+<h1>this should not resolve into something</h1>
+
+# big header
+big header content
+
+> this is a block quote
+
+=> https://example.org/
+=> https://google.com/ this is a named link
+
+## medium header
+medium header content
+
+### small header
+small header content
+
+## other header
+
+lol
+> casual
+> multi-line
+> blockquote
+
+
+### other other header
+
+> quote right above the text
+troll lolo lolololol
+> quote right below image
+
+## cites
+=> /wiki/batch.xyz 1. batch
