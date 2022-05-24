@@ -1,0 +1,19 @@
+# rewriting groinfrick
+=> /images/t/groinfrick.png thumbnail
+```
+created  2020/03/25
+category software, text
+```
+
+groinfrick was a project i started back in december of 2017, and i had either finished it then or on the june of 2018. either way back then i was much less experienced in javascript and i would say i had a much worse coding style but honestly it wasn't that bad (for my standards at least, lol)
+
+the intention of the project was (originally) to write an extended version of brainfuck[1], i didn't think it was that important to be backwards compatable or something so i wrote the original eight commands in a way that breaks compatability - i also didn't fully grasp ascii at that time and i wrote my own "type systen" for groinfrick (needless to say this also broke backwards compatability)
+
+i decided to rewrite groinfrick on the march of 2020 with my better understanding of javascripts and other fundamental concepts. firstly, i rewrote the specs to implement the core brainfuck components first and add a set of extended components (that matched my old specification) after. once i finally got the brainfuck compatability to work it was a cakewalk to add the remaining extended functions, some of which exist for debugging and i have already added during the first phase...
+
+honestly, im not that good of a brainfuck programmer so i struggled to write any examples by myself for groinfrick, and really i can't see that much of a use for the extra loops and return functions i added but hey - it's all about the journey, not the destination, and boy am i proud of this project.
+
+=> https://github.com/mininmobile/groinfrick
+
+## cites
+=> https://esolangs.org/wiki/Brainfuck 1. brainfuck

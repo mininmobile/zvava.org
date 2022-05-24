@@ -1,0 +1,7 @@
+=> / go home...
+
+# wiki
+=> /images/t/wiki.png thumbnail
+a collection of thoughts and projects i have made over the years.
+
+{wiki_all}

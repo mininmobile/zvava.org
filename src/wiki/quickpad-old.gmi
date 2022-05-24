@@ -1,0 +1,18 @@
+# quickpad
+=> /images/t/quickpad.png thumbnail
+```
+created  2015/12/15
+category software, text
+```
+
+quickpad is a notepad application made in pika software builder[1] as a precursor to zebra pad[2]. it was an application where you could quickly jot down notes and save them quickly and easily.
+
+but really, it was supposed to be a full notepad application until i ran into the limitations of pika and had to compromise and then i acted like that was how i meant it to be all along.
+
+it featured one whole textbox and one dropdown in the menu bar which was 'File', the only option it contained was 'Save' which would create/overwrite a file on your desktop called 'quickpaddocument.txt' with the contents of the textbox.
+
+=> https://mega.nz/#F!hUVUWYSK!znM0R0FBViVvvCTCNgtAwQ download
+
+## cites
+=> /wiki/pika-software-builder.xyz 1. pika software builder
+=> /wiki/zebra-pad-old.xyz 2. zebra pad

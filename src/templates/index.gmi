@@ -1,0 +1,21 @@
+# zvava.org
+=> /images/sophia.png
+hey! i'm sophia (she/her) and i also go by zvava or névtelen online. you are currently looking at my online garden, where i keep a collection of thoughts and projects. it is available via both html and gemtext.
+
+# navigation
+=> https://zvava.org/ view html version
+=> feed.ass
+=> gemini://git.zvava.org git.zvava.org (coming soon™!)
+=> /wiki/
+{wiki_recent}
+
+# contact
+```
+email: zvava (at) disroot (dot) org
+```
+=> https://merveilles.town/@zvava mastodon
+=> https://github.com/zvava github
+=> https://discord.gg/bbyMzhC discord server
+=> https://www.youtube.com/channel/UCIjCvWOcwfMdByDEJSJz6KQ youtube
+=> https://soundcloud.com/pasinazera soundcloud
+=> https://instagram.com/pasinazera instagram

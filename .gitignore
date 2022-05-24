@@ -1,11 +1,7 @@
 # ignore rendered output
-out/media/*.html
-!out/media/index.html
-out/index.html
-out/media.html
-out/notes/*.html
-out/feed.ass
+out/
 
-# ignore publish script stuff
-node_modules/
-.env
+# ignore debug gemini server
+.certificates
+agate.exe
+agate/

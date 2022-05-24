@@ -1,0 +1,10 @@
+# break out
+=> /images/m/break_out.jpg cover
+```
+created  2021/12/21
+category music
+```
+
+flee
+
+=> https://soundcloud.com/pasinazera/break-out
