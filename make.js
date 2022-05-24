@@ -66,7 +66,7 @@ function fetchBlog() {
 			// extract metadata
 			let metaStart = data.indexOf("```") + 4;
 			let metaEnd = data.indexOf("```", metaStart) - 1;
-			let meta = data.substring(metaStart, metaEnd).split(" ");
+			let meta = data.substring(metaStart, metaEnd).split(/ +|\n+/);
 			// extract date (first element of metadata)
 			metadata["date"] = meta.shift();
 			// extract categories (the remaining elements, hide commas)
@@ -80,8 +80,7 @@ function fetchBlog() {
 				// sort by date
 				blog = Object.fromEntries(Object.entries(blog).sort(([,a],[,b]) => new Date(b.date) - new Date(a.date)));
 				// generate
-				console.log(blog);
-				//fetchWiki();
+				fetchWiki();
 			}
 		}));
 	});
@@ -91,53 +90,36 @@ function fetchBlog() {
 function fetchWiki() {
 	console.log("\x1b[90m->\x1b[0m parsing notes...");
 
-	fs.readdir("notes", (error, _notes) => {
-		if (error)
-			return console.error(error);
+	fs.readdir("src/wiki", (error, _wiki) => {
+		if (error) return console.error(error);
 
 		let x = 0;
-
-		_notes
-			.map(a => a.substring(0, a.length - 3)) // remove .md
-			.forEach(a => fs.readFile("notes/" + a + ".md", "utf8", (err, _data) =>
-		{
-			if (err)
-				return console.error(err);
+		_wiki.map(a => a.substring(0, a.length - 4)) // remove .gmi
+			.forEach(a => fs.readFile("src/wiki/" + a + ".gmi", "utf8", (err, _data) => {
+			if (err) return console.error(err);
 			let data = _data.replace(/\r\n/gm, "\n");
 
-			let metadata = { page: a };
+			let metadata = { page: a, content: data };
+			// extract title
+			metadata["title"] = data.substring(2, data.indexOf("\n"));
+			// extract metadata
+			let metaStart = data.indexOf("```") + 4;
+			let metaEnd = data.indexOf("```", metaStart) - 1;
+			let meta = data.substring(metaStart, metaEnd).split(/ +|\n+/);
+			// extract date (first element of metadata)
+			metadata["created"] = meta[meta.indexOf("created") + 1];
+			metadata["modified"] = meta.indexOf("modified") === -1 ? metadata["created"] :  meta[meta.indexOf("modified") + 1];
 
-			{ // extract meta
-				let mend = data.indexOf("\n\n#");
-				let meta = data.substring(0, mend)
-					.split("\n")
-					.map(x => x.split(" | "));
+			wiki[a] = metadata;
 
-				meta.forEach(property =>
-					metadata[property[0]] = property[1]);
-			}
-
-			{ // extract title/text
-				let start = data.indexOf("\n\n#") + 4;
-				let end = data.indexOf("\n", start);
-
-				metadata.title = data.substring(start, end);
-				metadata.content = data.substring(end + 2, data.length - 1).split("\n\n");
-			}
-
-			// extract dates
-			if (metadata.modified == undefined)
-				metadata.modified = metadata.created;
-
-			notes[a] = metadata;
-
-			// make sure you have all the notes collected before proceeding
+			// make sure you have all the pages collected before proceeding
 			x++
-			if (x == _notes.length) {
+			if (x == _wiki.length) {
 				// sort by modified
-				notes = Object.fromEntries(Object.entries(notes).sort(([,a],[,b]) => new Date(b.modified) - new Date(a.modified)));
+				wiki = Object.fromEntries(Object.entries(wiki).sort(([,a],[,b]) => new Date(b.modified) - new Date(a.modified)));
 				// generate
-				generateArticles();
+				console.log(wiki);
+				//generateArticles();
 			}
 		}));
 	});
