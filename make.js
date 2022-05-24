@@ -73,7 +73,7 @@ function fetchWiki() {
 			// extract metadata
 			let metaStart = data.indexOf("```") + 4;
 			let metaEnd = data.indexOf("```", metaStart) - 1;
-			data.substring(metaStart, metaEnd).split(/\n+/).map(x => x.split(/ +/))
+			data.substring(metaStart, metaEnd).split(/\n+/).map(x => x.split(/\s+/))
 			.forEach((x) => {
 				let property = x.shift();
 				metadata[property] = property == "category" ?
@@ -179,17 +179,17 @@ function generateHTML(files) {
 					// escape html tag opening brackets
 				l = l.replace(/</g, "&lt;")
 					// convert headers
-					.replace(/^### +(.*)$/, "<h3>$1</h3>")
-					.replace(/^## +(.*)$/, "<h2>$1</h2>")
-					.replace(/^# +(.*)$/, "<h1>$1</h1>")
+					.replace(/^###\s+(.*)$/, "<h3>$1</h3>")
+					.replace(/^##\s+(.*)$/, "<h2>$1</h2>")
+					.replace(/^#\s+(.*)$/, "<h1>$1</h1>")
 					// convert images
-					.replace(/^=> +([a-z0-9\-_\/:\.@]+)\.(png|jpg)$/i, '<img src="$1.$2">')
-					.replace(/^=> +([a-z0-9\-_\/:\.@]+)\.(png|jpg) +(.*)$/i, '<img src="$1.$2" alt="$3">')
+					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)$/i, '<img src="$1.$2">')
+					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)\s+(.*)$/i, '<img src="$1.$2" alt="$3">')
 					// convert links
-					.replace(/^=> +([a-z0-9\-_\/:\.@]+)$/i, '<a href="$1">$1</a>')
-					.replace(/^=> +([a-z0-9\-_\/:\.@]+) +(.*)$/i, '<a href="$1">$2</a>')
+					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)$/i, '<a href="$1">$1</a>')
+					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\s+(.*)$/i, '<a href="$1">$2</a>')
 					// convert block quotes
-					.replace(/^> *(.*)$/, "<blockquote>$1</blockquote>")
+					.replace(/^>\s*(.*)$/, "<blockquote>$1</blockquote>")
 
 				// will this line be considered for its spacing?
 				if (!l.startsWith("<h") && !l.startsWith("<b") && l.length > 0) {
