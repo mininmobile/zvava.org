@@ -106,9 +106,9 @@ function fetchWiki() {
 			let metaStart = data.indexOf("```") + 4;
 			let metaEnd = data.indexOf("```", metaStart) - 1;
 			let meta = data.substring(metaStart, metaEnd).split(/ +|\n+/);
-			// extract date (first element of metadata)
-			metadata["created"] = meta[meta.indexOf("created") + 1];
-			metadata["modified"] = meta.indexOf("modified") === -1 ? metadata["created"] :  meta[meta.indexOf("modified") + 1];
+			// extract dates
+			metadata["created"] = meta[1];
+			metadata["modified"] = meta[3] || metadata["created"];
 
 			wiki[a] = metadata;
 
