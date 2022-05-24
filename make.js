@@ -1,98 +1,94 @@
-// TODO: most things
-
 const fs = require("fs");
-/**
- * @type {Object.<string, string>}
- */
-let templates = {};
-let articles = {};
-let notes = {};
 
-// asyncronous execution structure
-// inside the functions the code is written to by synchronous
-//
 // this function
-//   -> fetchArticles
-//   -> fetchNotes
-//   -> generateArticles
-//   -> generateNotes
-//   -> generatePreviews
+//   -> fetch templates
+//   -> fetchBlog
+//   -> fetchWiki
+//   -> generateGemini
+//     -> create cache of gemini templates
+//     -> write gemini output files
+//   -> generateHTML
+//     -> translate all gemini files into html
+
+/** @type {Object.<string, string>} */
+let templates = {};
+/** @type {Object.<string, string>} */
+let cache = {};
+let blog = {};
+let wiki = {};
+
+fs.stat("out", (err, stats) => {
+	if (err) {
+		console.log("\x1b[90m->\x1b[0m creating output directories...");
+		fs.mkdirSync("out");
+		fs.mkdirSync("out/gemini");
+		fs.mkdirSync("out/www");
+	}
+
+	fetchTemplates();
+})
 
 // read all of the templates
-fs.readdir("src", (error, temps) => {
-	console.log("\x1b[90m->\x1b[0m gathering templates...");
-	if (error)
-		return console.error(error);
-
-	let x = 0;
-
-	temps.forEach(a => fs.readFile("src/" + a, "utf8", (err, data) => {
-		if (err)
-			throw console.error(err);
-
-		templates[a] = data;
-		//templates[a.substring(9, a.length - 5)] = data;
-
-		// make sure you have all the templates collected before proceeding
-		x++;
-		if (x == temps.length)
-			fetchArticles();
-	}));
-});
-
-// read and parse all of the articles
-function fetchArticles() {
-	console.log("\x1b[90m->\x1b[0m parsing articles...");
-
-	fs.readdir("articles", (error, _articles) => {
-		if (error)
-			return console.error(error);
+function fetchTemplates() {
+	fs.readdir("src/templates", (error, temps) => {
+		console.log("\x1b[90m->\x1b[0m gathering templates...");
+		if (error) return console.error(error);
 
 		let x = 0;
+		temps.forEach(a => fs.readFile("src/templates/" + a, "utf8", (err, data) => {
+			if (err) throw console.error(err);
 
-		_articles
-			.map(a => a.substring(0, a.length - 3)) // remove .md
-			.forEach(a => fs.readFile("articles/" + a + ".md", "utf8", (err, _data) =>
-		{
-			if (err)
-				return console.error(err);
+			templates[a] = data;
+			// make sure you have all the templates collected before proceeding
+			x++;
+			if (x == temps.length)
+				fetchBlog();
+		}));
+	});
+}
+
+// read and parse all of the articles
+function fetchBlog() {
+	console.log("\x1b[90m->\x1b[0m parsing articles...");
+
+	fs.readdir("src/blog", (error, _blog) => {
+		if (error) return console.error(error);
+
+		let x = 0;
+		_blog.map(a => a.substring(0, a.length - 4)) // remove .gmi
+			.forEach(a => fs.readFile("src/blog/" + a + ".gmi", "utf8", (err, _data) => {
+			if (err) return console.error(err);
 			let data = _data.replace(/\r\n/gm, "\n");
 
-			let metadata = { page: a };
+			let metadata = { page: a, content: data };
+			// extract title
+			metadata["title"] = data.substring(2, data.indexOf("\n"));
+			// extract metadata
+			let metaStart = data.indexOf("```") + 4;
+			let metaEnd = data.indexOf("```", metaStart) - 1;
+			let meta = data.substring(metaStart, metaEnd).split(" ");
+			// extract date (first element of metadata)
+			metadata["date"] = meta.shift();
+			// extract categories (the remaining elements, hide commas)
+			metadata["category"] = meta.map(x => x.replace(",", ""));
 
-			{ // extract meta
-				let mend = data.indexOf("\n\n#");
-				let meta = data.substring(0, mend)
-					.split("\n")
-					.map(x => x.split(" | "));
-
-				meta.forEach(property => metadata[property[0]] = property[1]);
-			}
-
-			{ // extract title/text
-				let start = data.indexOf("\n\n#") + 4;
-				let end = data.indexOf("\n", start);
-
-				metadata.title = data.substring(start, end);
-				metadata.content = data.substring(end + 2, data.length - 1).split("\n\n");
-			}
-
-			articles[a] = metadata;
+			blog[a] = metadata;
 
 			// make sure you have all the articles collected before proceeding
 			x++
-			if (x == _articles.length) {
+			if (x == _blog.length) {
 				// sort by date
-				articles = Object.fromEntries(Object.entries(articles).sort(([,a],[,b]) => new Date(b.date) - new Date(a.date)));
+				blog = Object.fromEntries(Object.entries(blog).sort(([,a],[,b]) => new Date(b.date) - new Date(a.date)));
 				// generate
-				fetchNotes();
+				console.log(blog);
+				//fetchWiki();
 			}
 		}));
 	});
 }
 
 // read and parse all of the notes
-function fetchNotes() {
+function fetchWiki() {
 	console.log("\x1b[90m->\x1b[0m parsing notes...");
 
 	fs.readdir("notes", (error, _notes) => {

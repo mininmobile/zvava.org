@@ -3,7 +3,7 @@
 hey! my name is sophia (she/her) and you are looking at my website, where i keep a collection of thoughts and projects. it is available via both http(s) and gemini if you're into that.
 
 # navigation
-{website_link_alt}
+=> https://zvava.org/ view http version!
 => /blog/
 {blog_recent}
 => /wiki/
