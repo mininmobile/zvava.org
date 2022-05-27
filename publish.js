@@ -1,8 +1,21 @@
-// 0. if hostname !== "BABA" and git is dirty, then exit and tell me to commit changes
-// A. if not running on hostname "BABA", execute `ssh zvava@zvava.org -c node ~/zvava.org/publish` then exit
-// B. if running on hostname "BABA"
-// 1. cd ~/zvava.org
-// 2. git pull
-// 3. node make
-// 4. cp /out/www/* /var/www/*
-// 5. cp /out/gemini/* /var/gemini/content/*
+const os = require("os");
+const { exec } = require("child_process");
+
+if (os.hostname().startsWith("racknerd")) {
+	exec("cd ~/zvava.org; git pull", (error, stdout, stderr) => {
+		if (error)
+			return console.error(error);
+		else if (stdout.includes("Already up to date."))
+			return console.log("\x1b[90m->\x1b[0m already up to date");
+		else {
+			const make = require("./make");
+			make((fs) => {
+				console.log("\x1b[90m->\x1b[0m copying output to webserver dirs...");
+				//fs.cpSync("out/gemini/", "/var/gemini/content/", { recursive: true });
+				//fs.cpSync("out/www/", "/var/www/", { recursive: true });
+			});
+		}
+	});
+} else {
+	exec("ssh zvava@zvava.org 'node ~/zvava.org/publish'");
+}
