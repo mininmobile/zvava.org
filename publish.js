@@ -2,7 +2,8 @@ const os = require("os");
 const { exec } = require("child_process");
 
 if (os.hostname().startsWith("racknerd")) {
-	exec("cd /home/zvava/zvava.org ; git pull", (error, stdout, stderr) => {
+	process.chdir("/home/zvava/zvava.org");
+	exec("git pull", (error, stdout, stderr) => {
 		if (error)
 			return console.error(error);
 		//else if (stdout.includes("Already up to date."))
@@ -17,5 +18,5 @@ if (os.hostname().startsWith("racknerd")) {
 		}
 	});
 } else {
-	exec("ssh -t zvava@zvava.org 'node /home/zvava/zvava.org/publish'");
+	exec("ssh zvava@zvava.org 'node /home/zvava/zvava.org/publish'");
 }
