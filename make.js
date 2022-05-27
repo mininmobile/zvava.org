@@ -48,7 +48,7 @@ function fetchTemplates() {
 		temps.forEach(a => fs.readFile("src/templates/" + a, "utf8", (err, data) => {
 			if (err) throw console.error(err);
 
-			templates[a] = data;
+			templates[a] = data.replace(/\r/g, ""); // I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE
 			// make sure you have all the templates collected before proceeding
 			x++;
 			if (x == temps.length)
@@ -68,7 +68,7 @@ function fetchWiki() {
 		_wiki.map(a => a.substring(0, a.length - 4)) // remove .gmi
 		.forEach(a => fs.readFile("src/wiki/" + a + ".gmi", "utf8", (err, _data) => {
 			if (err) return console.error(err);
-			let data = _data.replace(/\r\n/gm, "\n");
+			let data = _data.replace(/\r/g, ""); // I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE
 
 			let metadata = { page: a, content: data };
 			// extract title
@@ -85,6 +85,9 @@ function fetchWiki() {
 			// ensure there is a modified field
 			if (!metadata["modified"])
 				metadata["modified"] = metadata["created"];
+			// add emojis to categories!!
+			if (metadata["category"])
+				metadata["category"] = metadata["category"].map(x => relevantEmoji(x) + " " + x);
 
 			pages[a] = metadata;
 
@@ -110,7 +113,7 @@ function generateGemini() {
 	// generate index
 	let _wikiRecent = _pages.slice(0, 5).map(p => {
 		let page = pages[p];
-		return `=> /wiki/${p}.xyz /wiki/${page.title}` + "\n```   " + `[${page.modified}] [${page.category[0]}]` + "\n```";
+		return `=> /wiki/${p}.xyz /wiki/${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category[0]}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
@@ -157,8 +160,7 @@ function generateHTML(files) {
 
 	// alternate gemini links to https on index
 	files["index"] = files["index"]
-		.replace("=> https://zvava.org/ view html version", "=> gemini://zvava.org/ view gemini version")
-		.replace("=> gemini://git.zvava.org git.zvava.org", "=> https://git.zvava.org git.zvava.org");
+		.replace("=> https://zvava.org 🕸️ view html version", "=> gemini://zvava.org 🚀 view gemini version")
 
 	// write altered files
 	let _files = Object.keys(files);
@@ -187,16 +189,16 @@ function generateHTML(files) {
 					.replace(/## +(.*)/, "<h2>$1</h2>")
 					.replace(/# +(.*)/, "<h1>$1</h1>")
 					// convert images
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)/i, '<img src="$1.$2">')
+					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
+					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)\.(png|jpg)/i, '<img src="$1.$2">')
 					// convert links
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+) +(.*)/i, '<a href="$1">$2</a>')
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)/i, '<a href="$1">$1</a>')
+					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+) +(.*)/i, '<a href="$1">$2</a>')
+					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)/i, '<a href="$1">$1</a>')
 					// convert block quotes
 					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
 
 				// will this line be considered for its spacing?
-				if (!l.startsWith("<h") && !l.startsWith("<b") && l.length > 0) {
+				if (!l.startsWith("<h") && !l.startsWith("<b") && l.replace(/\n/g, "").length > 0) {
 					// fetch previous/next lines (default to empty string if not able to acquire)
 					let previousLine = (a[i - 1] || "");
 					let nextLine = (a[i + 1] || "");
@@ -256,5 +258,18 @@ function generateASS() {
 			console.log("\r\x1b[32m-->\x1b[0m finished make script");
 			publishCallback(fs);
 		}
+	}
+}
+
+function relevantEmoji(x) {
+	switch (x) {
+		case "text": return "📝";
+		case "info": return "🧠";
+		case "event": return "🍾";
+		case "art": return "🎨";
+		case "music": return "🎵";
+		case "video": return "📺";
+		case "hardware": return "🔧";
+		case "software": return "💾";
 	}
 }

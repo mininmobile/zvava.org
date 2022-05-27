@@ -38,11 +38,13 @@ pre {
 
 pre, blockquote {
 	color: #bbbbbb;
+	background: #000000;
 }
 
 a {
 	text-decoration: none;
 	color: #c27ed5;
+	background: #000000;
 	line-height: 1.7rem;
 	font-family: Ubuntu Mono, monospace;
 }
