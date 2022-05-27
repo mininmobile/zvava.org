@@ -6,8 +6,8 @@ if (os.hostname().startsWith("racknerd")) {
 	exec("git pull", (error, stdout, stderr) => {
 		if (error)
 			return console.error(error);
-		//else if (stdout.includes("Already up to date."))
-		//	return console.log("\x1b[90m->\x1b[0m already up to date");
+		else if (stdout.includes("Already up to date."))
+			return console.log("\x1b[90m->\x1b[0m already up to date");
 		else {
 			const make = require("/home/zvava/zvava.org/make");
 			make((fs) => {
@@ -18,5 +18,5 @@ if (os.hostname().startsWith("racknerd")) {
 		}
 	});
 } else {
-	exec("ssh zvava@zvava.org 'node /home/zvava/zvava.org/publish'");
+	exec("ssh -t zvava@zvava.org 'node /home/zvava/zvava.org/publish'");
 }

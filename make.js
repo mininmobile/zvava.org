@@ -108,16 +108,16 @@ function generateGemini() {
 	let files = {};
 
 	// generate index
-	let _wikiRecent = _pages.slice(0, 7).map(p => {
+	let _wikiRecent = _pages.slice(0, 5).map(p => {
 		let page = pages[p];
-		return `=> /wiki/${p}.xyz [${page.modified}] ${page.title} [${page.category[0]}]`;
+		return `=> /wiki/${p}.xyz /wiki/${page.title}` + "\n```   " + `[${page.modified}] [${page.category[0]}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
 	// generate wiki index
 	let _wikiAll = _pages.map(p => {
 		let page = pages[p];
-		return `=> /wiki/${p}.xyz [${page.modified}] ${page.title} [${page.category.join(", ")}]`;
+		return `=> /wiki/${p}.xyz ${page.title}` + "\n```   " + `[${page.modified}] [${page.category.join(", ")}]` + "\n```";
 	}).join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
@@ -187,11 +187,11 @@ function generateHTML(files) {
 					.replace(/## +(.*)/, "<h2>$1</h2>")
 					.replace(/# +(.*)/, "<h1>$1</h1>")
 					// convert images
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)/i, '<img src="$1.$2">')
 					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)/i, '<img src="$1.$2">')
 					// convert links
-					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)/i, '<a href="$1">$1</a>')
 					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+) +(.*)/i, '<a href="$1">$2</a>')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)/i, '<a href="$1">$1</a>')
 					// convert block quotes
 					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
 

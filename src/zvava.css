@@ -15,25 +15,48 @@ body {
 	line-height: 1.5rem;
 }
 
+h1, h2, h3, p {
+	margin: 1rem 0;
+	background: #000000;
+}
+
+blockquote {
+	margin: 0 0 0 4ch;
+}
+
 img {
 	max-width: 60ch;
 }
 
-p, pre {
+p, pre, blockquote {
 	font-size: 1.1rem;
 }
 
-h1, h2, h3, p, img, pre {
-	margin: 1rem 0;
-	background: #000000;
+pre {
+	margin: -.5rem 0;
+}
+
+pre, blockquote {
+	color: #bbbbbb;
 }
 
 a {
 	text-decoration: none;
 	color: #c27ed5;
 	line-height: 1.7rem;
+	font-family: Ubuntu Mono, monospace;
 }
 
 a::before {
 	content: "=> ";
+}
+
+@media (orientation: portrait) {
+	p, pre, blockquote {
+		font-size: 1rem;
+	}
+
+	img {
+		max-width: 100%;
+	}
 }
