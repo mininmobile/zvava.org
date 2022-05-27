@@ -1,3 +1,6 @@
+let publishCallback = () => {}
+module.exports = (callback) => { publishCallback = callback }
+
 const fs = require("fs");
 
 // this function
@@ -133,15 +136,16 @@ function generateGemini() {
 			// replace ambiguous links
 			.replace(/\.xyz/g, ".gmi");
 
-		fs.writeFile("out/gemini/" + f + ".gmi", content, () =>
-			checkProgress(i));
+		fs.writeFile("out/gemini/" + f + ".gmi", content, checkProgress);
 	});
 
-	function checkProgress(i) {
+	let _i = 0;
+	function checkProgress() {
+		_i++;
 		// update terminal readout
-		process.stdout.write(`\r\x1b[32m-->\x1b[0m writing gemini page ${i + 1}/${_files.length}`);
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m wrote gemini page ${_i}/${_files.length}`);
 		// if all pages have been written
-		if (i == _files.length - 1) {
+		if (_i == _files.length) {
 			process.stdout.write("\n");
 			generateHTML(files);
 		}
@@ -179,17 +183,17 @@ function generateHTML(files) {
 					// escape html tag opening brackets
 				l = l.replace(/</g, "&lt;")
 					// convert headers
-					.replace(/^###\s+(.*)$/, "<h3>$1</h3>")
-					.replace(/^##\s+(.*)$/, "<h2>$1</h2>")
-					.replace(/^#\s+(.*)$/, "<h1>$1</h1>")
+					.replace(/### +(.*)/, "<h3>$1</h3>")
+					.replace(/## +(.*)/, "<h2>$1</h2>")
+					.replace(/# +(.*)/, "<h1>$1</h1>")
 					// convert images
-					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)$/i, '<img src="$1.$2">')
-					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)\s+(.*)$/i, '<img src="$1.$2" alt="$3">')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg)/i, '<img src="$1.$2">')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
 					// convert links
-					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)$/i, '<a href="$1">$1</a>')
-					.replace(/^=>\s+([a-z0-9\-_\/:\.@?&=]+)\s+(.*)$/i, '<a href="$1">$2</a>')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+)/i, '<a href="$1">$1</a>')
+					.replace(/=> +([a-z0-9\-_\/:\.@?&=]+) +(.*)/i, '<a href="$1">$2</a>')
 					// convert block quotes
-					.replace(/^>\s*(.*)$/, "<blockquote>$1</blockquote>")
+					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
 
 				// will this line be considered for its spacing?
 				if (!l.startsWith("<h") && !l.startsWith("<b") && l.length > 0) {
@@ -218,15 +222,16 @@ function generateHTML(files) {
 				output += "<pre>";
 		});
 
-		fs.writeFile("out/www/" + f + ".html", output + "</body>\n</html>\n", () =>
-			checkProgress(i));
+		fs.writeFile("out/www/" + f + ".html", output + "</body>\n</html>\n", checkProgress);
 	});
 
-	function checkProgress(i) {
+	let _i = 0;
+	function checkProgress() {
+		_i++;
 		// update terminal readout
-		process.stdout.write(`\r\x1b[32m-->\x1b[0m writing html page ${i + 1}/${_files.length}`);
+		process.stdout.write(`\r\x1b[32m-->\x1b[0m wrote html page ${_i}/${_files.length}`);
 		// if all pages have been written
-		if (i == _files.length - 1) {
+		if (_i == _files.length) {
 			process.stdout.write("\n");
 			generateASS();
 		}
@@ -241,8 +246,15 @@ function generateASS() {
 		return `${page.modified.replace(/\//g, "-")}	gemini://zvava.org/wiki/${page.page}.gmi	${page.title}`;
 	}).join("\n");
 
-	fs.writeFile("out/gemini/feed.ass", assEntries, () =>
-		console.log("\x1b[32m-->\x1b[0m generated gemini feed.ass"));
-	fs.writeFile("out/www/feed.ass", assEntries.replace(/gemini:\/\//g, "https://").replace(/\.gmi\t/g, ".html "), () =>
-		console.log("\x1b[32m-->\x1b[0m generated html feed.ass"));
+	fs.writeFile("out/gemini/feed.ass", assEntries, checkProgress);
+	fs.writeFile("out/www/feed.ass", assEntries.replace(/gemini:\/\//g, "https://").replace(/\.gmi\t/g, ".html "), checkProgress);
+
+	let _i = 0;
+	function checkProgress() {
+		_i++;
+		if (_i == 2) {
+			console.log("\r\x1b[32m-->\x1b[0m finished make script");
+			publishCallback(fs);
+		}
+	}
 }
