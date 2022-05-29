@@ -1,6 +1,9 @@
 # ignore rendered output
 out/
 
+# publish.bat ssh output
+sshlog.txt
+
 # ignore debug gemini server
 .certificates
 agate.exe

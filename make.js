@@ -1,6 +1,3 @@
-let publishCallback = () => {}
-module.exports = (callback) => { publishCallback = callback }
-
 const fs = require("fs");
 
 // this function
@@ -254,10 +251,8 @@ function generateASS() {
 	let _i = 0;
 	function checkProgress() {
 		_i++;
-		if (_i == 2) {
+		if (_i == 2)
 			console.log("\r\x1b[32m-->\x1b[0m finished make script");
-			publishCallback(fs);
-		}
 	}
 }
 
