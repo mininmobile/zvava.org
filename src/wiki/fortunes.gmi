@@ -1,0 +1,54 @@
+# cookie clicker fortunes
+```
+created  2022/05/29
+category info
+```
+
+in cookie clicker[1], there is a heavenly upgrade called "Fortune cookies". once unlocked, they will make random fortunes appear in the new ticker which, when clicked, unlock a special upgrade. fortunes 1 through 18 are each related to a building, providing a 7% boost in production and a 7% reduction in price. i find some of these fortune messages pretty interesting, my favorites are listed here;
+
+> The seeds of tomorrow already lie within the seeds of today.
+fortune #003 (farms)
+
+> True worth is not in what you find, but in what you make.
+fortune #005 (factories)
+
+> The value of money means nothing to a pocket.
+fortune #006 (banks)
+
+> Not all guides deserve worship.
+fortune #007 (temples)
+
+> Every mile travelled expands the mind by just as much.
+fortune #009 (shipments)
+
+> Don't get used to yourself. You're gonna have to change.
+fortune #010 (alchemy labs)
+
+> Do your future self a favor; they'll thank you for it.
+fortune #012 (time machines)
+
+> The world is made of what we put into it.
+fortune #013 (antimatter condensers)
+
+> Staring at a dazzling light can blind you back to darkness.
+fortune #014 (prisms)
+
+> Don't leave to blind chance what you could accomplish with deaf skill.
+fortune #015 (chancemakers)
+
+> It's good to see yourself in others. Remember to see yourself in yourself, too.
+fortune #016 (fractal engines)
+
+> If things aren't working out for you, rewrite the rules.
+fortune #017 (javascript consoles)
+
+> There's plenty of everyone, but only one of you.
+fortune #018 (idleverses)
+
+> True wealth is counted in gifts.
+fortune #100
+upgrades and buildings cost -1%, you gain +1% cookies per second
+
+> Don't believe the superstitions; all cats are good luck.
+fortune #103
+you gain more cookies per second the more milk you have
