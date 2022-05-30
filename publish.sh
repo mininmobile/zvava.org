@@ -1,5 +1,5 @@
 #!/bin/bash
-LIVE=live-server-01
+LIVE=racknerd-c36864
 host=$(hostname)
 if [ $host != $LIVE ]
 then
@@ -7,6 +7,8 @@ then
 else
 	cd /home/zvava/zvava.org
 	echo '-> fetching latest updates'
+	git fetch --all
+	git reset --hard origin/master
 	git pull
 	echo '-> running generator script'
 	/opt/node-v16.15.0-linux-x64/bin/node make

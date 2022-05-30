@@ -13,6 +13,7 @@ body {
 	font-family: Ubuntu Mono, monospace;
 	text-align: justify;
 	line-height: 1.5rem;
+	font-size: 1.1rem;
 }
 
 h1, h2, h3, p {
@@ -26,10 +27,6 @@ blockquote {
 
 img {
 	max-width: 60ch;
-}
-
-p, pre, blockquote {
-	font-size: 1.1rem;
 }
 
 pre {
@@ -58,7 +55,7 @@ a::before {
 		text-align: left;
 	}
 
-	p, pre, blockquote {
+	html {
 		font-size: .9rem;
 	}
 
