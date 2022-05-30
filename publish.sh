@@ -10,6 +10,7 @@ else
 	git fetch --all
 	git reset --hard origin/master
 	git pull
+	chmod +x publish.sh
 	echo '-> running generator script'
 	/opt/node-v16.15.0-linux-x64/bin/node make
 	echo '-> copying files'
