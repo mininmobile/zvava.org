@@ -1,0 +1,8 @@
+# euphoria
+=> /images/m/euphoria.jpg cover
+```
+created  2021/12/31
+category music
+```
+
+=> https://soundcloud.com/pasinazera/euphoria

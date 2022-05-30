@@ -1,0 +1,10 @@
+# maybe i'm okay
+=> /images/m/maybe_im_okay.jpg cover
+```
+created  2021/12/30
+category music
+```
+
+just maybe
+
+=> https://soundcloud.com/pasinazera/maybe-im-okay

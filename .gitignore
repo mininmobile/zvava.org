@@ -2,10 +2,8 @@
 out/
 
 # publish.bat ssh output
-running
 sshlog.txt
 
 # ignore debug gemini server
 .certificates
 agate.exe
-agate/
