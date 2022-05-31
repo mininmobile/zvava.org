@@ -52,3 +52,6 @@ upgrades and buildings cost -1%, you gain +1% cookies per second
 > Don't believe the superstitions; all cats are good luck.
 fortune #103
 you gain more cookies per second the more milk you have
+
+## cites
+=> https://cookieclicker.fandom.com/wiki/Cookie_Clicker_Wiki 1. cookie clicker wiki

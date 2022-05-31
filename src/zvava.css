@@ -16,27 +16,25 @@ body {
 	font-size: 1.1rem;
 }
 
+h1, h2, h3 {
+	line-height: 1.25em; }
+
 h1, h2, h3, p {
 	margin: 1rem 0;
-	background: #000000;
-}
+	background: #000000; }
 
 blockquote {
-	margin: 0 0 0 4ch;
-}
+	margin: 0 0 0 4ch; }
 
 img {
-	max-width: 60ch;
-}
+	max-width: 60ch; }
 
 pre {
-	margin: -.5rem 0;
-}
+	margin: -.5rem 0; }
 
 pre, blockquote {
 	color: #bbbbbb;
-	background: #000000;
-}
+	background: #000000; }
 
 a {
 	text-decoration: none;
@@ -44,22 +42,22 @@ a {
 	background: #000000;
 	line-height: 1.7rem;
 	font-family: Ubuntu Mono, monospace;
+	white-space: pre;
 }
 
 a::before {
-	content: "=> ";
-}
+	content: "=> "; }
 
 @media (orientation: portrait) {
 	body {
-		text-align: left;
-	}
+		text-align: left; }
 
 	html {
-		font-size: .9rem;
-	}
+		font-size: .9rem; }
+
+	blockquote {
+		margin-left: 2ch; }
 
 	img {
-		max-width: 100%;
-	}
+		max-width: 100%; }
 }
