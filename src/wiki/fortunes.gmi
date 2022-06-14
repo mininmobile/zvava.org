@@ -1,6 +1,7 @@
 # cookie clicker fortunes
 ```
 created  2022/05/29
+modified 2022/06/08
 category info
 ```
 
@@ -44,6 +45,9 @@ fortune #017 (javascript consoles)
 
 > There's plenty of everyone, but only one of you.
 fortune #018 (idleverses)
+
+> The smartest way to think is not to think at all.
+fortune #019 (cortex bakers)
 
 > True wealth is counted in gifts.
 fortune #100
