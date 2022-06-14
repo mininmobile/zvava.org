@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 LIVE=racknerd-c36864
-host=$(hostname)
-if [ $host != $LIVE ]
-then
+if [ "$(hostname)" != $LIVE ]; then
 	ssh zvava@zvava.org "bash /home/zvava/zvava.org/publish.sh"
 else
 	cd /home/zvava/zvava.org
