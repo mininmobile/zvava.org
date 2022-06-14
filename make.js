@@ -117,7 +117,7 @@ function generateGemini() {
 	// generate wiki index
 	let _wikiAll = _pages.map(p => {
 		let page = pages[p];
-		return `=> /wiki/${p}.xyz ${page.title}` + "\n```   " + `[${page.modified}] [${page.category.join(", ")}]` + "\n```";
+		return `=> /wiki/${p}.xyz ${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category.join(", ")}]` + "\n```";
 	}).join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
@@ -232,27 +232,8 @@ function generateHTML(files) {
 		// if all pages have been written
 		if (_i == _files.length) {
 			process.stdout.write("\n");
-			generateASS();
-		}
-	}
-}
-
-function generateASS() {
-	console.log("\x1b[90m->\x1b[0m generating feed.ass...");
-
-	let assEntries = Object.keys(pages).map((p, i) => {
-		let page = pages[p];
-		return `${page.modified.replace(/\//g, "-")}	gemini://zvava.org/wiki/${page.page}.gmi	${page.title}`;
-	}).join("\n");
-
-	fs.writeFile("out/gemini/feed.ass", assEntries, checkProgress);
-	fs.writeFile("out/www/feed.ass", assEntries.replace(/gemini:\/\//g, "https://").replace(/\.gmi\t/g, ".html "), checkProgress);
-
-	let _i = 0;
-	function checkProgress() {
-		_i++;
-		if (_i == 2)
 			console.log("\r\x1b[32m-->\x1b[0m finished make script");
+		}
 	}
 }
 
