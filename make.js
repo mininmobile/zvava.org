@@ -12,14 +12,16 @@ import * as os from "os";
 //     translate all gemini files into html
 
 function copyFile(from, to, recursive = false) {
-	let cmd = "cp "
-	if (recursive) cmd += "-r "
-	return os.exec(cmd, from, to);
+	let cmd = ["cp"];
+	if (recursive) cmd.push("-r");
+	cmd.push(from, to);
+
+	return os.exec(cmd);
 }
 
 /** @type {Object.<string, string>} */
 let templates = {};
-let pages = {};
+let pages = [];
 
 main();
 
@@ -100,11 +102,11 @@ function fetchWiki() {
 		if (metadata["category"])
 			metadata["category"] = metadata["category"].map(x => relevantEmoji(x) + " " + x);
 
-		pages[page] = metadata;
+		pages.push(metadata);
 
 		if (i + 1 == _wiki.length) {
 			// sort by modified
-			pages = Object.fromEntries(Object.entries(pages).sort(([,a],[,b]) => new Date(b.modified) - new Date(a.modified)));
+			pages = pages.sort((a, b) => new Date(b.modified.replace(/\//g, "-")) - new Date(a.modified.replace(/\//g, "-")));
 			// generate
 			generateGemini();
 		}
@@ -116,27 +118,23 @@ function fetchWiki() {
 function generateGemini() {
 	print("\x1b[90m->\x1b[0m generating gemini site...");
 	// sanity
-	let _pages = Object.keys(pages);
 	let files = {};
 
 	// generate index
-	let _wikiRecent = _pages.slice(0, 5).map(p => {
-		let page = pages[p];
-		return `=> /wiki/${p}.xyz /wiki/${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category[0]}]` + "\n```";
+	let _wikiRecent = pages.slice(0, 5).map(p => {
+		return `=> /wiki/${p.page}.xyz /wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category[0]}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
 	// generate wiki index
-	let _wikiAll = _pages.map(p => {
-		let page = pages[p];
-		return `=> /wiki/${p}.xyz ${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category.join(", ")}]` + "\n```";
+	let _wikiAll = pages.map(p => {
+		return `=> /wiki/${p.page}.xyz ${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category.join(", ")}]` + "\n```";
 	}).join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
 	// generate wiki pages
-	_pages.forEach(p => {
-		let page = pages[p];
-		files["wiki/" + p] = templates["wiki-page.gmi"].replace("{content}", page.content);
+	pages.forEach(p => {
+		files["wiki/" + p.page] = templates["wiki-page.gmi"].replace("{content}", p.content);
 	});
 
 	// write pages
@@ -150,7 +148,6 @@ function generateGemini() {
 
 		let _f = std.open("out/gemini/" + f + ".gmi", "w");
 		if (_f.error()) return reject(_f.error());
-		_f.flush();
 		_f.puts(content);
 
 		// update terminal readout
@@ -235,8 +232,7 @@ function generateHTML(files) {
 
 		let _f = std.open("out/www/" + f + ".html", "w");
 		if (_f.error()) return reject(_f.error());
-		_f.flush();
-		_f.puts(output);
+		_f.puts(output + "</body>\n</html>\n");
 		_f.close();
 
 		// update terminal readout
