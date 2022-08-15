@@ -2,7 +2,7 @@
 static website generator (html and gemini) for my personal website
 
 ## development
-run `node make` to create out/, out/gemini/, and out/www/, then generate contents
+run `qjs ./make.js` to create out/, out/gemini/, and out/www/, then generate contents
 
 run `webserver 80 out/www/` (`npm i -g webserver`) to debug html output
 
@@ -11,8 +11,6 @@ run `agate --content out/gemini/ --host localhost` to debug gemini output
 ## production
 make sure all changes are committed and pushed
 
-run `node publish` and enter password to sync changes with the webserver
+run `publish.bat` on windows or `publish.sh` on unix and enter password to sync changes with the webserver
 
-`out/gemini/` contents will be copied to `/var/gemini/content/`
-
-`out/www/` contents will be copied to `/var/www/`
+remote server will fetch the latest version of this repo, and run the publish.sh script. this builds the site remotely and copies `out/gemini/` to `/var/gemini/content/` and `out/www/` to `/var/www/`
