@@ -6,7 +6,7 @@ else
 	cd /home/zvava/zvava.org
 	echo '-> fetching latest updates'
 	git fetch --all
-	git reset --hard origin/qjs
+	git reset --hard origin/master
 	git pull
 	chmod +x publish.sh
 	echo '-> running generator script'
