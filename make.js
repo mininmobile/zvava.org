@@ -1,6 +1,8 @@
-const fs = require("fs");
+import * as std from "std";
+import * as os from "os";
 
-// this function
+// requires a unix system to run
+// main();
 //   -> fetchTemplates
 //   -> fetchWiki
 //   -> generateGemini
@@ -8,152 +10,159 @@ const fs = require("fs");
 //     write gemini output files
 //   -> generateHTML
 //     translate all gemini files into html
-//   -> generateASS
-//     generate a .ass feed for both gemini and web versions of the site
+
+function copyFile(from, to, recursive = false) {
+	let cmd = ["cp"];
+	if (recursive) cmd.push("-r");
+	cmd.push(from, to);
+
+	return os.exec(cmd);
+}
 
 /** @type {Object.<string, string>} */
 let templates = {};
-let pages = {};
+let pages = [];
 
-fs.stat("out", (err, stats) => {
-	if (err) {
-		console.log("\x1b[90m->\x1b[0m creating output directories...");
-		fs.mkdirSync("out");
+main();
+
+function main() {
+	if (os.platform == "win32" || os.platform == "js")
+		return print("make: cannot run on this platform.");
+
+	let [stat, err] = os.stat("out/");
+	if (stat != os.S_IFDIR || err != 0) {
+		print("\x1b[90m->\x1b[0m creating output directories...");
+		os.mkdir("out");
 		// gemini output directory
-		fs.mkdirSync("out/gemini");
-		fs.mkdirSync("out/gemini/wiki");
+		os.mkdir("out/gemini");
+		os.mkdir("out/gemini/wiki");
 		// html output directory
-		fs.mkdirSync("out/www");
-		fs.mkdirSync("out/www/wiki");
+		os.mkdir("out/www");
+		os.mkdir("out/www/wiki");
 	}
 
-	console.log("\x1b[90m->\x1b[0m updating resources...");
-	fs.cpSync("src/images/", "out/gemini/images/", { recursive: true });
-	fs.cpSync("src/images/", "out/www/images/", { recursive: true });
-	fs.cpSync("src/zvava.css", "out/www/zvava.css");
+	print("\x1b[90m->\x1b[0m updating resources...");
+	copyFile("src/images/", "out/gemini/images/", true);
+	copyFile("src/images/", "out/www/images/", true);
+	copyFile("src/zvava.css", "out/www/zvava.css");
 
 	fetchTemplates();
-})
+}
 
 // read all of the templates
 function fetchTemplates() {
-	fs.readdir("src/templates", (error, temps) => {
-		console.log("\x1b[90m->\x1b[0m gathering templates...");
-		if (error) return console.error(error);
+	print("\x1b[90m->\x1b[0m gathering templates...");
+	let [ temps, err ] = os.readdir("src/templates").filter(x => x != "." && x != "..");
+	if (err) return print(err);
+	temps = temps.filter(x => x != "." && x != "..");
 
-		let x = 0;
-		temps.forEach(a => fs.readFile("src/templates/" + a, "utf8", (err, data) => {
-			if (err) throw console.error(err);
+	let x = 0;
+	temps.forEach((filename, i) => new Promise((resolve, reject) => {
+		let _f = std.open("src/templates/" + filename, "r");
+		if (_f.error()) return reject(_f.error());
+		templates[filename] = _f.readAsString().replace(/\r/g, ""); // windows newline
+		_f.close();
 
-			templates[a] = data.replace(/\r/g, ""); // I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE
-			// make sure you have all the templates collected before proceeding
-			x++;
-			if (x == temps.length)
-				fetchWiki();
-		}));
-	});
+		if (i + 1 == temps.length)
+			fetchWiki();
+		resolve();
+	}).catch(print));
 }
 
 // read and parse all of the wiki pages
 function fetchWiki() {
-	console.log("\x1b[90m->\x1b[0m gathering wiki pages...");
+	print("\x1b[90m->\x1b[0m gathering wiki pages...");
+	let [ _wiki, err ] = os.readdir("src/wiki");
+	if (err) return print(err);
+	_wiki = _wiki.filter(x => x != "." && x != "..");
 
-	fs.readdir("src/wiki", (error, _wiki) => {
-		if (error) return console.error(error);
+	_wiki.map(filename => filename.substring(0, filename.length - 4)) // remove .gmi
+	.forEach((page, i) => new Promise((resolve, reject) => {
+		let _f = std.open("src/wiki/" + page + ".gmi", "r");
+		if (_f.error()) return reject(_f.error());
+		let data = _f.readAsString().replace(/\r/g, ""); // windows newline
+		_f.close();
 
-		let x = 0;
-		_wiki.map(a => a.substring(0, a.length - 4)) // remove .gmi
-		.forEach(a => fs.readFile("src/wiki/" + a + ".gmi", "utf8", (err, _data) => {
-			if (err) return console.error(err);
-			let data = _data.replace(/\r/g, ""); // I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE I HATE THE WINDOWS NEWLINE
+		let metadata = { page: page, content: data };
+		// extract title
+		metadata["title"] = data.substring(2, data.indexOf("\n"));
+		// extract metadata
+		let metaStart = data.indexOf("```") + 4;
+		let metaEnd = data.indexOf("```", metaStart) - 1;
+		data.substring(metaStart, metaEnd).split(/\n+/).map(x => x.split(/\s+/))
+		.forEach((x) => {
+			let property = x.shift();
+			metadata[property] = property == "category" ?
+				x.map(y => y.replace(",", "")) : x.join(" ");
+		});
+		// ensure there is a modified field
+		if (!metadata["modified"])
+			metadata["modified"] = metadata["created"];
+		// add emojis to categories!!
+		if (metadata["category"])
+			metadata["category"] = metadata["category"].map(x => relevantEmoji(x) + " " + x);
 
-			let metadata = { page: a, content: data };
-			// extract title
-			metadata["title"] = data.substring(2, data.indexOf("\n"));
-			// extract metadata
-			let metaStart = data.indexOf("```") + 4;
-			let metaEnd = data.indexOf("```", metaStart) - 1;
-			data.substring(metaStart, metaEnd).split(/\n+/).map(x => x.split(/\s+/))
-			.forEach((x) => {
-				let property = x.shift();
-				metadata[property] = property == "category" ?
-					x.map(y => y.replace(",", "")) : x.join(" ");
-			});
-			// ensure there is a modified field
-			if (!metadata["modified"])
-				metadata["modified"] = metadata["created"];
-			// add emojis to categories!!
-			if (metadata["category"])
-				metadata["category"] = metadata["category"].map(x => relevantEmoji(x) + " " + x);
+		pages.push(metadata);
 
-			pages[a] = metadata;
-
-			// make sure you have all the pages collected before proceeding
-			x++
-			if (x == _wiki.length) {
-				// sort by modified
-				pages = Object.fromEntries(Object.entries(pages).sort(([,a],[,b]) => new Date(b.modified) - new Date(a.modified)));
-				// generate
-				generateGemini();
-			}
-		}));
-	});
+		if (i + 1 == _wiki.length) {
+			// sort by modified
+			pages = pages.sort((a, b) => new Date(b.modified.replace(/\//g, "-")) - new Date(a.modified.replace(/\//g, "-")));
+			// generate
+			generateGemini();
+		}
+		resolve();
+	}).catch(print));
 }
 
 // convert the articles into html
 function generateGemini() {
-	console.log("\x1b[90m->\x1b[0m generating gemini site...");
+	print("\x1b[90m->\x1b[0m generating gemini site...");
 	// sanity
-	let _pages = Object.keys(pages);
 	let files = {};
 
 	// generate index
-	let _wikiRecent = _pages.slice(0, 5).map(p => {
-		let page = pages[p];
-		return `=> /wiki/${p}.xyz /wiki/${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category[0]}]` + "\n```";
+	let _wikiRecent = pages.slice(0, 5).map(p => {
+		return `=> /wiki/${p.page}.xyz /wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category[0]}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
 	// generate wiki index
-	let _wikiAll = _pages.map(p => {
-		let page = pages[p];
-		return `=> /wiki/${p}.xyz ${page.title}` + "\n```\n   " + `[${page.modified}] [${page.category.join(", ")}]` + "\n```";
+	let _wikiAll = pages.map(p => {
+		return `=> /wiki/${p.page}.xyz ${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category.join(", ")}]` + "\n```";
 	}).join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
 	// generate wiki pages
-	_pages.forEach(p => {
-		let page = pages[p];
-		files["wiki/" + p] = templates["wiki-page.gmi"].replace("{content}", page.content);
+	pages.forEach(p => {
+		files["wiki/" + p.page] = templates["wiki-page.gmi"].replace("{content}", p.content);
 	});
 
 	// write pages
 	let _files = Object.keys(files);
-	_files.forEach((f, i) => {
+	_files.forEach((f, i) => new Promise((resolve, reject) => {
 		let content = files[f]
 			// add filenames to thumbnails
 			.replace(/(\w*)\.(png|jpg) (thumbnail|cover|image)/gi, "$1.$2 $3 ($1.$2)")
 			// replace ambiguous links
 			.replace(/\.xyz/g, ".gmi");
 
-		fs.writeFile("out/gemini/" + f + ".gmi", content, checkProgress);
-	});
+		let _f = std.open("out/gemini/" + f + ".gmi", "w");
+		if (_f.error()) return reject(_f.error());
+		_f.puts(content);
 
-	let _i = 0;
-	function checkProgress() {
-		_i++;
 		// update terminal readout
-		process.stdout.write(`\r\x1b[32m-->\x1b[0m wrote gemini page ${_i}/${_files.length}`);
+		std.printf(`\r\x1b[32m-->\x1b[0m wrote gemini page ${i + 1}/${_files.length}`);
 		// if all pages have been written
-		if (_i == _files.length) {
-			process.stdout.write("\n");
+		if (i + 1 == _files.length) {
+			std.printf("\n");
 			generateHTML(files);
 		}
-	}
+		resolve();
+	}).catch(print));
 }
 
 function generateHTML(files) {
-	console.log("\x1b[90m->\x1b[0m generating html site...");
+	print("\x1b[90m->\x1b[0m generating html site...");
 
 	// alternate gemini links to https on index
 	files["index"] = files["index"]
@@ -161,7 +170,7 @@ function generateHTML(files) {
 
 	// write altered files
 	let _files = Object.keys(files);
-	_files.forEach((f, i) => {
+	_files.forEach((f, i) => new Promise((resolve, reject) => {
 		// set title
 		let title = `/${f} @ zvava.org`;
 		if (f == "index") title = "zvava.org";
@@ -221,20 +230,20 @@ function generateHTML(files) {
 				output += "<pre>";
 		});
 
-		fs.writeFile("out/www/" + f + ".html", output + "</body>\n</html>\n", checkProgress);
-	});
+		let _f = std.open("out/www/" + f + ".html", "w");
+		if (_f.error()) return reject(_f.error());
+		_f.puts(output + "</body>\n</html>\n");
+		_f.close();
 
-	let _i = 0;
-	function checkProgress() {
-		_i++;
 		// update terminal readout
-		process.stdout.write(`\r\x1b[32m-->\x1b[0m wrote html page ${_i}/${_files.length}`);
+		std.printf(`\r\x1b[32m-->\x1b[0m wrote html page ${i + 1}/${_files.length}`);
 		// if all pages have been written
-		if (_i == _files.length) {
-			process.stdout.write("\n");
-			console.log("\r\x1b[32m-->\x1b[0m finished make script");
+		if (i + 1 == _files.length) {
+			std.printf("\n");
+			print("\r\x1b[32m-->\x1b[0m finished make script");
 		}
-	}
+		resolve();
+	}).catch(print));
 }
 
 function relevantEmoji(x) {
