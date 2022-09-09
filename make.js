@@ -98,9 +98,6 @@ function fetchWiki() {
 		// ensure there is a modified field
 		if (!metadata["modified"])
 			metadata["modified"] = metadata["created"];
-		// add emojis to categories!!
-		if (metadata["category"])
-			metadata["category"] = metadata["category"].map(x => relevantEmoji(x) + " " + x);
 
 		pages.push(metadata);
 
@@ -122,13 +119,15 @@ function generateGemini() {
 
 	// generate index
 	let _wikiRecent = pages.slice(0, 5).map(p => {
-		return `=> /wiki/${p.page}.xyz /wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category[0]}]` + "\n```";
+		let category = prependRelevantEmoji(p.category[0]);
+		return `=> /wiki/${p.page}.xyz /wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
 	// generate wiki index
 	let _wikiAll = pages.map(p => {
-		return `=> /wiki/${p.page}.xyz ${p.title}` + "\n```\n   " + `[${p.modified}] [${p.category.join(", ")}]` + "\n```";
+		let category = p.category.map(prependRelevantEmoji).join(", ");
+		return `=> /wiki/${p.page}.xyz ${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
 	}).join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
@@ -141,6 +140,8 @@ function generateGemini() {
 	let _files = Object.keys(files);
 	_files.forEach((f, i) => new Promise((resolve, reject) => {
 		let content = files[f]
+			// remove html-only templates
+			.replace(/{html[a-z_]*}\n/g, "")
 			// add filenames to thumbnails
 			.replace(/(\w*)\.(png|jpg) (thumbnail|cover|image)/gi, "$1.$2 $3 ($1.$2)")
 			// replace ambiguous links
@@ -178,9 +179,13 @@ function generateHTML(files) {
 		// fill out head template
 		let output = templates["head.html"].replace("{title}", title);
 
-		// split into variable for optimized access to .length
-		// also replace ambiguous links here bc where else?
-		let _c = files[f].replace(/\.xyz/g, ".html").split("```");
+		let _c = files[f]
+			// remove gmi-only templates
+			.replace(/{gmi[a-z_]*}\n/g, "")
+			// replace ambiguous links
+			.replace(/\.xyz/g, ".html")
+			// split into variable for optimized access to .length
+			.split("```");
 		_c.forEach((x, i) => {
 			// if file contains a code block and you are currently in one
 			if (_c.length > 1 && i % 2 !== 0)
@@ -201,7 +206,18 @@ function generateHTML(files) {
 					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+) +(.*)/i, '<a href="$1">$2</a>')
 					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)/i, '<a href="$1">$1</a>')
 					// convert block quotes
-					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
+					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>");
+
+				if (f == "wiki/index" && l.startsWith("<a href=\"/wiki/")) {
+					// get location of linked wiki page start
+					let start = l.indexOf("/wiki/") + 6;
+					// get location of linked wiki page end
+					let end = l.indexOf(".html", start);
+					// get page's metadata
+					let page = pages.find(x => x.page == l.substring(start, end));
+
+					l = l.replace(">", ` data-category="${page.category.join(" ")}">`);
+				}
 
 				// will this line be considered for its spacing?
 				if (!l.startsWith("<h") && !l.startsWith("<b") && l.replace(/\n/g, "").length > 0) {
@@ -230,6 +246,14 @@ function generateHTML(files) {
 				output += "<pre>";
 		});
 
+		if (f == "wiki/index") {
+			output = output
+				// replace html templates
+				.replace("<p>{html_filter}<br>\n", templates["filter.html"] + "<p>")
+				// pass down data-category attribute from <a> to <p>s and <pre>s
+				.replace(/<p><a (href=".+?") (data-category=".+?")>(.+?)<\/a><\/p>\n<pre>/gm, "<p $2><a $1>$3</a></p>\n<pre $2>");
+		}
+
 		let _f = std.open("out/www/" + f + ".html", "w");
 		if (_f.error()) return reject(_f.error());
 		_f.puts(output + "</body>\n</html>\n");
@@ -246,15 +270,17 @@ function generateHTML(files) {
 	}).catch(print));
 }
 
-function relevantEmoji(x) {
+function prependRelevantEmoji(x) {
+	let e = "";
 	switch (x) {
-		case "text": return "📝";
-		case "info": return "🧠";
-		case "event": return "🍾";
-		case "art": return "🎨";
-		case "music": return "🎵";
-		case "video": return "📺";
-		case "hardware": return "🔧";
-		case "software": return "💾";
+		case "text":     e += "📝"; break;
+		case "info":     e += "🧠"; break;
+		case "event":    e += "🍾"; break;
+		case "art":      e += "🎨"; break;
+		case "music":    e += "🎵"; break;
+		case "video":    e += "📺"; break;
+		case "hardware": e += "🔧"; break;
+		case "software": e += "💾"; break;
 	}
+	return e.length > 0 ? e + " " + x : x;
 }

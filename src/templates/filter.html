@@ -1,0 +1,68 @@
+<!-- category filter control -->
+<input type="radio" name="category" id="all" checked>
+<input type="radio" name="category" id="text">
+<input type="radio" name="category" id="info">
+<input type="radio" name="category" id="event">
+<input type="radio" name="category" id="art">
+<input type="radio" name="category" id="music">
+<input type="radio" name="category" id="video">
+<input type="radio" name="category" id="hardware">
+<input type="radio" name="category" id="software">
+
+<!-- category filter labels -->
+<details>
+	<summary>filter pages by category</summary>
+
+	<label class="all-label" for="all">*️⃣ all</label>
+	<label class="text-label" for="text">📝 text</label>
+	<label class="info-label" for="info">🧠 info</label>
+	<label class="event-label" for="event">🍾 event</label>
+	<label class="art-label" for="art">🎨 art</label>
+	<label class="music-label" for="music">🎵 music</label>
+	<label class="video-label" for="video">📺 video</label>
+	<label class="hardware-label" for="hardware">🔧 hardware</label>
+	<label class="software-label" for="software">💾 software</label>
+</details>
+
+<style>
+	input { display: none; }
+
+	label, summary {
+		cursor: pointer;
+		white-space: pre;
+		display: block; }
+
+	summary:hover, label:hover {
+		font-weight: bold; }
+
+	summary { color: #c27ed5; }
+	summary::before { content: " \2192   "; }
+	details[open] summary { margin-bottom: 1rem; }
+	details[open] summary::before { content: " \2193   "; }
+
+	label::before { content: "    "; }
+	label:hover::before { content: " x  "; }
+	#all:checked      ~ details .all-label::before,
+	#text:checked     ~ details .text-label::before,
+	#info:checked     ~ details .info-label::before,
+	#event:checked    ~ details .event-label::before,
+	#art:checked      ~ details .art-label::before,
+	#music:checked    ~ details .music-label::before,
+	#video:checked    ~ details .video-label::before,
+	#hardware:checked ~ details .hardware-label::before,
+	#software:checked ~ details .software-label::before {
+		content: "[x] ";  }
+
+	#all:not(:checked) ~ [data-category] {
+		display: none; }
+
+	#text:checked     ~ [data-category~="text"],
+	#info:checked     ~ [data-category~="info"],
+	#event:checked    ~ [data-category~="event"],
+	#art:checked      ~ [data-category~="art"],
+	#music:checked    ~ [data-category~="music"],
+	#video:checked    ~ [data-category~="video"],
+	#hardware:checked ~ [data-category~="hardware"],
+	#software:checked ~ [data-category~="software"] {
+		display: block; }
+</style>

@@ -46,7 +46,10 @@ a {
 }
 
 a::before {
-	content: "=> "; }
+	content: "\21D2  "; }
+
+a:focus, a:hover  {
+	font-weight: bold; }
 
 @media (orientation: portrait) {
 	body {
