@@ -39,6 +39,16 @@
 	summary::before { content: " \2192   "; }
 	details[open] summary { margin-bottom: 1rem; }
 	details[open] summary::before { content: " \2193   "; }
+	details[open] summary::after { content: none !important; }
+
+	#text:checked     ~ details summary::after { content: " (text)"; }
+	#info:checked     ~ details summary::after { content: " (info)"; }
+	#event:checked    ~ details summary::after { content: " (event)"; }
+	#art:checked      ~ details summary::after { content: " (art)"; }
+	#music:checked    ~ details summary::after { content: " (music)"; }
+	#video:checked    ~ details summary::after { content: " (video)"; }
+	#hardware:checked ~ details summary::after { content: " (hardware)"; }
+	#software:checked ~ details summary::after { content: " (software)"; }
 
 	label::before { content: "    "; }
 	label:hover::before { content: " x  "; }
