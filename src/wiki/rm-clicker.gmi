@@ -1,0 +1,8 @@
+# rainmeter clicker
+=> /images/t/rm-clicker.png thumbnail
+```
+created  2018/08/08
+category software
+```
+
+=> https://github.com/mininmobile/rm-clicker

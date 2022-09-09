@@ -29,8 +29,8 @@ function main() {
 	if (os.platform == "win32" || os.platform == "js")
 		return print("make: cannot run on this platform.");
 
-	let [stat, err] = os.stat("out/");
-	if (stat != os.S_IFDIR || err != 0) {
+	let [, err] = os.stat("out/");
+	if (err != 0) {
 		print("\x1b[90m->\x1b[0m creating output directories...");
 		os.mkdir("out");
 		// gemini output directory
@@ -118,9 +118,11 @@ function generateGemini() {
 	let files = {};
 
 	// generate index
-	let _wikiRecent = pages.slice(0, 5).map(p => {
+	let _books = ["📕", "📗", "📘", "📙", "📓"].sort(() => Math.random() - .5); // random book emojis
+	let _wikiRecent = pages.slice(0, 5).map((p, i) => {
+		let book = _books[i]; // get random book emoji
 		let category = prependRelevantEmoji(p.category[0]);
-		return `=> /wiki/${p.page}.xyz /wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
+		return `=> /wiki/${p.page}.xyz ${book} wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
 	}).join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 

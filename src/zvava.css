@@ -29,6 +29,11 @@ blockquote {
 img {
 	max-width: 60ch; }
 
+img[alt="header"] {
+	max-width: 100%;
+	width: 100%;
+	image-rendering: pixelated; }
+
 pre {
 	margin: -.5rem 0; }
 

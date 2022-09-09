@@ -1,12 +1,12 @@
 # zvava.org
-=> /images/sophia.png
+=> /images/header.png header
 hey! i'm sophia (she/her) and i also go by zvava or névtelen online. you are currently looking at my online garden, where i keep a collection of thoughts and projects. it is available via both html and gemtext.
 
 # navigation
 => https://webring.xxiivv.com 🪐 merveilles webring
 => https://www.buymeacoffee.com/zvavaxox 🍺 buy me a beer!
 => https://zvava.org 🕸️ view html version
-=> /wiki/ 📚 /wiki/
+=> /wiki/ 📚 wiki
 {wiki_recent}
 
 # contact
