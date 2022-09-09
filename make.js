@@ -11,6 +11,14 @@ import * as os from "os";
 //   -> generateHTML
 //     translate all gemini files into html
 
+function removeFile(file, recursive = false) {
+	let cmd = ["rm"];
+	if (recursive) cmd.push("-r");
+	Array.isArray(file) ? cmd.push(...file) : cmd.push(file);
+
+	return os.exec(cmd);
+}
+
 function copyFile(from, to, recursive = false) {
 	let cmd = ["cp"];
 	if (recursive) cmd.push("-r");
@@ -27,7 +35,7 @@ main();
 
 function main() {
 	if (os.platform == "win32" || os.platform == "js")
-		return print("make: cannot run on this platform.");
+		return print(`make: cannot run on this platform (${os.platform})`);
 
 	let [, err] = os.stat("out/");
 	if (err != 0) {
@@ -42,6 +50,7 @@ function main() {
 	}
 
 	print("\x1b[90m->\x1b[0m updating resources...");
+	removeFile(["out/gemini/images", "out/www/images"], true); // delete old image directories to ensure update of images
 	copyFile("src/images/", "out/gemini/images/", true);
 	copyFile("src/images/", "out/www/images/", true);
 	copyFile("src/zvava.css", "out/www/zvava.css");
