@@ -8,7 +8,7 @@ function main() {
 
 	switch (scriptArgs[0]) {
 		case "list": {
-			let args = (scriptArgs[1] || "");
+			let args = (scriptArgs[1] || "")
 			if (args.includes("h"))
 				return print(
 					"usage: qjs wiki.js list [-hlLcTIEAMVHS]\n\n" +
@@ -29,7 +29,7 @@ function main() {
 				"")
 
 			let [ dir, err ] = os.readdir("src/wiki")
-			if (err != 0 ) return print("os.readdir:", err);
+			if (err != 0 ) return print("os.readdir:", err)
 			let pages = dir
 				.map(x => x.substring(0, x.length - 4))
 				.filter(x => x.length > 0)
@@ -51,7 +51,7 @@ function main() {
 					.split(/\n+/)
 					.map(x => x.split(/\s+/))
 					.forEach((x) => {
-						let property = x.shift();
+						let property = x.shift()
 						metadata[property] = property == "category" ? x.map(y => y.replace(",", "")) : x.join(" ")
 					})
 				// ensure there is a modified field
@@ -78,18 +78,18 @@ function main() {
 						.sort((a, b) => {
 							let dateA = new Date(a[sortBy].replace(/\//g, "-"))
 							let dateB = new Date(b[sortBy].replace(/\//g, "-"))
-							return canRunExec() ? dateA - dateB : dateB - dateA;
+							return canRunExec() ? dateA - dateB : dateB - dateA
 						})
 					// render
 						.map(page => {
 							let dateA = sortBy == "created" ? page.created : page.modified
 							let dateB = sortBy == "created" ? page.modified : page.created
 
-							let out = `${dateA} \x1b[90m${dateB} |\x1b[m ${page.title}`;
+							let out = `${dateA} \x1b[90m${dateB} |\x1b[m ${page.title}`
 							if (args.includes("l")) return out; else {
 								let emojis = page.category
 									.map(x => prependRelevantEmoji(x).split(" ")[0])
-									.join(" ");
+									.join(" ")
 								return std.sprintf("%s\n%-21s \x1b[90m|\x1b[m %s \x1b[90m%s\x1b[m",
 										out, page.category.join(", "), emojis, page.page)
 							}
@@ -99,7 +99,7 @@ function main() {
 						? "\n\x1b[90m——————————————————————+——\x1b[m\n"
 						: "\n"))
 				}
-				resolve();
+				resolve()
 			}))
 		} break
 
@@ -136,7 +136,7 @@ function main() {
 			if ((args[0] || "").startsWith("-"))
 				return print("page url cannot start with a hyphen")
 
-			let _date = new Date();
+			let _date = new Date()
 			let page = {
 				page: args.shift(),
 				title: "untitled",
@@ -148,7 +148,7 @@ function main() {
 				body: [],
 			}
 
-			let force = false;
+			let force = false
 			while (args.length > 0) {
 				let arg = args.shift()
 				let value = args.shift()
@@ -234,12 +234,12 @@ function main() {
 			// write to file
 			let path = "src/wiki/" + page.page + ".gmi"
 			if (force || os.stat(path)[1] != 0) {
-				let f = std.open(path, "w");
+				let f = std.open(path, "w")
 				if (f.error()) {
-					print("\x1b[90m->\x1b[0m error creating", page.page + ".gmi");
+					print("\x1b[90m->\x1b[0m error creating", page.page + ".gmi")
 				} else {
-					f.puts(output);
-					print("\x1b[90m->\x1b[0m created", page.page + ".gmi");
+					f.puts(output)
+					print("\x1b[90m->\x1b[0m created", page.page + ".gmi")
 				}
 			} else {
 				print("wiki.js: page", "src/wiki/" + path, "already exists\ntip: you can --force this action")
@@ -249,7 +249,7 @@ function main() {
 		case "edit": {
 			let args = scriptArgs.slice(1)
 
-			if (args.includes("-h") || args.includes("--help"))
+			if (args.length == 0 || args.includes("-h") || args.includes("--help"))
 				return print(
 					"usage: qjs wiki.js edit [arg] [page]\n\n" +
 					"argument:\n" +
@@ -263,7 +263,7 @@ function main() {
 
 			let page = args.pop()
 			let arg = args.shift()
-			let path = "src/wiki/" + page + ".gmi";
+			let path = "src/wiki/" + page + ".gmi"
 
 			switch (arg) {
 				case "-m": case "--modify": try {
@@ -276,7 +276,8 @@ function main() {
 					let makePos = data.indexOf("created")
 					let modPos = data.indexOf("modified", makePos)
 					// if a modified field exists
-					let modDefined = modPos > -1 && modPos - 20 == makePos;
+					let modDefined = modPos > -1 && modPos - 20 == makePos
+
 
 					if (modDefined) { // change modified field
 						data = data.replace(/modified ....\/..\/../, "modified " + stringifyDate(new Date()))
@@ -285,24 +286,24 @@ function main() {
 					}
 
 					// write file
-					let write = std.open(path, "w");
+					let write = std.open(path, "w")
 					if (write.error()) throw "error writing " + page + ".gmi"
-					write.puts(data);
-					write.close();
+					write.puts(data)
+					write.close()
 					print("\x1b[90m->\x1b[0m updated", page + ".gmi")
 				} catch (e) {
 					print("wiki.js:", e)
 				} break
 
 				default:
-					print("open page in nano")
+					os.exec(["nano", path])
 			}
 
 
 		} break
 
 		case "rm": {
-			let args = (scriptArgs[1] || "");
+			let args = (scriptArgs[1] || "")
 			if (args.includes("h"))
 				return print(
 					"usage: qjs wiki.js rm [-h] [pages]\n\n" +
@@ -336,7 +337,7 @@ function stringifyDate(date) {
 	if (month.length == 1) month = "0" + month
 	let day = d.getDate().toString()
 	if (day.length == 1) day = "0" + day
-	return `${d.getUTCFullYear()}/${month}/${day}`;
+	return `${d.getUTCFullYear()}/${month}/${day}`
 }
 
 function prependRelevantEmoji(x) {
@@ -351,5 +352,5 @@ function prependRelevantEmoji(x) {
 		case "hardware": e += "🔧"; break
 		case "software": e += "💾"; break
 	}
-	return e.length > 0 ? e + " " + x : x;
+	return e.length > 0 ? e + " " + x : x
 }
