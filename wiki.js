@@ -11,12 +11,21 @@ function main() {
 			let args = (scriptArgs[1] || "");
 			if (args.includes("h"))
 				return print(
-					"usage: qjs wiki.js list [-hc]\n\n" +
-					"  h\t display usage information\n" +
+					"usage: qjs wiki.js list [-hlLcTIEAMVHS]\n\n" +
 					"  -\t noop\n" +
+					"  h\t display usage information\n" +
 					"  l\t compact list\n" +
 					"  L\t cozy list\n" +
-					"  c\t sort by created date instead of modified date"
+					"  c\t sort by created date instead of modified date\n" +
+					"categories:\n" +
+					"  T\t text\n" +
+					"  I\t info\n" +
+					"  E\t event\n" +
+					"  A\t art\n" +
+					"  M\t music\n" +
+					"  V\t video\n" +
+					"  H\t hardware\n" +
+					"  S\t software"
 				)
 
 			let [ dir, err ] = os.readdir("./src/wiki")
@@ -54,6 +63,17 @@ function main() {
 				if (output.length == pages.length) {
 					let sortBy = (scriptArgs[1] || "").includes("c") ? "created" : "modified"
 					output = output
+					// apply filters
+						.filter(x =>
+							!/[TIEAMVHS]/.test(args) ||
+							(args.includes("T") && x.category.includes("text")) ||
+							(args.includes("I") && x.category.includes("info")) ||
+							(args.includes("E") && x.category.includes("event")) ||
+							(args.includes("A") && x.category.includes("art")) ||
+							(args.includes("M") && x.category.includes("music")) ||
+							(args.includes("V") && x.category.includes("video")) ||
+							(args.includes("H") && x.category.includes("hardware")) ||
+							(args.includes("S") && x.category.includes("software")))
 					// sort
 						.sort((a, b) => {
 							let dateA = new Date(a[sortBy].replace(/\//g, "-"))
@@ -92,7 +112,15 @@ function main() {
 		} break
 
 		default:
-			print("usage: qjs wiki.js ( list | new | edit )")
+			print(
+				"usage: qjs wiki.js command args\n\n" +
+				"commands:\n" +
+				"  list\t list all wiki pages\n" +
+				"  new\t create a new wiki page\n" +
+				"  edit\t edit a wiki page\n" +
+				"  rm\t delete wiki pages\n\n" +
+				"each command has it's own arguments, to list use -h"
+			)
 	}
 }
 
