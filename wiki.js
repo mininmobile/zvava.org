@@ -25,10 +25,10 @@ function main() {
 					"  M\t music\n" +
 					"  V\t video\n" +
 					"  H\t hardware\n" +
-					"  S\t software"
-				)
+					"  S\t software\n" +
+				"")
 
-			let [ dir, err ] = os.readdir("./src/wiki")
+			let [ dir, err ] = os.readdir("src/wiki")
 			if (err != 0 ) return print("os.readdir:", err);
 			let pages = dir
 				.map(x => x.substring(0, x.length - 4))
@@ -111,7 +111,7 @@ function main() {
 					"arguments:\n" +
 					"  -h --help        display usage information\n" +
 					//"  -? --examples    display example usage\n" +
-					//"  -f --force       don't abort if page already exists\n" +
+					"  -f --force       don't abort if page already exists\n" +
 					"  -t  --title       set new page's title\n" +
 					"  -C  --created     set new page's created date\n" +
 					"  -m  --modified    set new page's modified date\n" +
@@ -148,10 +148,13 @@ function main() {
 				body: [],
 			}
 
+			let force = false;
 			while (args.length > 0) {
 				let arg = args.shift()
 				let value = args.shift()
 				switch (arg) {
+					case "-f": case "--force": force = true; break
+
 					case "-t": case "--title":
 						if (value) page.title = value; break
 
@@ -229,7 +232,18 @@ function main() {
 			}})
 
 			// write to file
-			print(output);
+			let path = "src/wiki/" + page.page + ".gmi"
+			if (force || os.stat(path)[1] != 0) {
+				let f = std.open(path, "w");
+				if (f.error()) {
+					print("\x1b[90m->\x1b[0m error creating", page.page + ".gmi");
+				} else {
+					f.puts(output);
+					print("\x1b[90m->\x1b[0m created", page.page + ".gmi");
+				}
+			} else {
+				print("wiki.js: page", "src/wiki/" + path, "already exists\ntip: you can --force this action")
+			}
 		} break
 
 		case "edit": {
@@ -238,8 +252,8 @@ function main() {
 				return print(
 					"usage: qjs wiki.js edit [-h] [page]\n\n" +
 					"  -\t noop\n" +
-					"  h\t display usage information"
-				)
+					"  h\t display usage information\n" +
+				"")
 
 			// code
 		} break
@@ -250,8 +264,8 @@ function main() {
 				return print(
 					"usage: qjs wiki.js rm [-h] [pages]\n\n" +
 					"  -\t noop\n" +
-					"  h\t display usage information"
-				)
+					"  h\t display usage information\n" +
+				"")
 
 			// code
 		} break
@@ -264,8 +278,8 @@ function main() {
 				"  new\t create a new wiki page\n" +
 				"  edit\t edit a wiki page\n" +
 				"  rm\t delete wiki pages\n\n" +
-				"each command has it's own arguments, to list use -h"
-			)
+				"each command has it's own arguments, to list use -h\n" +
+			"")
 	}
 }
 
