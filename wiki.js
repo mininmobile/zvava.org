@@ -8,11 +8,15 @@ function main() {
 
 	switch (scriptArgs[0]) {
 		case "list": {
-			if ((scriptArgs[1] || "").includes("h"))
+			let args = (scriptArgs[1] || "");
+			if (args.includes("h"))
 				return print(
 					"usage: qjs wiki.js list [-hc]\n\n" +
-					" h\t display usage information\n" +
-					" c\t sort by created date instead of modified date"
+					"  h\t display usage information\n" +
+					"  -\t noop\n" +
+					"  l\t compact list\n" +
+					"  L\t cozy list\n" +
+					"  c\t sort by created date instead of modified date"
 				)
 
 			let [ dir, err ] = os.readdir("./src/wiki")
@@ -60,15 +64,20 @@ function main() {
 						.map(page => {
 							let dateA = sortBy == "created" ? page.created : page.modified
 							let dateB = sortBy == "created" ? page.modified : page.created
-							let emojis = page.category
-								.map(x => prependRelevantEmoji(x).split(" ")[0])
-								.join(" ");
-							return `${dateA} ${dateB} \x1b[90m|\x1b[m ${page.title}\n`
-								+ std.sprintf("%-21s \x1b[90m|\x1b[m %s \x1b[90m%s\x1b[m",
-									page.category.join(", "), emojis, page.page)
+
+							let out = `${dateA} \x1b[90m${dateB} |\x1b[m ${page.title}`;
+							if (args.includes("l")) return out; else {
+								let emojis = page.category
+									.map(x => prependRelevantEmoji(x).split(" ")[0])
+									.join(" ");
+								return std.sprintf("%s\n%-21s \x1b[90m|\x1b[m %s \x1b[90m%s\x1b[m",
+										out, page.category.join(", "), emojis, page.page)
+							}
 						})
 
-					print(output.join("\n\x1b[90m——————————————————————+——\x1b[m\n"))
+					print(output.join(args.includes("L")
+						? "\n\x1b[90m——————————————————————+——\x1b[m\n"
+						: "\n"))
 				}
 				resolve();
 			}))
