@@ -69,7 +69,7 @@ function fetchTemplates() {
 	temps.forEach((filename, i) => new Promise((resolve, reject) => {
 		let _f = std.open("src/templates/" + filename, "r");
 		if (_f.error()) return reject(_f.error());
-		templates[filename] = _f.readAsString().replace(/\r/g, ""); // windows newline
+		templates[filename] = _f.readAsString().replace(/\r/g, ""); // windows newline =[
 		_f.close();
 
 		if (i + 1 == temps.length)
@@ -89,7 +89,7 @@ function fetchWiki() {
 	.forEach((page, i) => new Promise((resolve, reject) => {
 		let _f = std.open("src/wiki/" + page + ".gmi", "r");
 		if (_f.error()) return reject(_f.error());
-		let data = _f.readAsString().replace(/\r/g, ""); // windows newline
+		let data = _f.readAsString().replace(/\r/g, ""); // windows newline =[
 		_f.close();
 
 		let metadata = { page: page, content: data };
