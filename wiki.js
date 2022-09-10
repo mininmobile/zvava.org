@@ -124,7 +124,7 @@ function main() {
 					"  -q  --quote       add a block quote to the page \n" +
 					"  -l  --link        add a link to the page\n" +
 					"  -i  --image       add an image to the page\n" +
-					"  -a  --alt         set alt text of previous image/link"+
+					"  -a  --alt         set alt text of previous image/link\n"+
 					"\ndate format:       YYYY/MM/DD\n" +
 					"\ncategories:\n" +
 					"  + text          + info\n" +
