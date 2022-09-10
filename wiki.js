@@ -104,15 +104,132 @@ function main() {
 		} break
 
 		case "new": {
-			let args = (scriptArgs[1] || "");
-			if (args.includes("h"))
+			let args = scriptArgs.slice(1)
+			if (args.includes("-h"))
 				return print(
-					"usage: qjs wiki.js new [-h] [page]\n\n" +
-					"  -\t noop\n" +
-					"  h\t display usage information"
-				)
+					"usage: qjs wiki.js new [page] args...\n\n" +
+					"arguments:\n" +
+					"  -h --help        display usage information\n" +
+					//"  -? --examples    display example usage\n" +
+					//"  -f --force       don't abort if page already exists\n" +
+					"  -t  --title       set new page's title\n" +
+					"  -C  --created     set new page's created date\n" +
+					"  -m  --modified    set new page's modified date\n" +
+					"  -T  --thumb       set new page's thumbnail\n" +
+					"  -c  --category    add a category to the page \n" +
+					"  -h1 --header      add a # header to the page \n" +
+					"  -h2 --sub         add a ## header to the page \n" +
+					"  -h3 --subsub      add a ### header to the page \n" +
+					"  -p  --text        add a paragraph to the page \n" +
+					"  -q  --quote       add a block quote to the page \n" +
+					"  -l  --link        add a link to the page\n" +
+					"  -i  --image       add an image to the page\n" +
+					"  -a  --alt         set alt text of previous image/link"+
+					"\ndate format:       YYYY/MM/DD\n" +
+					"\ncategories:\n" +
+					"  + text          + info\n" +
+					"  + event         + art\n" +
+					"  + music         + video\n" +
+					"  + hardware      + software\n" +
+				"")
 
-			// code
+			if ((args[0] || "").startsWith("-"))
+				return print("page url cannot start with a hyphen")
+
+			let _date = new Date();
+			let page = {
+				page: args.shift(),
+				title: "untitled",
+				created: stringifyDate(_date),
+				modified: stringifyDate(_date),
+				thumbnail: undefined,
+				thumbnailAlt: "thumbnail",
+				category: [],
+				body: [],
+			}
+
+			while (args.length > 0) {
+				let arg = args.shift()
+				let value = args.shift()
+				switch (arg) {
+					case "-t": case "--title":
+						if (value) page.title = value; break
+
+					case "-C": case "--created":
+						if (value) page.created = value; break
+
+					case "-m": case "--modified":
+						if (value) page.modified = value; break
+
+					case "-T": case "--thumb":
+						if (value) page.thumbnail = value; break
+
+					case "-c": case "--category":
+						if (value) page.category.unshift(value); break
+
+					case "-h1": case "--header":
+						if (value) page.body.unshift({ node: "h1", text: value }); break
+
+					case "-h2": case "--sub":
+						if (value) page.body.unshift({ node: "h2", text: value }); break
+
+					case "-h3": case "--subsub":
+						if (value) page.body.unshift({ node: "h3", text: value }); break
+
+					case "-p": case "--text":
+						if (value) page.body.unshift({ node: "text", text: value }); break
+
+					case "-q": case "--quote":
+						if (value) page.body.unshift({ node: "quote", text: value }); break
+
+					case "-l": case "--link":
+						if (value) page.body.unshift({ node: "link", path: value, text: value }); break
+
+					case "-i": case "--image":
+						if (value) page.body.unshift({ node: "image", path: "/images/" + value, text: "/images/" + value }); break
+
+					case "-a": case "--alt":
+						if (!value) break
+
+						let i = page.body.findIndex(x => x.node == "link" || x.node == "image")
+
+						if (i == -1)
+							page.thumbnailAlt = value
+						else
+							page.body[i].text = value
+					break
+				}
+			}
+
+			let output = "# " + page.title + "\n"
+
+			if (page.thumbnail !== undefined)
+				output += `=> /images/t/${page.thumbnail}.png ${page.thumbnailAlt}\n`
+
+			// metadata
+			// created
+			output += "```\ncreated  " + page.created + "\n"
+			// modified
+			if (page.created != page.modified) output += "modified " + page.modified + "\n"
+			// category
+			if (page.category.length == 0) page.category.push("stub");
+			output += `category ${page.category.join(", ")}\n`
+			//
+			output += "```\n"
+
+			// body
+			page.body.reverse().forEach(element => { switch(element.node) {
+				case "h1": output += "\n# " + element.text + "\n"; break
+				case "h2": output += "\n## " + element.text + "\n"; break
+				case "h3": output += "\n### " + element.text + "\n"; break
+				case "text": output += "\n" + element.text + "\n"; break
+				case "quote": output += "\n> " + element.text + "\n"; break
+				case "link": output += `\n=> ${element.path} ${element.text}\n`; break
+				case "image": output += `\n=> ${element.path} ${element.text}\n`; break
+			}})
+
+			// write to file
+			print(output);
 		} break
 
 		case "edit": {
@@ -154,6 +271,15 @@ function main() {
 
 function canRunExec() {
 	return os.platform != "win32" && os.platform != "js"
+}
+
+function stringifyDate(date) {
+	let d = new Date(date)
+	let month = (d.getUTCMonth() + 1).toString()
+	if (month.length == 1) month = "0" + month
+	let day = d.getDate().toString()
+	if (day.length == 1) day = "0" + day
+	return `${d.getUTCFullYear()}/${month}/${day}`;
 }
 
 function prependRelevantEmoji(x) {
