@@ -303,15 +303,27 @@ function main() {
 		} break
 
 		case "rm": {
-			let args = (scriptArgs[1] || "")
-			if (args.includes("h"))
+			let args = scriptArgs.slice(1)
+			if (args.length == 0|| args.includes("-h") || args.includes("--help"))
 				return print(
 					"usage: qjs wiki.js rm [-h] [pages]\n\n" +
-					"  -\t noop\n" +
-					"  h\t display usage information\n" +
+					"  -h --help    display usage information\n" +
+					"  -y --yes     confirm deletion\n" +
 				"")
 
-			// code
+			let confirmed = args.includes("-y") || args.includes("--yes")
+			while (args.length > 0) {
+				let page = args.shift()
+				if (page.startsWith("-")) continue
+				let path = "src/wiki/" + page + ".gmi";
+
+				if (confirmed) {
+					let rm = os.remove(path);
+					print (path, "\x1b[90m--\x1b[0m", rm == 0 ? "deleted" : "already deleted");
+				} else {
+					print("\x1b[90mrm\x1b[0m", path)
+				}
+			}
 		} break
 
 		default:
