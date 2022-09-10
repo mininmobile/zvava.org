@@ -104,11 +104,39 @@ function main() {
 		} break
 
 		case "new": {
+			let args = (scriptArgs[1] || "");
+			if (args.includes("h"))
+				return print(
+					"usage: qjs wiki.js new [-h] [page]\n\n" +
+					"  -\t noop\n" +
+					"  h\t display usage information"
+				)
 
+			// code
 		} break
 
 		case "edit": {
+			let args = (scriptArgs[1] || "");
+			if (args.includes("h"))
+				return print(
+					"usage: qjs wiki.js edit [-h] [page]\n\n" +
+					"  -\t noop\n" +
+					"  h\t display usage information"
+				)
 
+			// code
+		} break
+
+		case "rm": {
+			let args = (scriptArgs[1] || "");
+			if (args.includes("h"))
+				return print(
+					"usage: qjs wiki.js rm [-h] [pages]\n\n" +
+					"  -\t noop\n" +
+					"  h\t display usage information"
+				)
+
+			// code
 		} break
 
 		default:
