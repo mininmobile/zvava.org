@@ -105,7 +105,7 @@ function main() {
 
 		case "new": {
 			let args = scriptArgs.slice(1)
-			if (args.includes("-h"))
+			if (args.length == 0 || args.includes("-h") || args.includes("--help"))
 				return print(
 					"usage: qjs wiki.js new [page] args...\n\n" +
 					"arguments:\n" +
@@ -247,15 +247,58 @@ function main() {
 		} break
 
 		case "edit": {
-			let args = (scriptArgs[1] || "");
-			if (args.includes("h"))
+			let args = scriptArgs.slice(1)
+
+			if (args.includes("-h") || args.includes("--help"))
 				return print(
-					"usage: qjs wiki.js edit [-h] [page]\n\n" +
-					"  -\t noop\n" +
-					"  h\t display usage information\n" +
+					"usage: qjs wiki.js edit [arg] [page]\n\n" +
+					"argument:\n" +
+					"  (no argument)    open the page in nano\n" +
+					"  -h --help        display usage information\n" +
+					"  -m --modify      set modified date to today's date\n" +
 				"")
 
-			// code
+			if (args.length == 1 && (args[0] || "").startsWith("-"))
+				return print("wiki.js: page titles cannot start with a hyphen\ntip: qjs wiki.js edit --help")
+
+			let page = args.pop()
+			let arg = args.shift()
+			let path = "src/wiki/" + page + ".gmi";
+
+			switch (arg) {
+				case "-m": case "--modify": try {
+					// read file
+					let read = std.open(path, "r")
+					if (read.error()) throw "error reading " + page + ".gmi"
+					let data = read.readAsString().replace(/\r/g, "") // windows newline =[
+					read.close()
+
+					let makePos = data.indexOf("created")
+					let modPos = data.indexOf("modified", makePos)
+					// if a modified field exists
+					let modDefined = modPos > -1 && modPos - 20 == makePos;
+
+					if (modDefined) { // change modified field
+						data = data.replace(/modified ....\/..\/../, "modified " + stringifyDate(new Date()))
+					} else { // create modified field
+						data = data.replace(/(created  ....\/..\/..)/, "$1\nmodified " + stringifyDate(new Date()))
+					}
+
+					// write file
+					let write = std.open(path, "w");
+					if (write.error()) throw "error writing " + page + ".gmi"
+					write.puts(data);
+					write.close();
+					print("\x1b[90m->\x1b[0m updated", page + ".gmi")
+				} catch (e) {
+					print("wiki.js:", e)
+				} break
+
+				default:
+					print("open page in nano")
+			}
+
+
 		} break
 
 		case "rm": {
