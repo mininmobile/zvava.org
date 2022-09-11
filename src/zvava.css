@@ -83,7 +83,7 @@ a.focus {
 /* lazy mode */
 
 .lazy-mode {
-	margin-top: 6rem;
+	margin: 20vh auto 40vh;
 	user-select: none;
 	cursor: none;
 	overflow-x: hidden;
@@ -92,7 +92,7 @@ a.focus {
 .lazy-mode::before, .lazy-mode::after {
 	content: "";
 	width: 100vw;
-	height: 10vh;
+	height: 5vh;
 	display: block;
 	position: fixed;
 	left: 0;

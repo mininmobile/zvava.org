@@ -34,7 +34,7 @@ window.addEventListener("load", () => {
 
 	document.addEventListener("mouseup", (e) => {
 		if (drag && cursorPos.y != mousePos.y) {
-			let cy = cursorPos.y + (mousePos.y - cursorPos.y) / 4
+			let cy = cursorPos.y + (mousePos.y - cursorPos.y) / 2
 			scrollAmount = dragStart.scroll - (cy - dragStart.y)
 		}
 
@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
 			if (e.wheelDeltaY < 0) s = 1
 			else if (e.wheelDeltaY > 0) s = -1
 
-			scrollAmount += s * 64
+			scrollAmount += s * 72
 		}
 	}, { passive: false })
 
@@ -64,8 +64,8 @@ window.addEventListener("load", () => {
 
 function frame() {
 	// smooth mouse
-	cursorPos.x = Math.floor(cursorPos.x + (mousePos.x - cursorPos.x) / 4)
-	cursorPos.y = Math.floor(cursorPos.y + (mousePos.y - cursorPos.y) / 4)
+	cursorPos.x = Math.floor(cursorPos.x + (mousePos.x - cursorPos.x) / 2)
+	cursorPos.y = Math.floor(cursorPos.y + (mousePos.y - cursorPos.y) / 2)
 
 	cursor.style.left = cursorPos.x - 9 + "px"
 	cursor.style.top = cursorPos.y - 9 + "px"
@@ -73,10 +73,10 @@ function frame() {
 	// smooth scroll
 	if (drag) scrollAmount = dragStart.scroll - (cursorPos.y - dragStart.y)
 
-	scrollPos = Math.floor(scrollPos + (scrollAmount - scrollPos) / 6)
+	scrollPos = Math.floor(scrollPos + (scrollAmount - scrollPos) / 5)
 
-	let minScroll = window.innerHeight * .05
-	let maxScroll = document.body.clientHeight - window.innerHeight / 1.25
+	let minScroll = window.innerHeight * .15
+	let maxScroll = document.body.clientHeight - window.innerHeight / 1.4;
 
 	if (scrollAmount > maxScroll) scrollAmount = maxScroll
 	if (scrollAmount < minScroll) scrollAmount = minScroll
