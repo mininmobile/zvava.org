@@ -1,0 +1,49 @@
+# actually simple syndication
+=> /images/t/ass.png thumbnail
+```
+created  2022/09/11
+category info
+```
+
+an alternative to "Really Simple" Syndication which tries to stay true to its name
+
+=> http://tilde.town/~dzwdz/ass/ view original
+
+## the spec
+
+An .ass file consists of a bunch of lines. Every line represents an item (e.g. article).
+
+Every line consists of:
+1. an ISO-8601 formatted date with dashes
+2. the URI of the item
+3. (optionally) the title of the item
+
+Those elements are separated by tabs. Every tab after the URI is treated as part of the title. The order of the lines doesn't matter. Additional whitespace before the date is NOT permitted.
+
+Lines can also be empty or start with the # character. Those lines are to be ignored by clients. I recommend adding a comment with a link to this page at the top, so people won't get confused about what to do with the file.
+
+It's very highly recommended to name the file "feed.ass". This will make feed discovery much easier. If you want to get added to the list of known feeds, you MUST name your feed that (the 2 feeds in there are grandfathered in).
+
+## benefits over RSS
+* doesn't use XML - it's *actually* simple
+* articles can be easily compared/deduplicated
+* can be parsed with standard unix tools
+
+## examples
+feed.ass
+```
+# Actually Simple Syndication - https://tilde.town/~dzwdz/ass/
+2021-12-30	https://example.com/article-1	Article 1: Something something
+2021-04-20	gemini://example.com/brpf
+```
+
+one-liner feed aggregator
+```
+#!/bin/sh
+curl -L $(cat feeds.txt) | grep -v ^# | sort
+```
+
+## software, websites, etc
+=> http://tilde.town/~dzwdz/ass/feeds.txt feeds.txt - all currently known feeds
+=> https://tilde.town/~dzwdz/ass/planet.html a planet-like feed aggregator.
+=> https://github.com/dzwdz/ass the full git repo

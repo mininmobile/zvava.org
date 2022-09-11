@@ -23,6 +23,15 @@ h1, h2, h3, p {
 	margin: 1rem 0;
 	background: rgba(0, 0, 0, .5); }
 
+span.ui::before, span.oi::before {
+	white-space: pre; }
+
+span.ui::before {
+	content: " \2022  " }
+
+span.oi::before {
+	content: " " attr(data-i) ". " }
+
 blockquote {
 	margin: 0 0 0 4ch; }
 

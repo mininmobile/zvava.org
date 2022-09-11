@@ -226,17 +226,20 @@ function generateHTML(files) {
 					// escape html tag opening brackets
 				l = l.replace(/</g, "&lt;")
 					// convert headers
-					.replace(/### +(.*)/, "<h3>$1</h3>")
-					.replace(/## +(.*)/, "<h2>$1</h2>")
-					.replace(/# +(.*)/, "<h1>$1</h1>")
+					.replace(/^### +(.*)/, "<h3>$1</h3>")
+					.replace(/^## +(.*)/, "<h2>$1</h2>")
+					.replace(/^# +(.*)/, "<h1>$1</h1>")
 					// convert images
-					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
-					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)\.(png|jpg)/i, '<img src="$1.$2">')
+					.replace(/^=> +([a-z0-9\-_\/:\.@?!&=#~]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
+					.replace(/^=> +([a-z0-9\-_\/:\.@?!&=#~]+)\.(png|jpg)/i, '<img src="$1.$2">')
 					// convert links
-					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+) +(.*)/i, '<a href="$1">$2</a>')
-					.replace(/=> +([a-z0-9\-_\/:\.@?!&=#]+)/i, '<a href="$1">$1</a>')
+					.replace(/^=> +([a-z0-9\-_\/:\.@?!&=#~]+) +(.*)/i, '<a href="$1">$2</a>')
+					.replace(/^=> +([a-z0-9\-_\/:\.@?!&=#~]+)/i, '<a href="$1">$1</a>')
 					// convert block quotes
-					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>");
+					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
+					// convert lists
+					.replace(/^[-*+] *(.*)/, "<span class=\"ui\">$1</span>")
+					.replace(/^([0123456789]+)\. *(.*)/, "<span class=\"oi\" data-i=\"$1\">$2</span>");
 
 				if (f == "wiki/index" && l.startsWith("<a href=\"/wiki/")) {
 					// get location of linked wiki page start
