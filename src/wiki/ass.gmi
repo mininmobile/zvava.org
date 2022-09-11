@@ -1,7 +1,7 @@
 # actually simple syndication
 => /images/t/ass.png thumbnail
 ```
-created  2022/09/11
+created  2022/09/12
 category info
 ```
 
