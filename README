@@ -1,8 +1,78 @@
 # zvava.org
-static website generator (html and gemini) for my personal website
+static website generator (html and gemini) for my personal website [zvava.org](zvava.org)
+
+## contributing
+the `qjs wiki.js` utility is provided to help me (and you!) to create modifications to the wiki
+
+usage: `qjs wiki.js command args`
+
+commands:
+* `list`: list all wiki pages
+* `new`: create a new wiki page
+* `edit`: edit a wiki page
+* `rm`: delete wiki pages
+
+each command has it's own arguments, to list use `qjs wiki.js command -h`
+
+### `list`
+prints out a list of every single page, takes a combination of characters as an argument
+
+`usage: qjs wiki.js list [-hlLcTIEAMVHS]`
+
+* `-`: noop
+* `h`: display usage information
+* `l`: compact list
+* `L`: cozy list
+* `c`: sort by created date instead of modified date
+
+you can filter by categories using the captial first letter of a category; `T`ext, `I`nfo, `E`vent, `A`rt, `M`usic, `V`ideo, `H`ardware, `S`oftware
+
+### `edit`
+makes changes to a page
+
+`usage: qjs wiki.js edit [arg] page`
+
+argument:
+* `(no argument)`: open the page in nano
+* `-h --help`: display usage information
+* `-m --modify`: set modified date to today's date
+
+### `rm`
+delete a page or pages. if you need to be safe you can type out pages to remove first, then go up in history to confirm the deletion by adding `-y` to the end of the command
+
+`usage: qjs wiki.js rm [-h] [pages]`
+
+* `-h --help`: display usage information
+* `-y --yes`: confirm deletion
+
+### `new`
+create a new wiki page with placeholder content
+
+`usage: qjs wiki.js new page [args...]`
+
+general arguments:
+* `-h  --help`: display usage information
+* `-f  --force`: don't abort if page already exists
+
+add metadata:
+* `-t  --title`:       set new page's title
+* `-C  --created`: set new page's created date
+* `-m  --modified`: set new page's modified date
+* `-T  --thumb`: set new page's thumbnail
+* `-c  --category`: add a category to the page
+
+add content:
+* `-h1 --header`: add a # header to the page
+* `-h2 --sub`: add a ## header to the page
+* `-h3 --subsub`: add a ### header to the page
+* `-p  --text`: add a paragraph to the page
+* `-q  --quote`: add a block quote to the page
+* `-l  --link`: add a link to the page
+* `-i  --image`: add an image to the page
+* `-a  --alt`: set alt text of previous image/link
 
 ## development
-run `qjs ./make.js` to create out/, out/gemini/, and out/www/, then generate contents
+run `qjs make.js` to create out/, out/gemini/, and out/www/, then generate contents
 
 run `webserver 80 out/www/` (`npm i -g webserver`) to debug html output
 

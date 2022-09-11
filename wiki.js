@@ -107,11 +107,10 @@ function main() {
 			let args = scriptArgs.slice(1)
 			if (args.length == 0 || args.includes("-h") || args.includes("--help"))
 				return print(
-					"usage: qjs wiki.js new [page] args...\n\n" +
+					"usage: qjs wiki.js new page [args...]\n\n" +
 					"arguments:\n" +
-					"  -h --help        display usage information\n" +
-					//"  -? --examples    display example usage\n" +
-					"  -f --force       don't abort if page already exists\n" +
+					"  -h  --help        display usage information\n" +
+					"  -f  --force       don't abort if page already exists\n" +
 					"  -t  --title       set new page's title\n" +
 					"  -C  --created     set new page's created date\n" +
 					"  -m  --modified    set new page's modified date\n" +
@@ -153,7 +152,7 @@ function main() {
 				let arg = args.shift()
 				let value = args.shift()
 				switch (arg) {
-					case "-f": case "--force": force = true; break
+					case "-f": case "--force": force = true; args.unshift(value); break
 
 					case "-t": case "--title":
 						if (value) page.title = value; break
@@ -251,7 +250,7 @@ function main() {
 
 			if (args.length == 0 || args.includes("-h") || args.includes("--help"))
 				return print(
-					"usage: qjs wiki.js edit [arg] [page]\n\n" +
+					"usage: qjs wiki.js edit [arg] page\n\n" +
 					"argument:\n" +
 					"  (no argument)    open the page in nano\n" +
 					"  -h --help        display usage information\n" +
