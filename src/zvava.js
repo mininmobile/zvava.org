@@ -1,6 +1,6 @@
 let lazyMode = sessionStorage.getItem("lazyMode")
 let links = []
-let focusLink = null;
+let focusLink = undefined;
 
 let cursor = null
 let mousePos = { x: 0, y: 0 }
@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
 	})
 
 	document.addEventListener("click", (e) => {
-		if (lazyMode && focusLink && dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16) focusLink && focusLink.click()
+		if (lazyMode && focusLink && dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16) focusLink && focusLink.link.click()
 	})
 
 	document.addEventListener("mousedown", (e) => {
@@ -90,8 +90,9 @@ function frame() {
 			let d = Math.abs(l.getBoundingClientRect().top - (cursorPos.y - 9))
 			return { link: l, dist: d }
 		})
-		.sort((a, b) => a.dist - b.dist)[0].link;
-	focusLink.classList.add("focus")
+		.filter(l => l.dist < 64)
+		.sort((a, b) => a.dist - b.dist)[0];
+	focusLink && focusLink.link.classList.add("focus")
 
 	if (lazyMode) requestAnimationFrame(frame)
 }
@@ -113,12 +114,12 @@ function startLazyMode() {
 
 function endLazyMode() {
 	console.log("ending lazy mode")
-	focusLink.classList.remove("focus");
+	focusLink && focusLink.link.classList.remove("focus");
 	document.body.classList.remove("lazy-mode")
 	// delete cursor element
 	document.body.removeChild(cursor)
 	//
-	focusLink = null
+	focusLink = undefined;
 	links = []
 	drag = false
 }

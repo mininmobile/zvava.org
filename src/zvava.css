@@ -27,14 +27,17 @@ blockquote {
 	margin: 0 0 0 4ch; }
 
 img {
-	max-width: 60ch; }
+	max-width: 60ch;
+	image-rendering: pixelated; }
+
+img[alt="image"] {
+	image-rendering: unset; }
 
 img[alt="header"] {
 	max-width: 100%;
-	width: 100%;
-	image-rendering: pixelated; }
+	width: 100%; }
 
-	.lazy-mode img { pointer-events: none }
+.lazy-mode img { pointer-events: none }
 
 pre {
 	margin: -.5rem 0; }
@@ -52,7 +55,10 @@ a {
 	white-space: pre;
 }
 
-.lazy-mode a { cursor: none; pointer-events: none; }
+.lazy-mode a {
+	cursor: none;
+	pointer-events: none;
+	transition: color .1s, text-shadow .3s; }
 
 a::before {
 	content: "\21D2  "; }
