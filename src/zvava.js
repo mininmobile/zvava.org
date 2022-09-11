@@ -1,3 +1,41 @@
+window.addEventListener("load", () => {
+	document.addEventListener("keydown", (e) => e.key == "Escape" && toggleLazyMode())
+
+	document.addEventListener("click", (e) => lazyMode && focusLink &&
+		dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16 && focusLink.link.click())
+
+	document.addEventListener("mousedown", (e) => {
+		drag = lazyMode
+		dragStart = { x: mousePos.x, y: mousePos.y, scroll: scrollAmount }
+	})
+
+	document.addEventListener("mouseup", (e) => {
+		if (drag && cursorPos.y != mousePos.y) {
+			let cy = cursorPos.y + (mousePos.y - cursorPos.y) / 2
+			scrollAmount = dragStart.scroll - (cy - dragStart.y)
+		}
+
+		drag = false
+	})
+
+	document.addEventListener("mousemove", (e) =>
+		lazyMode && (mousePos = { x: e.clientX, y: e.clientY }))
+
+	document.body.addEventListener("wheel", (e) => {
+		if (lazyMode) {
+			e.preventDefault()
+
+			let s = 0;
+			if (e.wheelDeltaY < 0) s = 1
+			else if (e.wheelDeltaY > 0) s = -1
+
+			scrollAmount += s * 72
+		}
+	}, { passive: false })
+
+	lazyMode &&  startLazyMode()
+})
+
 let lazyMode = sessionStorage.getItem("lazyMode")
 let links = []
 let focusLink = undefined;
@@ -17,50 +55,6 @@ if (lazyMode == null) {
 } else {
 	lazyMode = sessionStorage.getItem("lazyMode") == "true" ? true : false
 }
-
-window.addEventListener("load", () => {
-	document.addEventListener("keydown", (e) => {
-		if (e.key == "Escape") toggleLazyMode()
-	})
-
-	document.addEventListener("click", (e) => {
-		if (lazyMode && focusLink && dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16) focusLink && focusLink.link.click()
-	})
-
-	document.addEventListener("mousedown", (e) => {
-		drag = lazyMode
-		dragStart = { x: mousePos.x, y: mousePos.y, scroll: scrollAmount }
-	})
-
-	document.addEventListener("mouseup", (e) => {
-		if (drag && cursorPos.y != mousePos.y) {
-			let cy = cursorPos.y + (mousePos.y - cursorPos.y) / 2
-			scrollAmount = dragStart.scroll - (cy - dragStart.y)
-		}
-
-		drag = false
-	})
-
-	document.addEventListener("mousemove", (e) => {
-		if (lazyMode) {
-			mousePos = { x: e.clientX, y: e.clientY }
-		}
-	})
-
-	document.body.addEventListener("wheel", (e) => {
-		if (lazyMode) {
-			e.preventDefault()
-
-			let s = 0;
-			if (e.wheelDeltaY < 0) s = 1
-			else if (e.wheelDeltaY > 0) s = -1
-
-			scrollAmount += s * 72
-		}
-	}, { passive: false })
-
-	if (lazyMode) startLazyMode()
-})
 
 function frame() {
 	// smooth mouse
