@@ -1,0 +1,26 @@
+# lazy mode
+=> /images/t/lazymode.png thumbnail
+```
+created  2022/09/11
+category text
+```
+
+press ESC to toggle on any page on zvava.org
+
+tl;dr it kinda makes it like if you were on a phone
+
+=> https://merveilles.town/@zvava/108977021555417449 @zvava@merveilles.town: lazy browsing mode #theWorkshop
+
+## why
+
+i wanted to see if i could somewhat gamify the process of browsing this website (or other websites)
+
+## how
+
+the cursor has velocity as if you were pointing a lazer pointer at the screen, you can also click + drag to scroll, or use the mouse wheel as normal
+
+your scroll position also has velocity and you can under/overscroll a tiny bit with elasticity
+
+links are now focused on proximity. instead of only highlighting a link when the mouse is over it, the closest link to the cursor is highlighted for a "looser" navigation feel idk. clicking opens the closest highlighted link, you may cancel a click by dragging
+
+some additional css is activated to disable poiner events and user selection, as well as adding a little shadow to the top and bottom edges of the screen
