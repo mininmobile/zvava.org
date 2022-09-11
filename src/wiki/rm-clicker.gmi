@@ -5,4 +5,9 @@ created  2018/08/08
 category software
 ```
 
+an idle game about rainmeter, as a rainmeter[1] skin
+
 => https://github.com/mininmobile/rm-clicker
+
+## cites
+=> /wiki/rainmeter.xyz 1. rainmeter

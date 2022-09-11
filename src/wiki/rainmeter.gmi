@@ -1,0 +1,13 @@
+# rainmeter
+=> /images/t/rainmeter.png thumbnail
+```
+created  2022/09/11
+category info
+```
+
+rainmeter is a foss desktop customization utility for windows
+
+=> https://rainmeter.net/ rainmeter.net
+
+## my skins
+=> /wiki/rm-clicker.xyz rainmeter clicker
