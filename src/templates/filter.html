@@ -32,8 +32,11 @@
 		white-space: pre;
 		display: block; }
 
-	summary:hover, label:hover {
+	summary:hover, summary.focus, label:hover, label.focus {
 		font-weight: bold; }
+
+	summary.focus {
+		color: #eebfff; }
 
 	summary { color: #c27ed5; }
 	summary::before { content: " \2192   "; }
@@ -51,7 +54,7 @@
 	#software:checked ~ details summary::after { content: " (software)"; }
 
 	label::before { content: "    "; }
-	label:hover::before { content: " x  "; }
+	label:hover::before, label.focus::before  { content: " x  "; }
 	#all:checked      ~ details .all-label::before,
 	#text:checked     ~ details .text-label::before,
 	#info:checked     ~ details .info-label::before,
@@ -75,4 +78,9 @@
 	#hardware:checked ~ [data-category~="hardware"],
 	#software:checked ~ [data-category~="software"] {
 		display: block; }
+
+	.lazy-mode details {
+		pointer-events: none;
+		cursor: none;
+	}
 </style>

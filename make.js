@@ -54,6 +54,7 @@ function main() {
 	copyFile("src/images/", "out/gemini/images/", true);
 	copyFile("src/images/", "out/www/images/", true);
 	copyFile("src/zvava.css", "out/www/zvava.css");
+	copyFile("src/zvava.js", "out/www/zvava.js");
 
 	fetchTemplates();
 }

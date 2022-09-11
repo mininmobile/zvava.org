@@ -13,6 +13,7 @@ body {
 	font-family: Ubuntu Mono, monospace;
 	line-height: 1.5rem;
 	font-size: 1.1rem;
+	transform: unset;
 }
 
 h1, h2, h3 {
@@ -20,7 +21,7 @@ h1, h2, h3 {
 
 h1, h2, h3, p {
 	margin: 1rem 0;
-	background: #000000; }
+	background: rgba(0, 0, 0, .5); }
 
 blockquote {
 	margin: 0 0 0 4ch; }
@@ -33,27 +34,34 @@ img[alt="header"] {
 	width: 100%;
 	image-rendering: pixelated; }
 
+	.lazy-mode img { pointer-events: none }
+
 pre {
 	margin: -.5rem 0; }
 
 pre, blockquote {
 	color: #bbbbbb;
-	background: #000000; }
+	background: rgba(0, 0, 0, .5); }
 
 a {
 	text-decoration: none;
 	color: #c27ed5;
-	background: #000000;
+	background: rgba(0, 0, 0, .5);
 	line-height: 1.7rem;
 	font-family: Ubuntu Mono, monospace;
 	white-space: pre;
 }
 
+.lazy-mode a { cursor: none; pointer-events: none; }
+
 a::before {
 	content: "\21D2  "; }
 
-a:focus, a:hover  {
+a:focus, a:hover, a.focus  {
 	font-weight: bold; }
+
+a.focus {
+	color: #eebfff; }
 
 @media (orientation: portrait) {
 	html {
@@ -64,4 +72,50 @@ a:focus, a:hover  {
 
 	img {
 		max-width: 100%; }
+}
+
+/* lazy mode */
+
+.lazy-mode {
+	margin-top: 6rem;
+	user-select: none;
+	cursor: none;
+	overflow-x: hidden;
+}
+
+.lazy-mode::before, .lazy-mode::after {
+	content: "";
+	width: 100vw;
+	height: 10vh;
+	display: block;
+	position: fixed;
+	left: 0;
+	cursor: none;
+	pointer-events: none;
+}
+
+.lazy-mode::before {
+	background: linear-gradient(rgba(0, 0, 0, .75), transparent);
+	top: 0;
+}
+
+.lazy-mode::after {
+	background: linear-gradient(transparent, rgba(0, 0, 0, .75));
+	bottom: 0;
+}
+
+.cursor {
+	width: 18px;
+	height: 18px;
+	background: #dddddd;
+	border-radius: 50%;
+	position: fixed;
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, .5);
+	cursor: none;
+	pointer-events: none;
+	z-index: 9;
+}
+
+.focus {
+	text-shadow: 0 0 .25rem rgba(255, 255, 255, 0.1);
 }
