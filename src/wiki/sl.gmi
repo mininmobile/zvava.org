@@ -1,0 +1,14 @@
+# ascii art of a train
+```
+created  2022/09/11
+category stub
+```
+
+choo choo!
+
+```
+ _________ ____ O o
+ |O|o|O|o| |_@|___][_
+ |_______|~|__|______|<
+  +oo +oo   +OO-O-oo \
+```

@@ -112,8 +112,10 @@ function fetchWiki() {
 		pages.push(metadata);
 
 		if (i + 1 == _wiki.length) {
-			// sort by modified
-			pages = pages.sort((a, b) => new Date(b.modified.replace(/\//g, "-")) - new Date(a.modified.replace(/\//g, "-")));
+			pages = pages
+				// sort by modified
+				.sort((a, b) => new Date(b.modified.replace(/\//g, "-")) - new Date(a.modified.replace(/\//g, "-")));
+
 			// generate
 			generateGemini();
 		}
@@ -129,18 +131,34 @@ function generateGemini() {
 
 	// generate index
 	let _books = ["📕", "📗", "📘", "📙", "📓"].sort(() => Math.random() - .5); // random book emojis
-	let _wikiRecent = pages.slice(0, 5).map((p, i) => {
-		let book = _books[i]; // get random book emoji
-		let category = prependRelevantEmoji(p.category[0]);
-		return `=> /wiki/${p.page}.xyz ${book} wiki/${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
-	}).join("\n");
+	let _wikiRecent = pages
+		// remove stubs
+		.filter(page => !page.category.includes("stub"))
+		// first five
+		.slice(0, 5)
+		// render
+		.map((p, i) => {
+			let book = _books[i]; // get random book emoji
+			let category = prependRelevantEmoji(p.category[0]);
+			return `=> /wiki/${p.page}.xyz ${book} wiki/${p.title}`
+				+ "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
+		})
+		// stringify
+		.join("\n");
 	files["index"] = templates["index.gmi"].replace("{wiki_recent}", _wikiRecent);
 
 	// generate wiki index
-	let _wikiAll = pages.map(p => {
-		let category = p.category.map(prependRelevantEmoji).join(", ");
-		return `=> /wiki/${p.page}.xyz ${p.title}` + "\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
-	}).join("\n");
+	let _wikiAll = pages
+		// remove stubs
+		.filter(page => !page.category.includes("stub"))
+		// render
+		.map(p => {
+			let category = p.category.map(prependRelevantEmoji).join(", ");
+			return `=> /wiki/${p.page}.xyz ${p.title}` +
+				"\n```\n   " + `[${p.modified}] [${category}]` + "\n```";
+		})
+		// stringify
+		.join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
 	// generate wiki pages
