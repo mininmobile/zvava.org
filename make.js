@@ -294,10 +294,44 @@ function generateHTML(files) {
 		// if all pages have been written
 		if (i + 1 == _files.length) {
 			std.printf("\n");
-			print("\r\x1b[32m-->\x1b[0m finished make script");
+			generateAss();
 		}
 		resolve();
 	}).catch(print));
+}
+
+function generateAss() {
+	console.log("\x1b[90m->\x1b[0m generating feed.ass...");
+
+	let assEntries = "# Actually Simple Syndication - https://tilde.town/~dzwdz/ass/\n" +
+		pages.map(page => {
+			let date = page.created.replace(/\//g, "-");
+			return `${date}	protocol://zvava.org/wiki/${page.page}.xyz	${page.title}`;
+		}).join("\n") + "\n";
+
+	try {
+		let error;
+
+		let fg = std.open("out/gemini/feed.ass", "w");
+		if (error = fg.error()) {
+			fg.close();
+			throw error;
+		}
+
+		let fw = std.open("out/www/feed.ass", "w");
+		if (error = fw.error()) {
+			fw.close();
+			throw error;
+		}
+
+		fg.puts(assEntries.replace(/protocol:\/\//g, "gemini://").replace(/\.xyz\t/g, ".gmi\t"));
+		fw.puts(assEntries.replace(/protocol:\/\//g, "https://").replace(/\.xyz\t/g, ".html\t"));
+		print("\x1b[32m-->\x1b[0m generated feed.ass");
+	} catch (e) {
+		print("make.js:", e);
+	}
+
+	print("\r\x1b[32m-->\x1b[0m finished make script");
 }
 
 function prependRelevantEmoji(x) {
