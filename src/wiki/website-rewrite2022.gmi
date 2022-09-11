@@ -1,0 +1,33 @@
+# website rewrite (2022)
+=> /images/t/redesign.png thumbnail
+```
+created  2022/05/24
+modified 2022/08/15
+category text
+```
+
+the website infrastructure has undergone two major changes recently, which was needed since the last rewrite[0] was two years ago now and isn't satisfactory anymore
+
+## the great gemtextification[1]
+
+the previous static site generator (ssg) relied on a bastardized version of markdown to store wiki pages and required too much supportting html/css/js and had to go
+
+i have replaced it with the gemtext format borrowed from the gemini[2] project which is much simpler to parse and render, this has *significantly* reduced the size of the templates, the css, and the ssg. as a byproduct i am now also able to host a gemini mirror of the website free from any extra code
+
+i also changed hosts to a vps provider so instead of forcibly re-uploading every file via ftp, i can run a script on the server via ssh to pull the latest version of the github repository, build it, and copy the output to the lighttpd www/ and agate gemini/ folders
+
+## rise of quickjs[3]
+
+i think halving the size of the already small ssg isn't very productive if it relies on node.js, a very heavy javascript engine, to function. now quickjs[4] has been on my radar for a while but i've never had an excuse to use it until now, think of it as the tcc for node
+
+i rewrote the ssg to use quickjs's (much simpler) api and tested until i got it running locally, once it was done i installed qjs on the server, merged into master, and ran the publish script and nothing changed whatsoever*
+
+*in the end i manually converted every .md file to .gmi by hand and spent a week on it
+
+## cites
+=> /wiki/website-rewrite2020.xyz 0. website rewrite (2020)
+=> https://github.com/mininmobile/zvava.org/pull/3 1. the great gemtextification
+=> https://gemini.circumlunar.space 2.a gemini (https)
+=> gemini://gemini.circumlunar.space 2.b gemini (gemini)
+=> https://github.com/mininmobile/zvava.org/pull/4 3. convert script to quickjs
+=> https://bellard.org/quickjs 4. quickjs javascript engine
