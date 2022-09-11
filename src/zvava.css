@@ -24,12 +24,16 @@ h1, h2, h3, p {
 	background: rgba(0, 0, 0, .5); }
 
 span.ui::before, span.oi::before {
+	display: inline-block;
+	text-align: right;
 	white-space: pre; }
 
 span.ui::before {
+	width: 4ch;
 	content: " \2022  " }
 
 span.oi::before {
+	width: 5ch;
 	content: " " attr(data-i) ". " }
 
 blockquote {
