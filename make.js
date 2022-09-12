@@ -238,8 +238,8 @@ function generateHTML(files) {
 					// convert block quotes
 					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
 					// convert lists
-					.replace(/^[-*+] *(.*)/, "<span class=\"ui\">$1</span>")
-					.replace(/^([0123456789]+)\. *(.*)/, "<span class=\"oi\" data-i=\"$1\">$2</span>");
+					.replace(/^[-*+] +(.*)/, "<span class=\"ui\">$1</span>")
+					.replace(/^([0123456789]+)\. +(.*)/, "<span class=\"oi\" data-i=\"$1\">$2</span>");
 
 				if (f == "wiki/index" && l.startsWith("<a href=\"/wiki/")) {
 					// get location of linked wiki page start
