@@ -5,9 +5,13 @@ created  2022/09/12
 category info
 ```
 
-an alternative to "Really Simple" Syndication which tries to stay true to its name
+this is a mirror of the spec located at `tilde.town/~dzwdz/ass`
 
 => http://tilde.town/~dzwdz/ass/ view original
+
+# tilde.town/~dzwdz/ass
+
+an alternative to "Really Simple" Syndication which tries to stay true to its name
 
 ## the spec
 
