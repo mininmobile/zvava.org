@@ -1,0 +1,15 @@
+# archiving (2022)
+=> /images/t/archive.png thumbnail
+```
+created  2022/09/12
+category text
+```
+
+i previously[1] went and archived a bunch of past projects to this website, the only problem was that a lot of this content was hosted externally on either mega, youtube, or soundcloud. now, all the content is available locally off *my* web server and doesn't rely on 3rd parties
+
+the content affected by this are 💾 software, 🎵 music, and 📺 video posts
+
+until i am able to set up my own git server all my code will remain hosted on github, though :l
+
+## cites
+=> /wiki/archiving-2020.xyz 1. archiving (2020)

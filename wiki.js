@@ -206,7 +206,7 @@ function main() {
 			let output = "# " + page.title + "\n"
 
 			if (page.thumbnail !== undefined)
-				output += `=> /images/t/${page.thumbnail}.png ${page.thumbnailAlt}`
+				output += `=> /images/t/${page.thumbnail}.png ${page.thumbnailAlt}\n`
 
 			// metadata
 			// created
