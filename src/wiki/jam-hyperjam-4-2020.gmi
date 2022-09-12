@@ -9,9 +9,10 @@ from april 3rd through april 5th, the people over at merveilles[1] hosted an int
 
 i started off by translating a 3D engine i made on codepen[2] in javascript to hypertalk, i didn't get to implementing backface culling and shading though (not enough time). to make it interactive i added a short spooky/"horror-like" story that isn't really good but i mean i can't really do anything cool in 3D as i need to make the models by each vertex and face plus it take forever to render at original speed.
 
-in the folder of .dsks linked below, backup6_trapping_finished_final_final_final.dsk is the release you should "play".
+download backup6_trapping_finished_final_final_final.dsk if you want the game, download backup2_projected_wireframe.dsk if you only want my hypercard 3D engine.
 
-=> /files/hyperjam/
+=> /media/software/backup6_trapping_finished_final_final_final.dsk backup6_trapping_finished_final_final_final.dsk
+=> /media/software/backup2_projected_wireframe.dsk backup2_projected_wireframe.dsk
 
 ## cites
 => https://merveilles.town 1. merveilles
