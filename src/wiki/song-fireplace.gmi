@@ -8,3 +8,5 @@ category music
 gather round
 
 => /media/music/fireplace.mp3
+
+=> /wiki/chronic.xyz chronic the hemphog

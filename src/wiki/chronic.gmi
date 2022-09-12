@@ -1,0 +1,15 @@
+# chronic the hemphog
+=> /images/t/chronic.png thumbnail
+```
+created  2022/09/12
+category stub
+```
+
+=> /images/m/fireplace.jpg cover image of fireplace
+=> /wiki/song-fireplace.xyz fireplace
+
+=> /images/m/maybe_im_okay.jpg cover image of maybe i'm okay
+=> /wiki/song-maybe-im-okay.xyz maybe i'm okay
+
+=> /images/m/euphoria.jpg cover image of euphoria
+=> /wiki/song-euphoria.xyz euphoria

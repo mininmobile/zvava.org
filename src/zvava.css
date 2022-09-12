@@ -39,6 +39,9 @@ span.oi::before {
 blockquote {
 	margin: 0 0 0 4ch; }
 
+video, audio {
+	max-width: 100%; }
+
 img {
 	max-width: 60ch;
 	image-rendering: pixelated; }

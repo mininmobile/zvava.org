@@ -6,3 +6,5 @@ category music
 ```
 
 => /media/music/euphoria.mp3
+
+=> /wiki/chronic.xyz chronic the hemphog

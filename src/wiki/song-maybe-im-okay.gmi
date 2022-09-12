@@ -8,3 +8,5 @@ category music
 just maybe
 
 => /media/music/maybe.i'm.okay.mp3
+
+=> /wiki/chronic.xyz chronic the hemphog
