@@ -1,5 +1,5 @@
 # dash camera teardown
-=> /images/t/dash_cam.png thumbnail
+=> /images/t/camera.png thumbnail
 ```
 created  2020/07/04
 category hardware, text

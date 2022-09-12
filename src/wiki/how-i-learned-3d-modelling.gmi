@@ -1,5 +1,5 @@
 # how i learned 3d modelling
-=> /images/t/how_3d.png thumbnail
+=> /images/t/3d.png thumbnail
 ```
 created  2020/03/25
 category text
