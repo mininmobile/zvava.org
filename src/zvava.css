@@ -99,13 +99,16 @@ a.focus {
 /* lazy mode */
 
 .lazy-mode {
-	margin: 20vh auto 40vh;
 	user-select: none;
 	cursor: none;
+}
+
+.lazy-mode body {
+	margin: 20vh auto 40vh;
 	overflow-x: hidden;
 }
 
-.lazy-mode::before, .lazy-mode::after {
+.lazy-mode body::before, .lazy-mode body::after {
 	content: "";
 	width: 100vw;
 	height: 5vh;
