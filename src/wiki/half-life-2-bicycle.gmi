@@ -1,7 +1,8 @@
 # half life 2: bicycle
+=> /media/video/half.life.2.bicycle.mp4
 ```
 created  2022/08/27
 category video
 ```
 
-=> /media/video/half.life.2.bicycle.mp4
+so there i was, replaying half life 2, when i discovered this bicycle halfway through the intro. i found playing with this bicycle physics object very amusing
