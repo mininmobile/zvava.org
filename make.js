@@ -230,17 +230,17 @@ function generateHTML(files) {
 					.replace(/^## +(.*)/, "<h2>$1</h2>")
 					.replace(/^# +(.*)/, "<h1>$1</h1>")
 					// convert images
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+)\.(png|jpg)/i, '<img src="$1.$2">')
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+)\.(png|jpg) +(.*)/i, '<img src="$1.$2" alt="$3">')
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+)\.(png|jpg)/i, '<img src="$1.$2">')
 					// convert audio
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+)\.mp3 *(.*)/i,
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+)\.mp3 *(.*)/i,
 						'<audio controls><source src="$1.mp3" type="audio/mpeg">your browser does not support the audio element</audio>')
 					// convert video
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+)\.mp4 *(.*)/i,
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+)\.mp4 *(.*)/i,
 						'<video controls><source src="$1.mp4" type="video/mp4">your browser does not support the audio element</video>')
 					// convert links
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+) +(.*)/i, '<a href="$1">$2</a>')
-					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~]+)/i, '<a href="$1">$1</a>')
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+) +(.*)/i, '<a href="$1">$2</a>')
+					.replace(/^=> +([a-z0-9\-_\/\.\(\),+:@?!&=#~']+)/i, '<a href="$1">$1</a>')
 					// convert block quotes
 					.replace(/^> *(.*)/, "<blockquote>$1</blockquote>")
 					// convert lists
