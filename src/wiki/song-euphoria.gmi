@@ -5,4 +5,4 @@ created  2021/12/31
 category music
 ```
 
-=> https://soundcloud.com/pasinazera/euphoria
+=> /media/music/euphoria.mp3

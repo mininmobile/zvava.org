@@ -9,4 +9,4 @@ samples from bic runga - listening for the weather
 
 => https://unsplash.com/photos/BcB1UNhifME album cover from my unsplash
 
-=> https://soundcloud.com/pasinazera/listening-4-the-weather-flip
+=> /media/music/listening.4.the.weather.(flip).mp3

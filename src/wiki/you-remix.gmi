@@ -1,4 +1,5 @@
-# alex ferro - you (itro remix) (zvava remix)
+# alex ferro - you (itro + zvava remix)
+=> /images/m/you.jpg cover
 ```
 created  2016/10/03
 category music, text
@@ -6,4 +7,4 @@ category music, text
 
 a little remix i made in audacity, back in 2015-17 i was really into basic mashing of songs and this is the only one i'll leave up cause it actually kinda slaps.
 
-=> https://soundcloud.com/pasinazera/you-itro-remix-vapor-remix
+=> /media/music/alex.ferro.-.you.(itro.+.zvava.remix).mp3
