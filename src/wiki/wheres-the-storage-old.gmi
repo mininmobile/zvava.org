@@ -12,7 +12,7 @@ i think this idea could have gone places, and i was indeed working on a whole re
 
 screenshot included in the download link
 
-=> https://mega.nz/#F!1F1yRIQD!fosK8sVxMKpz6R8RwJxE3Q download
+=> /media/software/wts.zip
 
 ## cites
 => https://www.youtube.com/watch?v=NO_gqbE3e54 1. Creating HDD Activity LED in Windows System Tray : #Codegasm 6

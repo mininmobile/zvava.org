@@ -13,7 +13,7 @@ version 1.1 was built on the same day as 1.0 and removes the file name textbox a
 
 version 1.2 was a complete revamp in C#.net with winforms for gui, and im still a little proud of it to this day - back then i was proud of it enough to make a whole alternativeto.net[3] page for it. if you want some screenshots of how it looked like they're there, email me if they've taken it down cause i bet it's not long until they discover it's discontinued. :P i have archived the screenshots on there in the download link too in case
 
-=> https://mega.nz/#F!9A9nlDIZ!-7Lv5yel_fOgO_sil2dX8g download
+=> /media/software/zebrapad.zip
 
 ## cites
 => /wiki/pika-software-builder.xyz 1. pika software builder

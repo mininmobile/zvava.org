@@ -185,10 +185,10 @@ function main() {
 						if (value) page.body.unshift({ node: "quote", text: value }); break
 
 					case "-l": case "--link":
-						if (value) page.body.unshift({ node: "link", path: value, text: value }); break
+						if (value) page.body.unshift({ node: "link", path: value, text: "" }); break
 
 					case "-i": case "--image":
-						if (value) page.body.unshift({ node: "image", path: "/images/" + value, text: "/images/" + value }); break
+						if (value) page.body.unshift({ node: "image", path: "/images/" + value, text: "" }); break
 
 					case "-a": case "--alt":
 						if (!value) break
@@ -206,7 +206,7 @@ function main() {
 			let output = "# " + page.title + "\n"
 
 			if (page.thumbnail !== undefined)
-				output += `=> /images/t/${page.thumbnail}.png ${page.thumbnailAlt}\n`
+				output += `=> /images/t/${page.thumbnail}.png ${page.thumbnailAlt}`
 
 			// metadata
 			// created

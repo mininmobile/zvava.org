@@ -9,7 +9,7 @@ eterm was a "custom terminal" i wrote in batch[1], according to the last modifie
 
 the only notable part of this terminal that i think was pretty interesting was the "path system", in the code, the 'help/paths/...' command tells you the available paths and you would be able to use commands along the lines of 'gt/main/...' to go to the paths - there is only one path implemented and that's the start of the program but i still think the idea had merit.
 
-=> https://gist.github.com/mininmobile/2f7c9a8d9278826352b1d86a21add68d source code
+=> /media/software/eterminal.bat
 
 ## cites
 => /wiki/batch.xyz 1. batch

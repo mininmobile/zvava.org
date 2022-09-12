@@ -12,7 +12,7 @@ once you had logged in you had four options. 1) load a plugin, the plugin system
 
 if i had to pick a favorite project from 2015 - i don't think i could choose but if i could it might be B.S.A., it just holds a special place in my heart for some odd reason. (while writing this i had discovered that i had made the main code modular too - that's dope as fuck!) i'd also like to say it was a spiritual precursor to xonade[2] but im not sure how much it actually was lol
 
-=> https://mega.nz/#F!4V0DlBRZ!_IVhlLrXeFJAyeY6WxK-IQ download
+=> /media/software/bsa.zip
 
 ## cites
 => /wiki/batch.xyz 1. batch

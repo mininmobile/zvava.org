@@ -11,7 +11,7 @@ but really, it was supposed to be a full notepad application until i ran into th
 
 it featured one whole textbox and one dropdown in the menu bar which was 'File', the only option it contained was 'Save' which would create/overwrite a file on your desktop called 'quickpaddocument.txt' with the contents of the textbox.
 
-=> https://mega.nz/#F!hUVUWYSK!znM0R0FBViVvvCTCNgtAwQ download
+=> /media/software/quickpad.zip
 
 ## cites
 => /wiki/pika-software-builder.xyz 1. pika software builder

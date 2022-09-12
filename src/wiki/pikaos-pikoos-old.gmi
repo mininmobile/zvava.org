@@ -14,7 +14,7 @@ piko was the first time i actually tried to use git/github's desktop application
 
 screenshots provided in the download link
 
-=> https://mega.nz/#F!gJ1glK4C!Z1NUX2tEzLR-RuWHZMG16w
+=> /media/software/piko.zip
 
 ## cites
 => /wiki/pika-software-builder.xyz 1. pika software builder

@@ -13,7 +13,7 @@ there was also a minimal version of fxweb created for deskreplacer[2], the minim
 
 i think fxweb has to be one of if not my earliest released pika project. it was released probably around 2014 or really early 2015, although the date on this page reflects the release of fxweb 2.2 as i cannot find a file date that reflects the true release of fxweb.
 
-=> https://mega.nz/#F!xE1gjYIR!PTHGPg7c1tXwkZGXhiQPFg download
+=> /media/software/fxweb.zip
 
 ## cites
 => /wiki/pika-software-builder.xyz 1. pika software builder
