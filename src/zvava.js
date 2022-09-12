@@ -93,7 +93,7 @@ function frame() {
 
 function startLazyMode() {
 	console.log("starting lazy mode")
-	document.getRootNode().classList.add("lazy-mode")
+	document.querySelector("html").classList.add("lazy-mode")
 	// get links
 	links = []
 	let _links = document.querySelectorAll("a, label, summary")
@@ -109,7 +109,7 @@ function startLazyMode() {
 function endLazyMode() {
 	console.log("ending lazy mode")
 	focusLink && focusLink.link.classList.remove("focus");
-	document.getRootNode().classList.remove("lazy-mode")
+	document.querySelector("html").classList.remove("lazy-mode")
 	// delete cursor element
 	document.body.removeChild(cursor)
 	//

@@ -23,6 +23,8 @@ h1, h2, h3, p {
 	margin: 1rem 0;
 	background: rgba(0, 0, 0, .5); }
 
+.lazy-mode p, .lazy-mode pre { user-select: text; }
+
 span.ui::before, span.oi::before {
 	display: inline-block;
 	text-align: right;
@@ -68,11 +70,11 @@ a {
 	background: rgba(0, 0, 0, .5);
 	line-height: 1.7rem;
 	font-family: Ubuntu Mono, monospace;
-	white-space: pre;
-}
+	white-space: pre; }
 
 .lazy-mode a {
 	cursor: none;
+	user-select: none;
 	pointer-events: none;
 	transition: color .1s, text-shadow .3s; }
 
