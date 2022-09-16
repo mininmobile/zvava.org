@@ -7,7 +7,7 @@ category software
 
 an idle game about rainmeter, as a rainmeter[1] skin
 
-=> https://github.com/mininmobile/rm-clicker
+=> /media/software/rm-clicker_v1.0.rmskin
 
 ## cites
 => /wiki/rainmeter.xyz 1. rainmeter

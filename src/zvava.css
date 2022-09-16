@@ -45,11 +45,10 @@ video, audio {
 	max-width: 100%; }
 
 img {
-	max-width: 60ch;
-	image-rendering: pixelated; }
+	max-width: 60ch;}
 
-img[alt="image"] {
-	image-rendering: unset; }
+img[alt="thumbnail"], img[alt="header"] {
+	image-rendering: pixelated; }
 
 img[alt="header"] {
 	max-width: 100%;
