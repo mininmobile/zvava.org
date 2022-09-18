@@ -1,0 +1,8 @@
+# ash gray mountain
+=> /images/m/ash_gray_mountain.jpg cover
+```
+created  2022/09/18
+category music
+```
+
+=> /media/music/ash.gray.mountain.mp3

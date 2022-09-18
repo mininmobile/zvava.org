@@ -9,7 +9,8 @@ i previously[1] went and archived a bunch of past projects to this website, the 
 
 the content affected by this are 💾 software, 🎵 music, and 📺 video posts
 
-until i am able to set up my own git server all my code will remain hosted on github, though :l
+until i am able to set up my own git server all my code will remain hosted on github, though :l new projects will be hosted on my codeberg[2] though!
 
 ## cites
 => /wiki/archiving-2020.xyz 1. archiving (2020)
+=> https://codeberg.org/zvava 2. my codeberg
