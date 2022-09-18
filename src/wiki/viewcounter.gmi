@@ -5,6 +5,35 @@ created  2022/09/18
 category software
 ```
 
-an ethical website view counter
+an ethical website view counter i wrote to deploy on this website
 
-=> https://codeberg.org/zvava/viewcounter codeberg repository
+=> /stats.html 📊 see it in action
+=> https://codeberg.org/zvava/viewcounter source code
+
+## why?
+i wanted to have really basic analytics (if you can even call it that) on my website that A. don't track you and B. can be easily disabled by just disabling javascript
+
+## how
+in about 130 lines of vanilla node.js, viewcounter listens to requests on a single path, depending on if it is a GET or a POST request
+
+if it is a GET request, a summary of all the page view counts are returned
+
+if it is a POST request with a page path as a body, that page's view count is incremented
+
+## preventing abuse
+there are two mechanisms in place to prevent abuse of the system
+
+firstly, the url is validated to make sure it's an actual url on the website and not idk a slur or something, of which the result is cached so further requests to the same url can be quickly processed
+
+there is also a 24h ratelimit in place to prevent spam. each ip has a "profile" of when it has last visited a page, if that date is today* then their view is not counted, otherwise the view count is incremented and the date is set to today*
+
+*today in time of the server
+
+## deployment
+
+i used to just have lighttpd providing http(s), now i have it doing strictly http to port 8000 and have viewcounter running on port 8001
+
+now i am able to use caddy[1] to not only act as a reverse proxy to combine both services into one website, but also to provide ssl to both lighttpd and viewcounter
+
+## cites
+=> https://caddyserver.com/ 1. caddy

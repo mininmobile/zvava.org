@@ -23,7 +23,6 @@ included tiles:
 => /media/software/tiles_v1.0.rmskin download
 
 ## about
-
 edit tiles.ini to modify the grid appearance and layout as well as the individual tile settings
 
 edit @Resources/WeatherCOMJson/Variables.inc to change the weather settings (you must use lat/long coordinates)
@@ -34,7 +33,6 @@ install the webnowplaying companion for your browser for media controls/display 
 => https://chrome.google.com/webstore/detail/webnowplaying-companion/jfakgfcdgpghbbefmdfjkbdlibjgnbli webnowplaying companion (chrome)
 
 ## screenshots
-
 => /images/screenshots/rm-tiles-default.png default configuration
 
 => /images/screenshots/rm-tiles-light.png light
@@ -47,7 +45,6 @@ install the webnowplaying companion for your browser for media controls/display 
 
 
 ## additional info
-
 with only this skin loaded rainmeter uses ~1.5% cpu + ~1.5% gpu in the background on a ryzen 5 2600X + gtx 1660ti
 
 the weather tile is implemented using jsmorely's weather.com[2] api parser. in case the weather breaks you can patch the @Resources/WeatherCOMJson/Measures.inc file with the latest WeatherComJSONMeasures.inc from jsmorely. if you need to patch the entirety of Variables.inc too, make sure you multiply UpdateRate by 25, eg. `UpdateRate = (3600 * 25)`. you need to do this since tiles.ini updates at 40ms but the default value expects an update of 1000ms
@@ -57,7 +54,6 @@ the cover art tile, title + artist on the visualizer tile, and media control til
 the hover animations as well some audio tile logic borrow elements from eldog[5] skins
 
 ## todo
-
 stuff to look forward to in future versions
 * more flexible customizability
 * support other music players then wnp
