@@ -1,0 +1,10 @@
+# ethical viewcounter
+=> /images/t/stats.png thumbnail
+```
+created  2022/09/18
+category software
+```
+
+an ethical website view counter
+
+=> https://codeberg.org/zvava/viewcounter codeberg repository

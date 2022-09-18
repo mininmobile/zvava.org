@@ -205,7 +205,7 @@ function generateHTML(files) {
 
 	// add graph to stats page
 	files["stats"] = files["stats"]
-		.replace("=> https://zvava.org/stats.html requires javascript to work :l", templates["stats.html"]);
+		.replace("=> https://zvava.org/stats.html requires javascript to work :l", "{stats}");
 
 	// write altered files
 	let x = 0;
@@ -298,6 +298,9 @@ function generateHTML(files) {
 			// add viewcounter script that doesn't display the count
 			output += templates["viewcounter.html"]
 				.replace("{url}", "/" + f + ".html");
+		} else if (f == "stats") {
+			output = output.replace("<p>{stats}</p>\n", templates["stats.html"])
+				+ templates["viewcounter.html"].replace("{url}", "/" + f + ".html");
 		} else if (f == "wiki/index") {
 			output = output
 				// replace html templates

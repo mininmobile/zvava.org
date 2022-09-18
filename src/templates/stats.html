@@ -1,1 +1,37 @@
-<b>todo lol</b>
+<p id="table"></p>
+<style>
+	#table {
+		background: rgba(0, 0, 0, .5); }
+
+	#table .row {
+		padding: .25rem 1rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+	#table .row:last-child {
+		border-bottom: none; }
+
+	#table .right {
+		float: right;
+		font-weight: bold; }
+</style>
+<script>
+	var _req = new XMLHttpRequest();
+	_req.addEventListener("load", function () {
+		var t = document.getElementById("table");
+		if (this.status != "200") {
+			t.innerHTML = "<b>!!</b> error getting view counts";
+		} else {
+			var json = JSON.parse(this.responseText);
+			t.innerHTML = Object.keys(json)
+				.filter(function (x) { return x != "code" })
+				.sort(function (a, b) { return json[b] - json[a] })
+				.map(function (p) {
+					var page = p.replace("/index.html", "/").substring(0, p.length - 5);
+					var count = json[p];
+					return `<div class="row"><span class="left">${page}</span><span class="right">${count}</span></div>`;
+				}).join("\n");
+		}
+	});
+	_req.open("GET", "/api/viewcount");
+	_req.send();
+</script>
