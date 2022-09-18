@@ -56,6 +56,8 @@ the hover animations as well some audio tile logic borrow elements from eldog[5]
 ## todo
 stuff to look forward to in future versions
 * more flexible customizability
+* fix visualizer bars on different tile sizes
+* separate inner/outer padding
 * support other music players then wnp
 * allow you to only monitor one or two drives
 
