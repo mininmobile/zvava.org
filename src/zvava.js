@@ -78,7 +78,7 @@ function frame() {
 	window.scroll(0, scrollPos)
 
 	// focus closest link
-	links.forEach(l => l.classList.remove("focus"));
+	links.forEach(l => l.classList.remove("focus"))
 	focusLink = links
 		.map(l => {
 			let d = Math.abs(l.getBoundingClientRect().top - (cursorPos.y - 9))
@@ -95,10 +95,7 @@ function startLazyMode() {
 	console.log("starting lazy mode")
 	document.querySelector("html").classList.add("lazy-mode")
 	// get links
-	links = []
-	let _links = document.querySelectorAll("a, label, summary")
-	for (let i = 0; i < _links.length; i++)
-		links.push(_links[i])
+	lazyModeGetLinks()
 	// create cursor element
 	cursor = document.createElement("div")
 	cursor.classList.add("cursor")
@@ -108,7 +105,7 @@ function startLazyMode() {
 
 function endLazyMode() {
 	console.log("ending lazy mode")
-	focusLink && focusLink.link.classList.remove("focus");
+	focusLink && focusLink.link.classList.remove("focus")
 	document.querySelector("html").classList.remove("lazy-mode")
 	// delete cursor element
 	document.body.removeChild(cursor)
@@ -127,5 +124,13 @@ function toggleLazyMode() {
 function dist(x1, y1, x2, y2) {
 	let dx = x1 - x2;
 	let dy = y1 - y2;
-	return Math.sqrt(dx * dx + dy * dy);
+	return Math.sqrt(dx * dx + dy * dy)
+}
+
+function lazyModeGetLinks() {
+	// get links
+	links = []
+	let _links = document.querySelectorAll("a, label, summary")
+	for (let i = 0; i < _links.length; i++)
+		links.push(_links[i])
 }

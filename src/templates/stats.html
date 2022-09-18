@@ -3,6 +3,9 @@
 	#table {
 		background: rgba(0, 0, 0, .5); }
 
+	#table a::before {
+		content: none; }
+
 	#table .row {
 		padding: .25rem 1rem;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -28,8 +31,9 @@
 				.map(function (p) {
 					var page = p.replace("/index.html", "/").substring(0, p.length - 5);
 					var count = json[p];
-					return `<div class="row"><span class="left">${page}</span><span class="right">${count}</span></div>`;
+					return '<div class="row"><a href="' + p + '">' + page + '</a><span class="right">' + count + '</span></div>';
 				}).join("\n");
+			lazyModeGetLinks && lazyModeGetLinks();
 		}
 	});
 	_req.open("GET", "/api/viewcount");
