@@ -312,8 +312,9 @@ function generateHTML(files) {
 function generateAss() {
 	console.log("\x1b[90m->\x1b[0m generating feed.ass...");
 
-	let assEntries = "# Actually Simple Syndication - https://tilde.town/~dzwdz/ass/\n" +
-		pages.map(page => {
+	let assEntries = "# Actually Simple Syndication - https://tilde.town/~dzwdz/ass/\n" + pages
+		.filter(x => x.category[0] != "stub")
+		.map(page => {
 			let date = page.created.replace(/\//g, "-");
 			return `${date}	protocol://zvava.org/wiki/${page.page}.xyz	${page.title}`;
 		}).join("\n") + "\n";
