@@ -67,13 +67,13 @@ function fetchTemplates() {
 	temps = temps.filter(x => x != "." && x != "..");
 
 	let x = 0;
-	temps.forEach((filename, i) => new Promise((resolve, reject) => {
+	temps.forEach((filename) => new Promise((resolve, reject) => {
 		let _f = std.open("src/templates/" + filename, "r");
 		if (_f.error()) return reject(_f.error());
 		templates[filename] = _f.readAsString().replace(/\r/g, ""); // windows newline =[
 		_f.close();
 
-		if (i + 1 == temps.length)
+		if (++x == temps.length)
 			fetchWiki();
 		resolve();
 	}).catch(print));
@@ -86,8 +86,9 @@ function fetchWiki() {
 	if (err) return print(err);
 	_wiki = _wiki.filter(x => x != "." && x != "..");
 
+	let x = 0;
 	_wiki.map(filename => filename.substring(0, filename.length - 4)) // remove .gmi
-	.forEach((page, i) => new Promise((resolve, reject) => {
+	.forEach((page) => new Promise((resolve, reject) => {
 		let _f = std.open("src/wiki/" + page + ".gmi", "r");
 		if (_f.error()) return reject(_f.error());
 		let data = _f.readAsString().replace(/\r/g, ""); // windows newline =[
@@ -111,7 +112,7 @@ function fetchWiki() {
 
 		pages.push(metadata);
 
-		if (i + 1 == _wiki.length) {
+		if (++x == _wiki.length) {
 			pages = pages
 				// sort by modified
 				.sort((a, b) => new Date(b.modified.replace(/\//g, "-")) - new Date(a.modified.replace(/\//g, "-")));
@@ -161,14 +162,17 @@ function generateGemini() {
 		.join("\n");
 	files["wiki/index"] = templates["wiki-index.gmi"].replace("{wiki_all}", _wikiAll);
 
+	files["stats"] = templates["stats.gmi"];
+
 	// generate wiki pages
 	pages.forEach(p => {
 		files["wiki/" + p.page] = templates["wiki-page.gmi"].replace("{content}", p.content);
 	});
 
 	// write pages
+	let x = 0;
 	let _files = Object.keys(files);
-	_files.forEach((f, i) => new Promise((resolve, reject) => {
+	_files.forEach((f) => new Promise((resolve, reject) => {
 		let content = files[f]
 			// remove html-only templates
 			.replace(/{html[a-z_]*}\n/g, "")
@@ -182,9 +186,9 @@ function generateGemini() {
 		_f.puts(content);
 
 		// update terminal readout
-		std.printf(`\r\x1b[32m-->\x1b[0m wrote gemini page ${i + 1}/${_files.length}`);
+		std.printf(`\r\x1b[32m-->\x1b[0m wrote gemini page ${x + 1}/${_files.length}`);
 		// if all pages have been written
-		if (i + 1 == _files.length) {
+		if (++x == _files.length) {
 			std.printf("\n");
 			generateHTML(files);
 		}
@@ -197,11 +201,16 @@ function generateHTML(files) {
 
 	// alternate gemini links to https on index
 	files["index"] = files["index"]
-		.replace("=> https://zvava.org 🕸️ view html version", "=> gemini://zvava.org 🚀 view gemini version")
+		.replace("=> https://zvava.org 🕸️ view html version", "=> gemini://zvava.org 🚀 view gemini version");
+
+	// add graph to stats page
+	files["stats"] = files["stats"]
+		.replace("=> https://zvava.org/stats.html requires javascript to work :l", templates["stats.html"]);
 
 	// write altered files
+	let x = 0;
 	let _files = Object.keys(files);
-	_files.forEach((f, i) => new Promise((resolve, reject) => {
+	_files.forEach((f) => new Promise((resolve, reject) => {
 		// set title
 		let title = `/${f} @ zvava.org`;
 		if (f == "index") title = "zvava.org";
@@ -285,12 +294,23 @@ function generateHTML(files) {
 				output += "<pre>";
 		});
 
-		if (f == "wiki/index") {
+		if (f == "index") {
+			// add viewcounter script that doesn't display the count
+			output += templates["viewcounter.html"]
+				.replace("{url}", "/" + f + ".html");
+		} else if (f == "wiki/index") {
 			output = output
 				// replace html templates
 				.replace("<p>{html_filter}<br>\n", templates["filter.html"] + "<p>")
 				// pass down data-category attribute from <a> to <p>s and <pre>s
 				.replace(/<p><a (href=".+?") (data-category=".+?")>(.+?)<\/a><\/p>\n<pre>/gm, "<p $2><a $1>$3</a></p>\n<pre $2>");
+			// add viewcounter script that doesn't display the count
+			output += templates["viewcounter.html"]
+				.replace("{url}", "/" + f + ".html");
+		} else if (f.startsWith("wiki/")) {
+			// add viewcounter script to wiki pages that displays the count
+			output += templates["wiki-viewcounter.html"]
+				.replace("{url}", "/" + f + ".html");
 		}
 
 		let _f = std.open("out/www/" + f + ".html", "w");
@@ -299,9 +319,9 @@ function generateHTML(files) {
 		_f.close();
 
 		// update terminal readout
-		std.printf(`\r\x1b[32m-->\x1b[0m wrote html page ${i + 1}/${_files.length}`);
+		std.printf(`\r\x1b[32m-->\x1b[0m wrote html page ${x + 1}/${_files.length}`);
 		// if all pages have been written
-		if (i + 1 == _files.length) {
+		if (++x == _files.length) {
 			std.printf("\n");
 			generateAss();
 		}

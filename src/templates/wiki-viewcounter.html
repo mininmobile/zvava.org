@@ -1,0 +1,14 @@
+<script>
+	var req = new XMLHttpRequest();
+	req.addEventListener("load", function () {
+		var t = this.responseText;
+		if (this.status != 200) {
+			console.log("!! error connecting to /api/viewcount");
+			t = "{\"views\":-1}";
+		}
+		document.getElementsByTagName("pre")[0]
+			.innerText += "views    " + JSON.parse(t).views;
+	});
+	req.open("POST", "/api/viewcount");
+	req.send("{url}");
+</script>

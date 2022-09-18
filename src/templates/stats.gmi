@@ -1,0 +1,9 @@
+=> / 🏡 go home...
+
+# statistics
+=> /images/t/stats.png thumbnail
+page view counts for zvava.org
+
+=> /wiki/stats.xyz about
+
+=> https://zvava.org/stats.html requires javascript to work :l
