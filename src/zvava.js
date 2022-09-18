@@ -1,39 +1,46 @@
 window.addEventListener("load", () => {
-	document.addEventListener("keydown", (e) => e.key == "Escape" && toggleLazyMode())
+	window.addEventListener("keydown", (e) => e.key == "Escape" && toggleLazyMode())
 
-	document.addEventListener("click", (e) => lazyMode && focusLink &&
-		dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16 && focusLink.link.click())
+	window.addEventListener("mousedown", (e) => {
+		if (!lazyMode) return
+		if (e.button == 1) e.preventDefault()
 
-	document.addEventListener("mousedown", (e) => {
-		drag = lazyMode
+		drag = true
 		dragStart = { x: mousePos.x, y: mousePos.y, scroll: scrollAmount }
 	})
 
-	document.addEventListener("mouseup", (e) => {
-		if (drag && cursorPos.y != mousePos.y) {
+	window.addEventListener("mouseup", (e) => {
+		if (!lazyMode) return
+
+		if (drag) {
 			let cy = cursorPos.y + (mousePos.y - cursorPos.y) / 2
 			scrollAmount = dragStart.scroll - (cy - dragStart.y)
+
+			if (focusLink && dist(cursorPos.x, cursorPos.y, dragStart.x, dragStart.y) < 16) {
+				if (e.button == 0)
+					focusLink.link.click()
+				else if (e.button == 1 && focusLink.link.tagName == "A")
+					window.open(focusLink.link.href, "_blank")
+			}
 		}
 
 		drag = false
 	})
 
-	document.addEventListener("mousemove", (e) =>
+	window.addEventListener("mousemove", (e) =>
 		lazyMode && (mousePos = { x: e.clientX, y: e.clientY }))
 
-	document.body.addEventListener("wheel", (e) => {
-		if (lazyMode) {
-			e.preventDefault()
+	window.addEventListener("wheel", (e) => {
+		if (!lazyMode) return; e.preventDefault()
 
-			let s = 0;
-			if (e.wheelDeltaY < 0) s = 1
-			else if (e.wheelDeltaY > 0) s = -1
+		let s = 0;
+		if (e.wheelDeltaY < 0) s = 1
+		else if (e.wheelDeltaY > 0) s = -1
 
-			scrollAmount += s * 72
-		}
+		scrollAmount += s * 72
 	}, { passive: false })
 
-	lazyMode &&  startLazyMode()
+	lazyMode && startLazyMode()
 })
 
 let lazyMode = sessionStorage.getItem("lazyMode")
