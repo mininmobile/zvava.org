@@ -12,9 +12,7 @@ body {
 	color: #dddddd;
 	font-family: Ubuntu Mono, monospace;
 	line-height: 1.5rem;
-	font-size: 1.1rem;
-	transform: unset;
-}
+	font-size: 1.1rem;  }
 
 h1, h2, h3 {
 	line-height: 1.25em; }
@@ -22,8 +20,6 @@ h1, h2, h3 {
 h1, h2, h3, p {
 	margin: 1rem 0;
 	background: rgba(0, 0, 0, .5); }
-
-.lazy-mode p, .lazy-mode pre { user-select: text; }
 
 span.ui::before, span.oi::before {
 	display: inline-block;
@@ -54,13 +50,11 @@ img[alt="header"] {
 	max-width: 100%;
 	width: 100%; }
 
-.lazy-mode img { pointer-events: none }
-
 pre {
 	margin: -.5rem 0; }
 
 pre, blockquote {
-	color: #bbbbbb;
+	color: #aaa;
 	background: rgba(0, 0, 0, .5); }
 
 a {
@@ -70,12 +64,6 @@ a {
 	line-height: 1.7rem;
 	font-family: Ubuntu Mono, monospace;
 	white-space: pre; }
-
-.lazy-mode a {
-	cursor: none;
-	user-select: none;
-	pointer-events: none;
-	transition: color .1s, text-shadow .3s; }
 
 a::before {
 	content: "\21D2  "; }
@@ -101,13 +89,11 @@ a.focus {
 
 .lazy-mode {
 	user-select: none;
-	cursor: none;
-}
+	cursor: none; }
 
 .lazy-mode body {
 	margin: 20vh auto 40vh;
-	overflow-x: hidden;
-}
+	overflow-x: hidden; }
 
 .lazy-mode body::before, .lazy-mode body::after {
 	content: "";
@@ -117,20 +103,37 @@ a.focus {
 	position: fixed;
 	left: 0;
 	cursor: none;
-	pointer-events: none;
-}
+	pointer-events: none; }
 
 .lazy-mode::before {
 	background: linear-gradient(rgba(0, 0, 0, .75), transparent);
-	top: 0;
-}
+	top: 0; }
 
 .lazy-mode::after {
 	background: linear-gradient(transparent, rgba(0, 0, 0, .75));
-	bottom: 0;
-}
+	bottom: 0; }
 
-.cursor {
+.lazy-mode .focus {
+	text-shadow: 0 0 .25rem rgba(255, 255, 255, 0.1); }
+
+.lazy-mode p, .lazy-mode pre {
+	user-select: text; }
+
+.lazy-mode img {
+	pointer-events: none }
+
+.lazy-mode a {
+	cursor: none;
+	user-select: none;
+	pointer-events: none;
+	transition: color .1s, text-shadow .3s; }
+
+.lazy-mode a.focus::after {
+	color: #777;
+	font-weight: normal;
+	content: " " attr(href); }
+
+.lazy-mode .cursor {
 	width: 18px;
 	height: 18px;
 	background: #dddddd;
@@ -139,9 +142,4 @@ a.focus {
 	box-shadow: 0 0 .5rem rgba(0, 0, 0, .5);
 	cursor: none;
 	pointer-events: none;
-	z-index: 9;
-}
-
-.focus {
-	text-shadow: 0 0 .25rem rgba(255, 255, 255, 0.1);
-}
+	z-index: 9; }

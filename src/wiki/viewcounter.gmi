@@ -1,7 +1,7 @@
 # ethical view counter
 => /images/t/stats.png thumbnail
 ```
-created  2022/09/18
+created  2022/09/17
 category software
 ```
 

@@ -10,8 +10,8 @@ rainmeter is a foss desktop customization utility for windows
 => https://rainmeter.net/ rainmeter.net
 
 ## my skins
+=> /images/t/rm-tiles.png tiles screenshot
+=> /wiki/rm-tiles.xyz tiles
+
 => /images/t/rm-clicker.png rainmeter clicker screenshot
 => /wiki/rm-clicker.xyz rainmeter clicker
-
-=> /images/t/rm-tiles.png tiles screenshot
-=> /wiki/rm-tiles.xyz tiles (wip)
