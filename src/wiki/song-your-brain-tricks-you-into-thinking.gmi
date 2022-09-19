@@ -1,0 +1,8 @@
+# your brain tricks you into thinking
+=> /images/m/your_brain_tricks_you_into_thinking.jpg cover
+```
+created  2022/09/19
+category music
+```
+
+=> /media/music/your.brain.tricks.you.into.thinking.mp3
